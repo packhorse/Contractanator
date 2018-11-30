@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="291-bC-lrG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MLT-dw-trd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -39,15 +39,21 @@
                                 <rect key="frame" x="104" y="586" width="169" height="35"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="No Account? ">
+                                        <fragment content="No Account?">
                                             <attributes>
                                                 <color key="NSColor" red="0.61121906725888331" green="0.61121906725888331" blue="0.61121906725888331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="17" name="Avenir-Book"/>
                                             </attributes>
                                         </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.34692258883248728" green="0.34692258883248728" blue="0.34692258883248728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="17" name="Avenir-Book"/>
+                                            </attributes>
+                                        </fragment>
                                         <fragment content="Sign Up!">
                                             <attributes>
-                                                <color key="NSColor" red="0.61121906725888331" green="0.61121906725888331" blue="0.61121906725888331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="NSColor" red="0.45722953680203049" green="0.45722953680203049" blue="0.45722953680203049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="17" name="Avenir-BookOblique"/>
                                                 <font key="NSOriginalFont" size="17" name="Avenir-BookOblique"/>
                                                 <integer key="NSUnderline" value="1"/>
@@ -206,7 +212,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e76-zz-2xR">
-                                <rect key="frame" x="16" y="116" width="343" height="551"/>
+                                <rect key="frame" x="16" y="116" width="343" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xXH-dZ-IA4">
                                     <size key="itemSize" width="159" height="226"/>
@@ -410,7 +416,7 @@
             </objects>
             <point key="canvasLocation" x="3534" y="-532"/>
         </scene>
-        <!--Profile.-->
+        <!--Profile View Controller-->
         <scene sceneID="lva-gQ-hGE">
             <objects>
                 <viewController id="QqP-V7-Ib5" customClass="ProfileViewController" customModule="Contractanator" customModuleProvider="target" sceneMemberID="viewController">
@@ -426,38 +432,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Owner of BlahBlah electric contrcting. Currently the #1 rated electric contracting company in Utah!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="may-4J-l5p">
-                                <rect key="frame" x="24" y="203" width="208" height="134"/>
+                                <rect key="frame" x="24" y="203" width="208" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-HC-ZXF">
-                                <rect key="frame" x="24" y="357" width="165" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone #:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiQ-Yh-0sa">
-                                        <rect key="frame" x="0.0" y="0.0" width="66" height="25"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8017093884" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNP-Pc-R5Y">
-                                        <rect key="frame" x="71" y="0.0" width="94" height="25"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                                        <color key="textColor" name="CoolBlue"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-h1-ulI">
-                                <rect key="frame" x="0.0" y="398" width="375" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.85192281007766724" green="0.85257238149642944" blue="0.8520234227180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FBq-nk-AkR">
-                                <rect key="frame" x="277" y="240" width="40.5" height="60.5"/>
+                                <rect key="frame" x="276" y="223" width="40.5" height="60.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-b2-KNV">
@@ -474,15 +456,29 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-HC-ZXF">
+                                <rect key="frame" x="24" y="346" width="165" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone #:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiQ-Yh-0sa">
+                                        <rect key="frame" x="0.0" y="0.0" width="66" height="25"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8017093884" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNP-Pc-R5Y">
+                                        <rect key="frame" x="71" y="0.0" width="94" height="25"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
+                                        <color key="textColor" name="CoolBlue"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xcF-jI-to1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile." id="rCe-xY-fC9">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="SettingsIcon" id="oW3-Zj-T8Z">
-                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="rCe-xY-fC9"/>
                     <connections>
                         <outlet property="bioTextView" destination="may-4J-l5p" id="vBy-wY-c0z"/>
                     </connections>
@@ -502,9 +498,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="RsY-ae-2yS" kind="relationship" relationship="viewControllers" id="ZI6-yV-Reh"/>
-                        <segue destination="K7V-Cl-Wtm" kind="relationship" relationship="viewControllers" id="5uv-1v-E0T"/>
-                        <segue destination="mOZ-YD-7dj" kind="relationship" relationship="viewControllers" id="TC7-eW-evf"/>
+                        <segue destination="bjG-hN-qGP" kind="relationship" relationship="viewControllers" id="qzw-Eq-UNh"/>
+                        <segue destination="K7V-Cl-Wtm" kind="relationship" relationship="viewControllers" id="KuH-4u-SjT"/>
+                        <segue destination="mOZ-YD-7dj" kind="relationship" relationship="viewControllers" id="uX3-r1-ne0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nz-w5-INM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -517,14 +513,9 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mOZ-YD-7dj" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="UserForContractorApp" id="bnE-pA-3rG"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="uJz-UG-nzo">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uJz-UG-nzo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="31"/>
-                            <color key="textColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -534,16 +525,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxh-NR-sSw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2709.5999999999999" y="1060.1199400299852"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="d9W-iI-UBH">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="RsY-ae-2yS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="tGJ-jM-5EP"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aUG-pq-IvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3517" y="-57"/>
         </scene>
         <!--Post-->
         <scene sceneID="kBK-an-AfX">
@@ -555,20 +536,11 @@
             </objects>
             <point key="canvasLocation" x="4105" y="228"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="XQ2-cH-6dj">
-            <objects>
-                <viewControllerPlaceholder id="Qoy-g0-ZdP" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Dy-U7-kAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2962" y="607"/>
-        </scene>
     </scenes>
     <resources>
         <image name="C Copy" width="130" height="152"/>
         <image name="ContractorHouse" width="72" height="72"/>
         <image name="FilterLines" width="75" height="75"/>
-        <image name="SettingsIcon" width="72" height="72"/>
         <image name="UserForContractorApp" width="75" height="75"/>
         <namedColor name="CoolBlue">
             <color red="0.094117647058823528" green="0.6705882352941176" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
