@@ -9,16 +9,14 @@
 import UIKit
 
 class ListingsViewController: UIViewController {
-    
-    @IBOutlet var viewBehindContractanator: UIView!
-    @IBOutlet var viewBehindNavBar: UIView!
+
     @IBOutlet var collectionView: UICollectionView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
-        
+        collectionView.delegate = self
         
         // Will need this in your profile view controller
         // Create a reference to our nib
@@ -26,27 +24,6 @@ class ListingsViewController: UIViewController {
         
         // Register the nib as the cell on our collection view
         collectionView.register(collectionViewNib, forCellWithReuseIdentifier: "listingCell")
-        
-        
-        UIChanges()
-    }
-    
-    
-    func UIChanges() {
-        
-        //Contractanator View
-        viewBehindContractanator.layer.shadowOpacity = 0.4
-        viewBehindContractanator.layer.shadowOffset = CGSize(width: -0.5, height: 1)
-        viewBehindContractanator.layer.shadowRadius = 1
-        viewBehindContractanator.layer.shadowColor = UIColor.darkGray.cgColor
-        
-        
-        //View behind where the navigation bar goes on the bottom
-        viewBehindNavBar.layer.shadowOpacity = 0.4
-        viewBehindNavBar.layer.shadowOffset = CGSize(width: 0.5, height: -1)
-        viewBehindNavBar.layer.shadowRadius = 1
-        viewBehindNavBar.layer.shadowColor = UIColor.darkGray.cgColor
-        
         
     }
     
@@ -73,5 +50,14 @@ extension ListingsViewController: UICollectionViewDataSource, UICollectionViewDe
         
         return cell
     }
-    
+}
+
+extension ListingsViewController : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (view.frame.width /  2.4), height: view.frame.width / 2.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 3,left: 3,bottom: 3,right: 3)
+    }
 }
