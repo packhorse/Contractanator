@@ -22,7 +22,11 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         
       UIChanges()
-        
+     
+//        let paddingView = UITextView(frame: CGRect(0, 0, 15, self.emailTextField.frame.height))
+//        emailTextField.leftView = paddingView
+//        emailTextField.leftViewMode = UITextViewMode.always
+//        
     }
     
     func UIChanges() {
@@ -35,8 +39,8 @@ class LogInViewController: UIViewController {
         //EmailTextField
         emailTextField.layer.cornerRadius = 21
         emailTextField.layer.borderWidth = 1.0
-        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
         emailTextField.borderStyle = .none
+        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
         emailTextField.layer.masksToBounds = true
 //        emailTextField.position(from: emailTextField.beginningOfDocument, in: .right, offset: 15)
         
