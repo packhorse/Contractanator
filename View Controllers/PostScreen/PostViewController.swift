@@ -25,9 +25,7 @@ class PostViewController: UIViewController {
     @IBOutlet var button10: UIButton!
     @IBOutlet var button11: UIButton!
     @IBOutlet var button12: UIButton!
-    @IBOutlet var button13: UIButton!
-    @IBOutlet var button14: UIButton!
-    @IBOutlet var button15: UIButton!
+    @IBOutlet var postButton: UIButton!
     
 
     
@@ -41,7 +39,7 @@ class PostViewController: UIViewController {
     func UIChanges() {
         
         
-        nameTextField.layer.cornerRadius = 18.0
+        nameTextField.layer.cornerRadius = 15.0
         nameTextField.layer.borderWidth = 1.0
         nameTextField.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -97,23 +95,26 @@ class PostViewController: UIViewController {
         button12.layer.borderWidth = 1.0
         button12.layer.borderColor = UIColor.lightGray.cgColor
         
-        
-        button13.layer.cornerRadius = 18.0
-        button13.layer.borderWidth = 1.0
-        button13.layer.borderColor = UIColor.lightGray.cgColor
-        
-        button14.layer.cornerRadius = 18.0
-        button14.layer.borderWidth = 1.0
-        button14.layer.borderColor = UIColor.lightGray.cgColor
-        
-        button15.layer.cornerRadius = 18.0
-        button15.layer.borderWidth = 1.0
-        button15.layer.borderColor = UIColor.lightGray.cgColor
+        postButton.layer.cornerRadius = 20.0
+        postButton.layer.borderWidth = 1.0
+        postButton.layer.borderColor = UIColor.gray.cgColor
 
         
+    }
+  
+    
+    //Slider Code
+    
+    
+    @IBOutlet weak var sliderValueLabel: UILabel!
+    
+    @IBAction func SliderValueChange(_ sender: UISlider) {
+        
+        let currentValue = Int(sender.value)
+        
+        sliderValueLabel.text = "\(currentValue)"
         
     }
-    
     
     
     
