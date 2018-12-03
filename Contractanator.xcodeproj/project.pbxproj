@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD73E21B5D8BE00E71713 /* Constants.swift */; };
+		A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */; };
+		A6FDD74321B5D8D600E71713 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74221B5D8D600E71713 /* JobListing.swift */; };
+		A6FDD74521B5D8DE00E71713 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74421B5D8DE00E71713 /* User.swift */; };
+		A6FDD74721B5D8EA00E71713 /* JobListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74621B5D8EA00E71713 /* JobListingController.swift */; };
+		A6FDD74921B5D92900E71713 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74821B5D92900E71713 /* UserController.swift */; };
 		B80FC51D21B0AAE100DB82AD /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FC51C21B0AAE100DB82AD /* PostViewController.swift */; };
 		B80FC52121B1A12300DB82AD /* CellDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */; };
 		B84A27D921B074940008178D /* SearchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84A27D821B074940008178D /* SearchScreenViewController.swift */; };
@@ -26,8 +32,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contractanator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Contractanator.framework; path = "../Debug-iphonesimulator/Pods_Contractanator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78169BD4547E499068E4A8BA /* Pods-Contractanator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contractanator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator.debug.xcconfig"; sourceTree = "<group>"; };
+		A6FDD73E21B5D8BE00E71713 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
+		A6FDD74221B5D8D600E71713 /* JobListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListing.swift; sourceTree = "<group>"; };
+		A6FDD74421B5D8DE00E71713 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A6FDD74621B5D8EA00E71713 /* JobListingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListingController.swift; sourceTree = "<group>"; };
+		A6FDD74821B5D92900E71713 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		B80FC51C21B0AAE100DB82AD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDetailViewController.swift; sourceTree = "<group>"; };
 		B84A27D821B074940008178D /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +78,40 @@
 				2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6FDD73821B5D66B00E71713 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6FDD74221B5D8D600E71713 /* JobListing.swift */,
+				A6FDD74421B5D8DE00E71713 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A6FDD73921B5D67700E71713 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A6FDD74621B5D8EA00E71713 /* JobListingController.swift */,
+				A6FDD74821B5D92900E71713 /* UserController.swift */,
+			);
+			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		A6FDD73A21B5D69300E71713 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A6FDD73E21B5D8BE00E71713 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		A6FDD73B21B5D88800E71713 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		AF896E76DB2F967BF21268DA /* Pods */ = {
@@ -172,6 +218,10 @@
 			children = (
 				B8DB34ED21ADD2FD008ECADE /* UI */,
 				B8A85D7921AF3A3300F03BCE /* View Controllers */,
+				A6FDD73921B5D67700E71713 /* ModelControllers */,
+				A6FDD73821B5D66B00E71713 /* Models */,
+				A6FDD73B21B5D88800E71713 /* Networking */,
+				A6FDD73A21B5D69300E71713 /* Constants */,
 				B8DB34EC21ADD2D6008ECADE /* Resources */,
 			);
 			path = Contractanator;
@@ -356,13 +406,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6FDD74521B5D8DE00E71713 /* User.swift in Sources */,
 				B80FC51D21B0AAE100DB82AD /* PostViewController.swift in Sources */,
 				B8A85D7B21AF3C7100F03BCE /* ListingsViewController.swift in Sources */,
+				A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */,
 				B8A85D7821AF331F00F03BCE /* SignUpViewController.swift in Sources */,
 				B8A85D8121AF591600F03BCE /* ListingCollectionViewCell.swift in Sources */,
 				B8A85D7621AEFF1A00F03BCE /* LogInViewController.swift in Sources */,
+				A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */,
 				B80FC52121B1A12300DB82AD /* CellDetailViewController.swift in Sources */,
+				A6FDD74321B5D8D600E71713 /* JobListing.swift in Sources */,
+				A6FDD74721B5D8EA00E71713 /* JobListingController.swift in Sources */,
 				B84A27DC21B080160008178D /* ProfileViewController.swift in Sources */,
+				A6FDD74921B5D92900E71713 /* UserController.swift in Sources */,
 				B84A27D921B074940008178D /* SearchScreenViewController.swift in Sources */,
 				B8DB34DB21ADD2BC008ECADE /* AppDelegate.swift in Sources */,
 			);
