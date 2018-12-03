@@ -99,7 +99,6 @@ class PostViewController: UIViewController {
         postButton.layer.borderWidth = 1.0
         postButton.layer.borderColor = UIColor.gray.cgColor
 
-        
     }
   
     
@@ -112,7 +111,9 @@ class PostViewController: UIViewController {
         
         let currentValue = Int(sender.value)
         
-        sliderValueLabel.text = "\(currentValue)"
+        sliderValueLabel.text = "$\(currentValue)/hr"
+        
+        
         
     }
     

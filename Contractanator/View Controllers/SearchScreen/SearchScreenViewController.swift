@@ -23,8 +23,20 @@ class SearchScreenViewController: UIViewController {
     @IBOutlet var button10: UIButton!
     @IBOutlet var button11: UIButton!
     @IBOutlet var button12: UIButton!
+    @IBOutlet var valueNameLabel: UILabel!
+    @IBOutlet var postButton: UIButton!
     
-
+    
+    @IBAction func SliderBar(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        
+        valueNameLabel.text = "$\(currentValue)/hr"
+        
+    
+        
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +96,9 @@ class SearchScreenViewController: UIViewController {
         button12.layer.borderWidth = 1.0
         button12.layer.borderColor = UIColor.lightGray.cgColor
         
-        
+        postButton.layer.cornerRadius = 21.0
+        postButton.layer.borderWidth = 1.0
+        postButton.layer.borderColor = UIColor.gray.cgColor
 
     }
     

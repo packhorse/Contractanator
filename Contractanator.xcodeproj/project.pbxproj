@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B80FC51D21B0AAE100DB82AD /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FC51C21B0AAE100DB82AD /* PostViewController.swift */; };
-		B80FC52121B1A12300DB82AD /* CellDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */; };
 		B84A27D921B074940008178D /* SearchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84A27D821B074940008178D /* SearchScreenViewController.swift */; };
 		B84A27DC21B080160008178D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84A27DB21B080160008178D /* ProfileViewController.swift */; };
 		B84A27E021B089E50008178D /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84A27DE21B089E50008178D /* Post.storyboard */; };
@@ -29,7 +28,6 @@
 		2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contractanator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78169BD4547E499068E4A8BA /* Pods-Contractanator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contractanator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator.debug.xcconfig"; sourceTree = "<group>"; };
 		B80FC51C21B0AAE100DB82AD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDetailViewController.swift; sourceTree = "<group>"; };
 		B84A27D821B074940008178D /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
 		B84A27DB21B080160008178D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B84A27DF21B089E50008178D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Post.storyboard; sourceTree = "<group>"; };
@@ -85,14 +83,6 @@
 			path = PostScreen;
 			sourceTree = "<group>";
 		};
-		B80FC51F21B1A0DC00DB82AD /* DetailCell */ = {
-			isa = PBXGroup;
-			children = (
-				B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */,
-			);
-			path = DetailCell;
-			sourceTree = "<group>";
-		};
 		B84A27D521B074200008178D /* LogInScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,7 +102,6 @@
 		B84A27D721B074530008178D /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B80FC51F21B1A0DC00DB82AD /* DetailCell */,
 				B8A85D7A21AF3C7100F03BCE /* ListingsViewController.swift */,
 				B8A85D8021AF591600F03BCE /* ListingCollectionViewCell.swift */,
 				B8A85D7E21AF56B100F03BCE /* ListingCollectionViewCell.xib */,
@@ -361,7 +350,6 @@
 				B8A85D7821AF331F00F03BCE /* SignUpViewController.swift in Sources */,
 				B8A85D8121AF591600F03BCE /* ListingCollectionViewCell.swift in Sources */,
 				B8A85D7621AEFF1A00F03BCE /* LogInViewController.swift in Sources */,
-				B80FC52121B1A12300DB82AD /* CellDetailViewController.swift in Sources */,
 				B84A27DC21B080160008178D /* ProfileViewController.swift in Sources */,
 				B84A27D921B074940008178D /* SearchScreenViewController.swift in Sources */,
 				B8DB34DB21ADD2BC008ECADE /* AppDelegate.swift in Sources */,
