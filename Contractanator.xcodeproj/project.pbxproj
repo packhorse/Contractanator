@@ -153,9 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				B8DB34D921ADD2BC008ECADE /* Contractanator */,
-				B8DB34ED21ADD2FD008ECADE /* UI */,
-				B8A85D7921AF3A3300F03BCE /* View Controllers */,
-				B8DB34EC21ADD2D6008ECADE /* Resources */,
 				B8DB34D821ADD2BC008ECADE /* Products */,
 				AF896E76DB2F967BF21268DA /* Pods */,
 				0E6A1ED06CD301DDF77AD323 /* Frameworks */,
@@ -173,6 +170,9 @@
 		B8DB34D921ADD2BC008ECADE /* Contractanator */ = {
 			isa = PBXGroup;
 			children = (
+				B8DB34ED21ADD2FD008ECADE /* UI */,
+				B8A85D7921AF3A3300F03BCE /* View Controllers */,
+				B8DB34EC21ADD2D6008ECADE /* Resources */,
 			);
 			path = Contractanator;
 			sourceTree = "<group>";
