@@ -41,7 +41,7 @@ class ListingsViewController: UIViewController {
 
 extension ListingsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,10 +54,11 @@ extension ListingsViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension ListingsViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width /  2.4), height: view.frame.width / 2.0)
+        let widthOfScreen = view.frame.width
+        return CGSize(width: (widthOfScreen - 3 * 16) / 2 + 10, height: ((widthOfScreen - 3 * 16) / 2) + 50)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 3,left: 3,bottom: 3,right: 3)
+        return UIEdgeInsets(top: 16, left: 10, bottom: 50, right: 10)
     }
 }

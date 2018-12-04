@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Post a job.-->
+        <!--Post a job-->
         <scene sceneID="qgs-g5-o7T">
             <objects>
                 <viewController id="JVn-m1-nVN" customClass="PostViewController" customModule="Contractanator" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,7 +67,7 @@
                                                 <color key="textColor" red="0.33687958499999998" green="0.34021502640000001" blue="0.34021502640000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UO6-63-USa">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UO6-63-USa">
                                                 <rect key="frame" x="15" y="84" width="345" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
@@ -167,14 +167,7 @@
                                                 <rect key="frame" x="16" y="810" width="14" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qje-zL-g15">
-                                                <rect key="frame" x="180" y="810" width="14" height="36"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="26"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-rj-HLg">
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-rj-HLg">
                                                 <rect key="frame" x="19" y="854" width="335" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" name="CoolBlue"/>
@@ -197,6 +190,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$30/hr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qje-zL-g15">
+                                        <rect key="frame" x="105" y="799" width="165" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="na8-As-VLf" firstAttribute="centerX" secondItem="s5J-Xe-PCv" secondAttribute="centerX" id="3if-ta-3VD"/>
@@ -217,7 +217,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4HE-m2-uCL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Post a job." id="2yD-Dt-KSI"/>
+                    <navigationItem key="navigationItem" title="Post a job" id="2yD-Dt-KSI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="2000"/>
                     <connections>

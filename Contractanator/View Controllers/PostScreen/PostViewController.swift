@@ -47,6 +47,7 @@ class PostViewController: UIViewController {
         jobDescriptionTextView.layer.borderWidth = 1.0
         jobDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         
+        
         button1.layer.cornerRadius = 18.0
         button1.layer.borderWidth = 1.0
         button1.layer.borderColor = UIColor.lightGray.cgColor
@@ -99,7 +100,6 @@ class PostViewController: UIViewController {
         postButton.layer.borderWidth = 1.0
         postButton.layer.borderColor = UIColor.gray.cgColor
 
-        
     }
   
     
@@ -112,7 +112,9 @@ class PostViewController: UIViewController {
         
         let currentValue = Int(sender.value)
         
-        sliderValueLabel.text = "\(currentValue)"
+        sliderValueLabel.text = "$\(currentValue)/hr"
+        
+        
         
     }
     

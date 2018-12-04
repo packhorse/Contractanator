@@ -26,9 +26,6 @@ class ListingCollectionViewCell: UICollectionViewCell {
     func customUI() {
         
         
-        
-        
-        
         customCellUIView.layer.cornerRadius = 22.0
         customCellUIView.layer.cornerRadius = 22.0
         
@@ -36,8 +33,8 @@ class ListingCollectionViewCell: UICollectionViewCell {
         
         
         customCellUIView.layer.shadowColor = UIColor.init(named: "CoolBlue")?.cgColor
-        customCellUIView.layer.shadowRadius = 3.4
-        customCellUIView.layer.shadowOpacity = 5.0
+        customCellUIView.layer.shadowRadius = 2.7
+        customCellUIView.layer.shadowOpacity = 3.4
         customCellUIView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         
