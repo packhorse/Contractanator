@@ -11,6 +11,7 @@ import Foundation
 class JobListingController {
     
     // MARK: - Properties
+    //comment
     
     // Singleton
     static let shared = JobListingController()
