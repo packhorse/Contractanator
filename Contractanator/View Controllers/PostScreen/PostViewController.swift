@@ -47,6 +47,7 @@ class PostViewController: UIViewController {
         jobDescriptionTextView.layer.borderWidth = 1.0
         jobDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         
+        
         button1.layer.cornerRadius = 18.0
         button1.layer.borderWidth = 1.0
         button1.layer.borderColor = UIColor.lightGray.cgColor

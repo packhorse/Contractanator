@@ -197,7 +197,7 @@
             </objects>
             <point key="canvasLocation" x="673" y="151"/>
         </scene>
-        <!--Profile.-->
+        <!--Profile-->
         <scene sceneID="lva-gQ-hGE">
             <objects>
                 <viewController id="QqP-V7-Ib5" customClass="ProfileViewController" customModule="Contractanator" customModuleProvider="target" sceneMemberID="viewController">
@@ -265,7 +265,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xcF-jI-to1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile." id="rCe-xY-fC9">
+                    <navigationItem key="navigationItem" title="Profile" id="rCe-xY-fC9">
                         <barButtonItem key="rightBarButtonItem" image="SettingsIcon" id="GlR-CA-meO">
                             <color key="tintColor" red="0.60783725980000003" green="0.60783916709999997" blue="0.60784339899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
