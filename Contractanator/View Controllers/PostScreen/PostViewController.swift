@@ -27,7 +27,7 @@ class PostViewController: UIViewController {
     @IBOutlet var button12: UIButton!
     @IBOutlet var postButton: UIButton!
     
-
+    var selectedCriterias: [JobCriteria] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +102,33 @@ class PostViewController: UIViewController {
 
     }
   
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        var criteria: JobCriteria?
+        
+        switch sender.restorationIdentifier {
+            case "team":
+            criteria = JobCriteria.fullTeam
+            
+        default:
+            print("something went wrong")
+            
+        }
+        
+        guard let unwrappedCriteria = criteria else { return }
+        if selectedCriterias.contains(unwrappedCriteria) {
+            let index = selectedCriterias.firstIndex(of: unwrappedCriteria)
+            selectedCriterias.remove(at: index!)
+//            sender.backgroundColor =
+        } else {
+            selectedCriterias.append(unwrappedCriteria)
+//            sender.backgroundColor =
+        }
+    }
+    
+    @IBAction func postButtonTapped(_ sender: UIButton) {
+        
+        JobListingController.shared.postJobListing(withTitle: <#T##String#>, description: <#T##String#>, jobType: <#T##JobType#>, criteria: selectedCriterias, hourlyPay: <#T##Int#>, zipCode: <#T##Int#>, completion: <#T##(Bool) -> Void#>)
+    }
     
     //Slider Code
     
@@ -118,10 +145,7 @@ class PostViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
+
     
     /*
     // MARK: - Navigation
