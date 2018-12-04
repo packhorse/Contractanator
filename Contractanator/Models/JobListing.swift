@@ -19,7 +19,7 @@ struct JobListing {
     let hourlyPay: Int
     let zipCode: String
     let username: String
-    var uuid: String?
+    let timestamp: Date
     
     // MARK: - Functions
     

@@ -127,7 +127,7 @@ class PostViewController: UIViewController {
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
         
-        JobListingController.shared.postJobListing(withTitle: <#T##String#>, description: <#T##String#>, jobType: <#T##JobType#>, criteria: selectedCriterias, hourlyPay: <#T##Int#>, zipCode: <#T##Int#>, completion: <#T##(Bool) -> Void#>)
+//        JobListingController.shared.postJobListing(withTitle: <#T##String#>, description: <#T##String#>, jobType: <#T##JobType#>, criteria: selectedCriterias, hourlyPay: <#T##Int#>, zipCode: <#T##Int#>, completion: <#T##(Bool) -> Void#>)
     }
     
     //Slider Code

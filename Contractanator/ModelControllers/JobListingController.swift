@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class JobListingController {
     
@@ -28,22 +29,43 @@ class JobListingController {
                         completion: @escaping (Bool) -> Void) {
         
         // Unwrap the current session's loggedInUser and get their username
-        guard let loggedInUser = UserController.shared.loggedInUser else {
-            print("Error: no loggedInUser.\n\(#function)")
-            completion(false)
-            return
-        }
+//        guard let loggedInUser = UserController.shared.loggedInUser else {
+//            print("Error: no loggedInUser.\n\(#function)")
+//            completion(false)
+//            return
+//        }
         
-        let username = loggedInUser.username
+        let username = "testUsername"//loggedInUser.username
         
         // Initialize an instance of jobListing
-        let jobListing = JobListing(title: title, description: description, jobType: jobType, criteria: criteria, hourlyPay: hourlyPay, zipCode: zipCode, username: username)
+        let jobListing = JobListing(title: title,
+                                    description: description,
+                                    jobType: jobType,
+                                    criteria: criteria,
+                                    hourlyPay: hourlyPay,
+                                    zipCode: zipCode,
+                                    username: username,
+                                    timestamp: Date())
         
         //        temporarily add it to the jobListings array
         jobListings.append(jobListing)
         completion(true)
         
         // Create a firestore document
+        var docRef: DocumentReference? = nil
+            
+        docRef = FirebaseManager.db.collection(Constants.jobListingsTypeKey).addDocument(data: jobListing.getDocData(), completion: { (error) in
+            if let error = error {
+                print("Error: Could not save document to firestore \n\(#function)\n\(error)\n\(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            print("Successfully added to firestore")
+            DispatchQueue.main.async {
+                completion(true)
+            }
+        })
         
         // Post the document to FireStore
     }

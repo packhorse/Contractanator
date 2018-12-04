@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A604682021B71043007CC24A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A604681F21B71043007CC24A /* GoogleService-Info.plist */; };
+		A604682221B71476007CC24A /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A604682121B71476007CC24A /* FirebaseManager.swift */; };
 		A6070E9821B6EDC800609F63 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6070E9721B6EDC800609F63 /* LocationManager.swift */; };
 		A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD73E21B5D8BE00E71713 /* Constants.swift */; };
 		A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */; };
@@ -36,6 +37,7 @@
 		2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Contractanator.framework; path = "../Debug-iphonesimulator/Pods_Contractanator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78169BD4547E499068E4A8BA /* Pods-Contractanator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contractanator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator.debug.xcconfig"; sourceTree = "<group>"; };
 		A604681F21B71043007CC24A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A604682121B71476007CC24A /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		A6070E9721B6EDC800609F63 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A6FDD73E21B5D8BE00E71713 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */,
+				A604682121B71476007CC24A /* FirebaseManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				A6FDD74921B5D92900E71713 /* UserController.swift in Sources */,
 				B84A27D921B074940008178D /* SearchScreenViewController.swift in Sources */,
 				B8DB34DB21ADD2BC008ECADE /* AppDelegate.swift in Sources */,
+				A604682221B71476007CC24A /* FirebaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

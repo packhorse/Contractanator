@@ -8,5 +8,6 @@ target 'Contractanator' do
   # Pods for Contractanator
 pod 'Firebase/Core'
 pod 'Firebase/Firestore'
+pod 'Firebase/Auth'
 
 end

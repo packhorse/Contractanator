@@ -26,6 +26,7 @@ struct Constants {
     static let hourlyPayKey = "hourlyPay"
     static let zipCodeKey = "zipCode"
     static let usernameKey = "username"
+    static let timestampKey = "timestamp"
     
     // MARK: - User Keys
     

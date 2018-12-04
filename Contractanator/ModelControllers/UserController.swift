@@ -20,4 +20,13 @@ class UserController {
     var loggedInUser: User?
     
     // MARK: - Functions
+    
+    func createNewUser(withFirstName firstName: String,
+                       lastName: String,
+                       username: String,
+                       email: String,
+                       phone: String,
+                       password: String) {
+        
+    }
 }
