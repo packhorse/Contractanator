@@ -24,7 +24,7 @@ class JobListingController {
     
     func postJobListing(withTitle title: String, description: String,
                         jobType: JobType, criteria: [JobCriteria],
-                        hourlyPay: Int, zipCode: Int,
+                        hourlyPay: Int, zipCode: String,
                         completion: @escaping (Bool) -> Void) {
         
         // Unwrap the current session's loggedInUser and get their username
@@ -33,13 +33,13 @@ class JobListingController {
             completion(false)
             return
         }
-    
+        
         let username = loggedInUser.username
         
         // Initialize an instance of jobListing
         let jobListing = JobListing(title: title, description: description, jobType: jobType, criteria: criteria, hourlyPay: hourlyPay, zipCode: zipCode, username: username)
         
-//        temporarily add it to the jobListings array
+        //        temporarily add it to the jobListings array
         jobListings.append(jobListing)
         completion(true)
         
