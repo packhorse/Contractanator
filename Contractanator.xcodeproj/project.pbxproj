@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6070E9821B6EDC800609F63 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6070E9721B6EDC800609F63 /* LocationManager.swift */; };
 		A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD73E21B5D8BE00E71713 /* Constants.swift */; };
 		A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */; };
 		A6FDD74321B5D8D600E71713 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74221B5D8D600E71713 /* JobListing.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Contractanator.framework; path = "../Debug-iphonesimulator/Pods_Contractanator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78169BD4547E499068E4A8BA /* Pods-Contractanator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contractanator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator.debug.xcconfig"; sourceTree = "<group>"; };
+		A6070E9721B6EDC800609F63 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A6FDD73E21B5D8BE00E71713 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
 		A6FDD74221B5D8D600E71713 /* JobListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListing.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 				2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6070E9621B6EC9600609F63 /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				A6070E9721B6EDC800609F63 /* LocationManager.swift */,
+			);
+			path = CoreLocation;
 			sourceTree = "<group>";
 		};
 		A6FDD73821B5D66B00E71713 /* Models */ = {
@@ -220,6 +230,7 @@
 				B8A85D7921AF3A3300F03BCE /* View Controllers */,
 				A6FDD73921B5D67700E71713 /* ModelControllers */,
 				A6FDD73821B5D66B00E71713 /* Models */,
+				A6070E9621B6EC9600609F63 /* CoreLocation */,
 				A6FDD73B21B5D88800E71713 /* Networking */,
 				A6FDD73A21B5D69300E71713 /* Constants */,
 				B8DB34EC21ADD2D6008ECADE /* Resources */,
@@ -410,6 +421,7 @@
 				B80FC51D21B0AAE100DB82AD /* PostViewController.swift in Sources */,
 				B8A85D7B21AF3C7100F03BCE /* ListingsViewController.swift in Sources */,
 				A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */,
+				A6070E9821B6EDC800609F63 /* LocationManager.swift in Sources */,
 				B8A85D7821AF331F00F03BCE /* SignUpViewController.swift in Sources */,
 				B8A85D8121AF591600F03BCE /* ListingCollectionViewCell.swift in Sources */,
 				B8A85D7621AEFF1A00F03BCE /* LogInViewController.swift in Sources */,
