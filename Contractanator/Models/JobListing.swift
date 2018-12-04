@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+struct JobListing {
+    
+    let title: String
+    let description: String
+    let jobType: JobType
+    let criteria: [JobCriteria]
+    let hourlyPay: Int
+    let zipCode: Int
+    let username: String
+}

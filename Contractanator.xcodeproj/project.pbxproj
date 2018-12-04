@@ -7,6 +7,7 @@
     objects = {
 
 /* Begin PBXBuildFile section */
+		A6070E9821B6EDC800609F63 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6070E9721B6EDC800609F63 /* LocationManager.swift */; };
 		A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD73E21B5D8BE00E71713 /* Constants.swift */; };
 		A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */; };
 		A6FDD74321B5D8D600E71713 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74221B5D8D600E71713 /* JobListing.swift */; };
@@ -31,31 +32,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Contractanator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-        78169BD4547E499068E4A8BA /* Pods-Contractanator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contractanator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator.debug.xcconfig"; sourceTree = "<group>"; };
-        A6FDD73E21B5D8BE00E71713 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-        A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
-        A6FDD74221B5D8D600E71713 /* JobListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListing.swift; sourceTree = "<group>"; };
-        A6FDD74421B5D8DE00E71713 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-        A6FDD74621B5D8EA00E71713 /* JobListingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListingController.swift; sourceTree = "<group>"; };
-        A6FDD74821B5D92900E71713 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-        B80FC51C21B0AAE100DB82AD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-        B84A27D821B074940008178D /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
-        B84A27DB21B080160008178D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-        B84A27DF21B089E50008178D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Post.storyboard; sourceTree = "<group>"; };
-        B84A27E221B08A550008178D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
-        B8A85D7521AEFF1A00F03BCE /* LogInViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
-        B8A85D7721AF331F00F03BCE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-        B8A85D7A21AF3C7100F03BCE /* ListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsViewController.swift; sourceTree = "<group>"; };
-        B8A85D7E21AF56B100F03BCE /* ListingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListingCollectionViewCell.xib; sourceTree = "<group>"; };
-        B8A85D8021AF591600F03BCE /* ListingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCollectionViewCell.swift; sourceTree = "<group>"; };
-        B8DB34D721ADD2BC008ECADE /* Contractanator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contractanator.app; sourceTree = BUILT_PRODUCTS_DIR; };
-        B8DB34DA21ADD2BC008ECADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-        B8DB34DF21ADD2BC008ECADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-        B8DB34E121ADD2C1008ECADE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-        B8DB34E421ADD2C1008ECADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-        B8DB34E621ADD2C1008ECADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-        BC71A9A21765E90B7302D5F2 /* Pods-Contractanator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contractanator.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator.release.xcconfig"; sourceTree = "<group>"; };
+		2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Contractanator.framework; path = "../Debug-iphonesimulator/Pods_Contractanator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78169BD4547E499068E4A8BA /* Pods-Contractanator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contractanator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator.debug.xcconfig"; sourceTree = "<group>"; };
+		A6070E9721B6EDC800609F63 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A6FDD73E21B5D8BE00E71713 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
+		A6FDD74221B5D8D600E71713 /* JobListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListing.swift; sourceTree = "<group>"; };
+		A6FDD74421B5D8DE00E71713 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A6FDD74621B5D8EA00E71713 /* JobListingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListingController.swift; sourceTree = "<group>"; };
+		A6FDD74821B5D92900E71713 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		B80FC51C21B0AAE100DB82AD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDetailViewController.swift; sourceTree = "<group>"; };
+		B84A27D821B074940008178D /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
+		B84A27DB21B080160008178D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B84A27DF21B089E50008178D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Post.storyboard; sourceTree = "<group>"; };
+		B84A27E221B08A550008178D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		B8A85D7521AEFF1A00F03BCE /* LogInViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
+		B8A85D7721AF331F00F03BCE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B8A85D7A21AF3C7100F03BCE /* ListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsViewController.swift; sourceTree = "<group>"; };
+		B8A85D7E21AF56B100F03BCE /* ListingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListingCollectionViewCell.xib; sourceTree = "<group>"; };
+		B8A85D8021AF591600F03BCE /* ListingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCollectionViewCell.swift; sourceTree = "<group>"; };
+		B8DB34D721ADD2BC008ECADE /* Contractanator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contractanator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8DB34DA21ADD2BC008ECADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B8DB34DF21ADD2BC008ECADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B8DB34E121ADD2C1008ECADE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B8DB34E421ADD2C1008ECADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B8DB34E621ADD2C1008ECADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC71A9A21765E90B7302D5F2 /* Pods-Contractanator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contractanator.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator.release.xcconfig"; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,14 +74,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-        0E6A1ED06CD301DDF77AD323 /* Frameworks */ = {
-            isa = PBXGroup;
-            children = (
-                2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */,
-            );
-            name = Frameworks;
-            sourceTree = "<group>";
-        };
+		0E6A1ED06CD301DDF77AD323 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CBBF39C4368B345C9BC25AE /* Pods_Contractanator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6070E9621B6EC9600609F63 /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				A6070E9721B6EDC800609F63 /* LocationManager.swift */,
+			);
+			path = CoreLocation;
+			sourceTree = "<group>";
+		};
 		A6FDD73821B5D66B00E71713 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,131 +124,142 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-        AF896E76DB2F967BF21268DA /* Pods */ = {
-            isa = PBXGroup;
-            children = (
-                78169BD4547E499068E4A8BA /* Pods-Contractanator.debug.xcconfig */,
-                BC71A9A21765E90B7302D5F2 /* Pods-Contractanator.release.xcconfig */,
-            );
-            name = Pods;
-            sourceTree = "<group>";
-        };
-        B80FC51E21B0ADE800DB82AD /* PostScreen */ = {
-            isa = PBXGroup;
-            children = (
-                B80FC51C21B0AAE100DB82AD /* PostViewController.swift */,
-            );
-            path = PostScreen;
-            sourceTree = "<group>";
-        };
-        B84A27D521B074200008178D /* LogInScreen */ = {
-            isa = PBXGroup;
-            children = (
-                B8A85D7521AEFF1A00F03BCE /* LogInViewController.swift */,
-            );
-            path = LogInScreen;
-            sourceTree = "<group>";
-        };
-        B84A27D621B074280008178D /* SignUpScreen */ = {
-            isa = PBXGroup;
-            children = (
-                B8A85D7721AF331F00F03BCE /* SignUpViewController.swift */,
-            );
-            path = SignUpScreen;
-            sourceTree = "<group>";
-        };
-        B84A27D721B074530008178D /* HomeScreen */ = {
-            isa = PBXGroup;
-            children = (
-                B8A85D7A21AF3C7100F03BCE /* ListingsViewController.swift */,
-                B8A85D8021AF591600F03BCE /* ListingCollectionViewCell.swift */,
-                B8A85D7E21AF56B100F03BCE /* ListingCollectionViewCell.xib */,
-            );
-            path = HomeScreen;
-            sourceTree = "<group>";
-        };
-        B84A27DA21B0749A0008178D /* SearchScreen */ = {
-            isa = PBXGroup;
-            children = (
-                B84A27D821B074940008178D /* SearchScreenViewController.swift */,
-            );
-            path = SearchScreen;
-            sourceTree = "<group>";
-        };
-        B84A27DD21B0801F0008178D /* ProfileScreen */ = {
-            isa = PBXGroup;
-            children = (
-                B84A27DB21B080160008178D /* ProfileViewController.swift */,
-            );
-            path = ProfileScreen;
-            sourceTree = "<group>";
-        };
-        B8A85D7921AF3A3300F03BCE /* View Controllers */ = {
-            isa = PBXGroup;
-            children = (
-                B84A27D521B074200008178D /* LogInScreen */,
-                B84A27D621B074280008178D /* SignUpScreen */,
-                B84A27D721B074530008178D /* HomeScreen */,
-                B84A27DA21B0749A0008178D /* SearchScreen */,
-                B80FC51E21B0ADE800DB82AD /* PostScreen */,
-                B84A27DD21B0801F0008178D /* ProfileScreen */,
-            );
-            path = "View Controllers";
-            sourceTree = "<group>";
-        };
-        B8DB34CE21ADD2BC008ECADE = {
-            isa = PBXGroup;
-            children = (
-                B8DB34D921ADD2BC008ECADE /* Contractanator */,
-                B8DB34D821ADD2BC008ECADE /* Products */,
-                AF896E76DB2F967BF21268DA /* Pods */,
-                0E6A1ED06CD301DDF77AD323 /* Frameworks */,
-            );
-            sourceTree = "<group>";
-        };
-        B8DB34D821ADD2BC008ECADE /* Products */ = {
-            isa = PBXGroup;
-            children = (
-                B8DB34D721ADD2BC008ECADE /* Contractanator.app */,
-            );
-            name = Products;
-            sourceTree = "<group>";
-        };
-        B8DB34D921ADD2BC008ECADE /* Contractanator */ = {
-            isa = PBXGroup;
-            children = (
-                B8DB34ED21ADD2FD008ECADE /* UI */,
-                B8A85D7921AF3A3300F03BCE /* View Controllers */,
-                A6FDD73921B5D67700E71713 /* ModelControllers */,
-                A6FDD73821B5D66B00E71713 /* Models */,
-                A6FDD73B21B5D88800E71713 /* Networking */,
-                A6FDD73A21B5D69300E71713 /* Constants */,
-                B8DB34EC21ADD2D6008ECADE /* Resources */,
-            );
-            path = Contractanator;
-            sourceTree = "<group>";
-        };
-        B8DB34EC21ADD2D6008ECADE /* Resources */ = {
-            isa = PBXGroup;
-            children = (
-                B8DB34DA21ADD2BC008ECADE /* AppDelegate.swift */,
-                B8DB34E121ADD2C1008ECADE /* Assets.xcassets */,
-                B8DB34E321ADD2C1008ECADE /* LaunchScreen.storyboard */,
-                B8DB34E621ADD2C1008ECADE /* Info.plist */,
-            );
-            path = Resources;
-            sourceTree = "<group>";
-        };
-        B8DB34ED21ADD2FD008ECADE /* UI */ = {
-            isa = PBXGroup;
-            children = (
-                B8DB34DE21ADD2BC008ECADE /* Main.storyboard */,
-                B84A27E121B08A550008178D /* Home.storyboard */,
-                B84A27DE21B089E50008178D /* Post.storyboard */,
-            );
-            path = UI;
-            sourceTree = "<group>";
-        };
+		AF896E76DB2F967BF21268DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78169BD4547E499068E4A8BA /* Pods-Contractanator.debug.xcconfig */,
+				BC71A9A21765E90B7302D5F2 /* Pods-Contractanator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B80FC51E21B0ADE800DB82AD /* PostScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B80FC51C21B0AAE100DB82AD /* PostViewController.swift */,
+			);
+			path = PostScreen;
+			sourceTree = "<group>";
+		};
+		B80FC51F21B1A0DC00DB82AD /* DetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */,
+			);
+			path = DetailCell;
+			sourceTree = "<group>";
+		};
+		B84A27D521B074200008178D /* LogInScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B8A85D7521AEFF1A00F03BCE /* LogInViewController.swift */,
+			);
+			path = LogInScreen;
+			sourceTree = "<group>";
+		};
+		B84A27D621B074280008178D /* SignUpScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B8A85D7721AF331F00F03BCE /* SignUpViewController.swift */,
+			);
+			path = SignUpScreen;
+			sourceTree = "<group>";
+		};
+		B84A27D721B074530008178D /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B80FC51F21B1A0DC00DB82AD /* DetailCell */,
+				B8A85D7A21AF3C7100F03BCE /* ListingsViewController.swift */,
+				B8A85D8021AF591600F03BCE /* ListingCollectionViewCell.swift */,
+				B8A85D7E21AF56B100F03BCE /* ListingCollectionViewCell.xib */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		B84A27DA21B0749A0008178D /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B84A27D821B074940008178D /* SearchScreenViewController.swift */,
+			);
+			path = SearchScreen;
+			sourceTree = "<group>";
+		};
+		B84A27DD21B0801F0008178D /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B84A27DB21B080160008178D /* ProfileViewController.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		B8A85D7921AF3A3300F03BCE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B84A27D521B074200008178D /* LogInScreen */,
+				B84A27D621B074280008178D /* SignUpScreen */,
+				B84A27D721B074530008178D /* HomeScreen */,
+				B84A27DA21B0749A0008178D /* SearchScreen */,
+				B80FC51E21B0ADE800DB82AD /* PostScreen */,
+				B84A27DD21B0801F0008178D /* ProfileScreen */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B8DB34CE21ADD2BC008ECADE = {
+			isa = PBXGroup;
+			children = (
+				B8DB34D921ADD2BC008ECADE /* Contractanator */,
+				B8DB34D821ADD2BC008ECADE /* Products */,
+				AF896E76DB2F967BF21268DA /* Pods */,
+				0E6A1ED06CD301DDF77AD323 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B8DB34D821ADD2BC008ECADE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8DB34D721ADD2BC008ECADE /* Contractanator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B8DB34D921ADD2BC008ECADE /* Contractanator */ = {
+			isa = PBXGroup;
+			children = (
+				B8DB34ED21ADD2FD008ECADE /* UI */,
+				B8A85D7921AF3A3300F03BCE /* View Controllers */,
+				A6FDD73921B5D67700E71713 /* ModelControllers */,
+				A6FDD73821B5D66B00E71713 /* Models */,
+				A6070E9621B6EC9600609F63 /* CoreLocation */,
+				A6FDD73B21B5D88800E71713 /* Networking */,
+				A6FDD73A21B5D69300E71713 /* Constants */,
+				B8DB34EC21ADD2D6008ECADE /* Resources */,
+			);
+			path = Contractanator;
+			sourceTree = "<group>";
+		};
+		B8DB34EC21ADD2D6008ECADE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B8DB34DA21ADD2BC008ECADE /* AppDelegate.swift */,
+				B8DB34E121ADD2C1008ECADE /* Assets.xcassets */,
+				B8DB34E321ADD2C1008ECADE /* LaunchScreen.storyboard */,
+				B8DB34E621ADD2C1008ECADE /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B8DB34ED21ADD2FD008ECADE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B8DB34DE21ADD2BC008ECADE /* Main.storyboard */,
+				B84A27E121B08A550008178D /* Home.storyboard */,
+				B84A27DE21B089E50008178D /* Post.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -391,28 +414,29 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-        B8DB34D321ADD2BC008ECADE /* Sources */ = {
-            isa = PBXSourcesBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                A6FDD74521B5D8DE00E71713 /* User.swift in Sources */,
-                B80FC51D21B0AAE100DB82AD /* PostViewController.swift in Sources */,
-                B8A85D7B21AF3C7100F03BCE /* ListingsViewController.swift in Sources */,
-                A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */,
-                B8A85D7821AF331F00F03BCE /* SignUpViewController.swift in Sources */,
-                B8A85D8121AF591600F03BCE /* ListingCollectionViewCell.swift in Sources */,
-                B8A85D7621AEFF1A00F03BCE /* LogInViewController.swift in Sources */,
-                A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */,
-                B80FC52121B1A12300DB82AD /* CellDetailViewController.swift in Sources */,
-                A6FDD74321B5D8D600E71713 /* JobListing.swift in Sources */,
-                A6FDD74721B5D8EA00E71713 /* JobListingController.swift in Sources */,
-                B84A27DC21B080160008178D /* ProfileViewController.swift in Sources */,
-                A6FDD74921B5D92900E71713 /* UserController.swift in Sources */,
-                B84A27D921B074940008178D /* SearchScreenViewController.swift in Sources */,
-                B8DB34DB21ADD2BC008ECADE /* AppDelegate.swift in Sources */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		B8DB34D321ADD2BC008ECADE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6FDD74521B5D8DE00E71713 /* User.swift in Sources */,
+				B80FC51D21B0AAE100DB82AD /* PostViewController.swift in Sources */,
+				B8A85D7B21AF3C7100F03BCE /* ListingsViewController.swift in Sources */,
+				A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */,
+				A6070E9821B6EDC800609F63 /* LocationManager.swift in Sources */,
+				B8A85D7821AF331F00F03BCE /* SignUpViewController.swift in Sources */,
+				B8A85D8121AF591600F03BCE /* ListingCollectionViewCell.swift in Sources */,
+				B8A85D7621AEFF1A00F03BCE /* LogInViewController.swift in Sources */,
+				A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */,
+				B80FC52121B1A12300DB82AD /* CellDetailViewController.swift in Sources */,
+				A6FDD74321B5D8D600E71713 /* JobListing.swift in Sources */,
+				A6FDD74721B5D8EA00E71713 /* JobListingController.swift in Sources */,
+				B84A27DC21B080160008178D /* ProfileViewController.swift in Sources */,
+				A6FDD74921B5D92900E71713 /* UserController.swift in Sources */,
+				B84A27D921B074940008178D /* SearchScreenViewController.swift in Sources */,
+				B8DB34DB21ADD2BC008ECADE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */

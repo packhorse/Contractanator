@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+enum JobType: String {
+    
+    case generalContracting
+    case electrical
+    case handyman
+    case interiorDesign
+    case homeRenovation
+    case landscaping
+}
+
+enum JobCriteria: String {
+    
+    case highQuality
+    case specialized
+    case fast
+    case experienced
+    case affordable
+    case fullTeam
+}

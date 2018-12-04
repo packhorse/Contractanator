@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+struct User {
+    
+    let firstName: String
+    let lastName: String
+    let username: String
+    let email: String
+    let phone: String
+    let password: String
+    var jobListings: [JobListing]? {
+        
+//        let listings = JoblistingController.shared.jobListings
+        return nil
+    }
+}
