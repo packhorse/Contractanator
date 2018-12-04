@@ -44,7 +44,6 @@
 		A6FDD74621B5D8EA00E71713 /* JobListingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListingController.swift; sourceTree = "<group>"; };
 		A6FDD74821B5D92900E71713 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		B80FC51C21B0AAE100DB82AD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDetailViewController.swift; sourceTree = "<group>"; };
 		B84A27D821B074940008178D /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
 		B84A27DB21B080160008178D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B84A27DF21B089E50008178D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Post.storyboard; sourceTree = "<group>"; };
@@ -142,14 +141,6 @@
 			path = PostScreen;
 			sourceTree = "<group>";
 		};
-		B80FC51F21B1A0DC00DB82AD /* DetailCell */ = {
-			isa = PBXGroup;
-			children = (
-				B80FC52021B1A12300DB82AD /* CellDetailViewController.swift */,
-			);
-			path = DetailCell;
-			sourceTree = "<group>";
-		};
 		B84A27D521B074200008178D /* LogInScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +160,6 @@
 		B84A27D721B074530008178D /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B80FC51F21B1A0DC00DB82AD /* DetailCell */,
 				B8A85D7A21AF3C7100F03BCE /* ListingsViewController.swift */,
 				B8A85D8021AF591600F03BCE /* ListingCollectionViewCell.swift */,
 				B8A85D7E21AF56B100F03BCE /* ListingCollectionViewCell.xib */,

@@ -37,7 +37,7 @@ class JobListingController {
         let username = loggedInUser.username
         
         // Initialize an instance of jobListing
-        let jobListing = JobListing(title: title, description: description, jobType: jobType, criteria: criteria, hourlyPay: hourlyPay, zipCode: zipCode, username: username)
+        let jobListing = JobListing(title: title, description: description, jobType: jobType, criteria: criteria, hourlyPay: hourlyPay, zipCode: zipCode, username: username, uuid: "blah")
         
         //        temporarily add it to the jobListings array
         jobListings.append(jobListing)
