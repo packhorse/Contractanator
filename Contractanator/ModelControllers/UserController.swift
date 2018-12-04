@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class UserController {
+    
+    // MARK: - Properties
+    
+    // Singleton
+    static let shared = UserController()
+    private init() {}
+    
+    // Source of Truth
+    var loggedInUser: User?
+    
+    // MARK: - Functions
+}

@@ -15,5 +15,6 @@ struct JobListing {
     let jobType: JobType
     let criteria: [JobCriteria]
     let hourlyPay: Int
+    let zipCode: Int
     let username: String
 }
