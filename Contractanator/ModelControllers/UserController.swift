@@ -50,9 +50,25 @@ class UserController {
         }
     }
     
-    func fetchLoggedInUser(completion: @escaping (Bool) -> Void) {
+    func signInUser(withEmail email: String, password: String, completion: @escaping (Bool) -> Void) {
         
-        FirebaseManager.fetchUserProfile { (user) in
+        FirebaseManager.signInExistingUser(withEmail: email, password: password) { (loggedInUser) in
+            guard let loggedInUser = loggedInUser else {
+                print("Error, unable to log-in the user")
+                completion(false)
+                return
+            }
+            
+            // Set the Logged In User on self
+            self.loggedInUser = loggedInUser
+            completion(true)
+            return
+        }
+    }
+    
+    func fetchLoggedInUserProfile(completion: @escaping (Bool) -> Void) {
+        
+        FirebaseManager.fetchCurrentUserProfile { (user) in
             guard let user = user else {
                 print("No user is signed into firebase on this device")
                 completion(false)
@@ -61,6 +77,19 @@ class UserController {
             
             self.loggedInUser = user
             completion(true)
+        }
+    }
+    
+    func fetchUserProfile(withUsername username: String, completion: @escaping (User?) -> Void) {
+        
+        FirebaseManager.fetchUserProfile(withUsername: username) { (user) in
+            guard let user = user else {
+                print("Error trying to fetch user with the username: \(username)")
+                completion(nil)
+                return
+            }
+            
+            completion(user)
         }
     }
 }

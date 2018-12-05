@@ -35,12 +35,14 @@ class JobListingController {
         }
         
         let username = loggedInUser.username
+        let firstName = loggedInUser.firstName
+        let lastName = loggedInUser.lastName
         
         // Initialize an instance of jobListing
         let jobListing = JobListing(withTitle: title, description: description,
                                     jobType: jobType, criteria: criteria,
                                     hourlyPay: hourlyPay, zipCode: zipCode,
-                                    username: username, timestamp: Date())
+                                    username: username, firstName: firstName, lastName: lastName, timestamp: Date())
         
         // Post the document to FireStore
         FirebaseManager.postJobListing(withJobListing: jobListing) { (success) in
@@ -60,7 +62,20 @@ class JobListingController {
         
         // Fetch all listings from FireStore within 25 miles
         
-        completion(true)
+        FirebaseManager.db.collection(Constants.jobListingsTypeKey).getDocuments { (result, error) in
+            if let error = error {
+                print("Error: could not fetch all job listings \n\(#function)\n\(error)\n\(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            guard let listingDocs = result?.documents else { completion(false) ; return }
+            
+            let listings = listingDocs.compactMap({ JobListing(withDict: $0.data()) })
+            
+            self.jobListings = listings
+            completion(true)
+        }
     }
     
     func fetchJobListings(ofJobType jobType: JobType, criteria: [JobCriteria], minHourlyPay: Int, completion: @escaping (Bool) -> Void) {

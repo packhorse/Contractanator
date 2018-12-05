@@ -19,13 +19,16 @@ struct JobListing {
     let hourlyPay: Int
     let zipCode: String
     let username: String
+    let firstName: String
+    let lastName: String
     let timestamp: Date
     let listingID: String
     
     // MARK: - Initializers
     
     init(withTitle title: String, description: String, jobType: JobType, criteria: [JobCriteria],
-         hourlyPay: Int, zipCode: String, username: String, timestamp: Date = Date(), listingID: String = UUID().uuidString) {
+         hourlyPay: Int, zipCode: String, username: String, firstName: String, lastName: String,
+         timestamp: Date = Date(), listingID: String = UUID().uuidString) {
         
         self.title = title
         self.description = description
@@ -34,6 +37,8 @@ struct JobListing {
         self.hourlyPay = hourlyPay
         self.zipCode = zipCode
         self.username = username
+        self.firstName = firstName
+        self.lastName = lastName
         self.timestamp = timestamp
         self.listingID = listingID
     }
@@ -48,13 +53,15 @@ struct JobListing {
             let hourlyPay = dict[Constants.hourlyPayKey] as? Int,
             let zipCode = dict[Constants.zipCodeKey] as? String,
             let username = dict[Constants.usernameKey] as? String,
+            let firstName = dict[Constants.firstNameKey] as? String,
+            let lastName = dict[Constants.lastNameKey] as? String,
             let timestamp = dict[Constants.timestampKey] as? Date,
             let listingID = dict[Constants.listingIDKey] as? String
             else { print("Error initializing jobListing type from dictionary") ; return nil }
         
         let criteria = criteriaAsStringArray.compactMap({ JobCriteria(rawValue: $0) })
         
-        self.init(withTitle: title, description: description, jobType: jobType, criteria: criteria, hourlyPay: hourlyPay, zipCode: zipCode, username: username, timestamp: timestamp, listingID: listingID)
+        self.init(withTitle: title, description: description, jobType: jobType, criteria: criteria, hourlyPay: hourlyPay, zipCode: zipCode, username: username, firstName: firstName, lastName: lastName, timestamp: timestamp, listingID: listingID)
     }
     
     // MARK: - Functions
@@ -71,6 +78,8 @@ struct JobListing {
             Constants.criteriaKey : criteriaAsStringArray,
             Constants.zipCodeKey : zipCode,
             Constants.usernameKey : username,
+            Constants.firstNameKey : firstName,
+            Constants.lastNameKey : lastName,
             Constants.timestampKey : timestamp,
             Constants.listingIDKey : listingID
         ]
