@@ -23,21 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         // [END default_firestore]
         
-//        UserController.shared.fetchLoggedInUser { (success) in
-//            if success {
-//                print("Yes! Signed in already. Here is the user: \(UserController.shared.loggedInUser)")
-//                JobListingController.shared.postJobListing(withTitle: "User1", description: "desc", jobType: .handyman, criteria: [.fast], hourlyPay: 10, zipCode: "12345", completion: { (success) in
-//                    if success {
-//                        print("listing posted successfully")
-//                    } else {
-//                        print("Bummer, no successful listing posted!")
-//                    }
-//                })
-//            } else {
-//                print("No! couldn't find a user signed in")
-//            }
-//        }
-//        
+        UserController.shared.fetchLoggedInUserProfile { (success) in
+            if success {
+                print("Yes! Signed in already. Here is the user: \(UserController.shared.loggedInUser)")
+            } else {
+                print("No! couldn't find a user signed in")
+            }
+        }
+        
         return true
     }
 

@@ -356,10 +356,10 @@
                         <outlet property="button8" destination="HJR-t3-1Nc" id="baJ-qG-JSu"/>
                         <outlet property="button9" destination="lW0-Su-wNl" id="dwq-jl-hJS"/>
                         <outlet property="jobDescriptionTextView" destination="oyS-2f-Ovg" id="hd2-Be-VeI"/>
-                        <outlet property="nameTextField" destination="UO6-63-USa" id="sCY-HC-SyK"/>
                         <outlet property="paySlider" destination="Sqj-rj-HLg" id="BhJ-d7-a0g"/>
                         <outlet property="postButton" destination="TFy-GX-0sR" id="8yh-ox-xQ0"/>
                         <outlet property="sliderValueLabel" destination="Qje-zL-g15" id="lO6-N4-hQA"/>
+                        <outlet property="titleTextField" destination="UO6-63-USa" id="sCY-HC-SyK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHO-vk-ZaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -377,7 +377,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="h7W-4K-vBi">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                        </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="32"/>
                         </textAttributes>

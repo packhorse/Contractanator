@@ -11,7 +11,7 @@ import UIKit
 class PostViewController: UIViewController {
     
     
-    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var titleTextField: UITextField!
     @IBOutlet var jobDescriptionTextView: UITextView!
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
@@ -30,7 +30,7 @@ class PostViewController: UIViewController {
     // These variables change based on the selection by the user
     var selectedJobType: JobType?
     var selectedJobTypeButton: UIButton?
-    var buttonBackgroundColor: UIColor? = UIColor.lightGray
+    var vcThemeColor: UIColor? = UIColor.lightGray
     
     var selectedCriterias: [JobCriteria] = []
     var selectedCriteriaButtons: [UIButton] = []
@@ -51,12 +51,12 @@ class PostViewController: UIViewController {
     fileprivate func turnOnButtonColor(_ sender: UIButton) {
         
         // Updates the view for the button tapped by the User
-        sender.backgroundColor = buttonBackgroundColor
-        sender.layer.shadowColor = buttonBackgroundColor?.cgColor
+        sender.backgroundColor = vcThemeColor
+        sender.layer.shadowColor = vcThemeColor?.cgColor
         sender.layer.shadowRadius = 4
         sender.layer.shadowOpacity = 1
         sender.layer.shadowOffset = CGSize(width: 0, height: 0)
-        sender.layer.borderColor = buttonBackgroundColor?.cgColor
+        sender.layer.borderColor = vcThemeColor?.cgColor
         sender.setTitleColor(UIColor.white, for: .normal)
     }
     
@@ -75,11 +75,12 @@ class PostViewController: UIViewController {
     }
     
     fileprivate func updateVCThemeColor() {
+        self.navigationController?.navigationBar.barTintColor = vcThemeColor
         _ = selectedCriteriaButtons.map({ turnOnButtonColor($0) })
-        paySlider.tintColor = buttonBackgroundColor
-        postButton.backgroundColor = buttonBackgroundColor
-        postButton.layer.shadowColor = buttonBackgroundColor?.cgColor
-        postButton.layer.borderColor = buttonBackgroundColor?.cgColor
+        paySlider.tintColor = vcThemeColor
+        postButton.backgroundColor = vcThemeColor
+        postButton.layer.shadowColor = vcThemeColor?.cgColor
+        postButton.layer.borderColor = vcThemeColor?.cgColor
         postButton.layer.shadowOpacity = 2.0
         postButton.layer.shadowOffset = CGSize(width: 0, height: 0)
         postButton.setTitleColor(UIColor.white, for: .normal)
@@ -92,22 +93,22 @@ class PostViewController: UIViewController {
         switch sender.restorationIdentifier {
         case "contracting":
             jobType = JobType.generalContracting
-            buttonBackgroundColor = UIColor(named: "CoolOrange")
+            vcThemeColor = UIColor(named: "CoolOrange")
         case "electrical":
             jobType = JobType.electrical
-            buttonBackgroundColor = UIColor(named: "CoolBlue")
+            vcThemeColor = UIColor(named: "CoolBlue")
         case "handyman":
             jobType = JobType.handyman
-            buttonBackgroundColor = UIColor(named: "UrineYellow")
+            vcThemeColor = UIColor(named: "UrineYellow")
         case "interiorDesign":
             jobType = JobType.interiorDesign
-            buttonBackgroundColor = UIColor(named: "RudeRed")
+            vcThemeColor = UIColor(named: "RudeRed")
         case "homeRenno":
             jobType = JobType.homeRenovation
-            buttonBackgroundColor = UIColor(named: "PopsiclePurple")
+            vcThemeColor = UIColor(named: "PopsiclePurple")
         case "landscaping":
             jobType = JobType.landscaping
-            buttonBackgroundColor = UIColor(named: "GrassyGreen")
+            vcThemeColor = UIColor(named: "GrassyGreen")
         default:
             print("Something went wrong!")
         }
@@ -165,7 +166,28 @@ class PostViewController: UIViewController {
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
         
-//        JobListingController.shared.postJobListing(withTitle: <#T##String#>, description: <#T##String#>, jobType: <#T##JobType#>, criteria: selectedCriterias, hourlyPay: <#T##Int#>, zipCode: <#T##Int#>, completion: <#T##(Bool) -> Void#>)
+        guard let title = titleTextField.text, !title.isEmpty,
+            let description = jobDescriptionTextView.text, !description.isEmpty,
+            let jobType = selectedJobType,
+            selectedCriterias.count == 3
+            else { print("Missing info") ; return  }
+        
+        let hourlyPay = Int(paySlider.value)
+        let zipCode = "84041"
+        
+        if (UserController.shared.loggedInUser != nil) {
+            JobListingController.shared.postJobListing(withTitle: title, description: description, jobType: jobType,
+                                                       criteria: selectedCriterias, hourlyPay: hourlyPay,
+                                                       zipCode: zipCode) { (success) in
+                if success {
+                    print("Posted:):)")
+                } else {
+                    print("WompWompWompppp...")
+                }
+            }
+        } else {
+            print("Need to sign up")
+        }
     }
     
     //Slider Code
@@ -188,9 +210,9 @@ class PostViewController: UIViewController {
     func UIChanges() {
         
         
-        nameTextField.layer.cornerRadius = 15.0
-        nameTextField.layer.borderWidth = 1.0
-        nameTextField.layer.borderColor = UIColor.lightGray.cgColor
+        titleTextField.layer.cornerRadius = 15.0
+        titleTextField.layer.borderWidth = 1.0
+        titleTextField.layer.borderColor = UIColor.lightGray.cgColor
         
         jobDescriptionTextView.layer.cornerRadius = 18.0
         jobDescriptionTextView.layer.borderWidth = 1.0
@@ -254,7 +276,7 @@ class PostViewController: UIViewController {
         
     }
     
-
+    
     
     /*
      // MARK: - Navigation

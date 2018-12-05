@@ -10,6 +10,22 @@ import UIKit
 
 class ListingCollectionViewCell: UICollectionViewCell {
     
+    // MARK - Properties
+    
+    var listing: JobListing? {
+        didSet {
+            
+        }
+    }
+    
+    // MARK - Label Outlets
+    
+    @IBOutlet var posterNameLabel: UILabel!
+    @IBOutlet var jobTitleLabel: UILabel!
+    
+    
+    
+    // MARK - View Outlets
     
     @IBOutlet var customCellUIView: UIView!
     @IBOutlet var roundedWhiteViewBottom: UIView!
@@ -32,9 +48,9 @@ class ListingCollectionViewCell: UICollectionViewCell {
         roundedWhiteViewBottom.layer.cornerRadius = 22.0
         
         
-        customCellUIView.layer.shadowColor = UIColor.init(named: "CoolBlue")?.cgColor
-        customCellUIView.layer.shadowRadius = 2.7
-        customCellUIView.layer.shadowOpacity = 3.4
+        customCellUIView.layer.shadowColor = UIColor.init(named: "PopsiclePurple")?.cgColor
+        customCellUIView.layer.shadowRadius = 4
+        customCellUIView.layer.shadowOpacity = 1
         customCellUIView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         
