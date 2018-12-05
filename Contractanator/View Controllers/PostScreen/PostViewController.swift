@@ -30,8 +30,10 @@ class PostViewController: UIViewController {
     // These variables change based on the selection by the user
     var selectedJobType: JobType?
     var selectedJobTypeButton: UIButton?
+    var buttonBackgroundColor: UIColor? = UIColor.lightGray
     
     var selectedCriterias: [JobCriteria] = []
+    var selectedCriteriaButtons: [UIButton] = []
     
     
     
@@ -46,10 +48,46 @@ class PostViewController: UIViewController {
     }
     
     
+    fileprivate func turnOnButtonColor(_ sender: UIButton) {
+        
+        // Updates the view for the button tapped by the User
+        sender.backgroundColor = buttonBackgroundColor
+        sender.layer.shadowColor = buttonBackgroundColor?.cgColor
+        sender.layer.shadowRadius = 4
+        sender.layer.shadowOpacity = 1
+        sender.layer.shadowOffset = CGSize(width: 0, height: 0)
+        sender.layer.borderColor = buttonBackgroundColor?.cgColor
+        sender.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    fileprivate func turnOffButtonColor(_ button: UIButton?) {
+        
+        guard let button = button else { return }
+        // Restores the view for the button to its default
+        button.backgroundColor = UIColor.white
+        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.layer.shadowColor = UIColor.white.cgColor
+        
+        if button != selectedJobTypeButton {
+            
+            button.layer.borderColor = UIColor.lightGray.cgColor
+        }
+    }
+    
+    fileprivate func updateVCThemeColor() {
+        _ = selectedCriteriaButtons.map({ turnOnButtonColor($0) })
+        paySlider.tintColor = buttonBackgroundColor
+        postButton.backgroundColor = buttonBackgroundColor
+        postButton.layer.shadowColor = buttonBackgroundColor?.cgColor
+        postButton.layer.borderColor = buttonBackgroundColor?.cgColor
+        postButton.layer.shadowOpacity = 2.0
+        postButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        postButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    
     @IBAction func jobTypeButtonTapped(_ sender: UIButton) {
         
         var jobType: JobType?
-        var buttonBackgroundColor: UIColor? = nil
         
         switch sender.restorationIdentifier {
         case "contracting":
@@ -70,26 +108,18 @@ class PostViewController: UIViewController {
         case "landscaping":
             jobType = JobType.landscaping
             buttonBackgroundColor = UIColor(named: "GrassyGreen")
-            default:
-            break
+        default:
+            print("Something went wrong!")
         }
         
         if jobType != selectedJobType {
             
-            // Updates the view for the button tapped by the User
-            sender.backgroundColor = buttonBackgroundColor
-            sender.layer.shadowColor = buttonBackgroundColor?.cgColor
-            sender.layer.shadowRadius = 4
-            sender.layer.shadowOpacity = 1
-            sender.layer.shadowOffset = CGSize(width: 0, height: 0)
-            sender.layer.borderColor = buttonBackgroundColor?.cgColor
-            sender.setTitleColor(UIColor.white, for: .normal)
+            // Updates the theme accross the entire view
+            turnOnButtonColor(sender)
+            updateVCThemeColor()
             
-            // Restores the view for the previously selected job type button to its default
-            selectedJobTypeButton?.backgroundColor = UIColor.white
-            selectedJobTypeButton?.setTitleColor(UIColor.darkGray, for: .normal)
-            selectedJobTypeButton?.layer.borderColor
-            selectedJobTypeButton?.layer.shadowColor = UIColor.white.cgColor
+            // Turn off the color on the previously selected button
+            turnOffButtonColor(selectedJobTypeButton)
             
             // Make the sender/tapped button the new selected button
             selectedJobTypeButton = sender
@@ -99,36 +129,37 @@ class PostViewController: UIViewController {
     
     
     @IBAction func criteriaButtonTapped(_ sender: UIButton) {
+        
         var criteria: JobCriteria?
         
         switch sender.restorationIdentifier {
-            
         case "team":
             criteria = JobCriteria.fullTeam
         case "quality":
             criteria = JobCriteria.highQuality
         case "specalized":
             criteria = JobCriteria.specialized
-        case "experienced":
-            criteria = JobCriteria.experienced
         case "fast":
             criteria = JobCriteria.fast
+        case "experienced":
+            criteria = JobCriteria.experienced
         case "affordable":
             criteria = JobCriteria.affordable
             
         default:
             print("something went wrong")
-            
         }
         
         guard let unwrappedCriteria = criteria else { return }
         if selectedCriterias.contains(unwrappedCriteria) {
             let index = selectedCriterias.firstIndex(of: unwrappedCriteria)
             selectedCriterias.remove(at: index!)
-            //            sender.backgroundColor =
+            selectedCriteriaButtons.remove(at: index!)
+            turnOffButtonColor(sender)
         } else {
             selectedCriterias.append(unwrappedCriteria)
-            //            sender.backgroundColor =
+            selectedCriteriaButtons.append(sender)
+            turnOnButtonColor(sender)
         }
     }
     
@@ -142,7 +173,9 @@ class PostViewController: UIViewController {
     
     @IBOutlet weak var sliderValueLabel: UILabel!
     
-    @IBAction func SliderValueChange(_ sender: UISlider) {
+    @IBOutlet var paySlider: UISlider!
+    
+    @IBAction func sliderValueChange(_ sender: UISlider) {
         
         let currentValue = Int(sender.value)
         
@@ -213,7 +246,9 @@ class PostViewController: UIViewController {
         button12.layer.borderWidth = 1.0
         button12.layer.borderColor = UIColor.lightGray.cgColor
         
-        postButton.layer.cornerRadius = 20.0
+        paySlider.tintColor = UIColor.gray
+        
+        postButton.layer.cornerRadius = 24.0
         postButton.layer.borderWidth = 1.0
         postButton.layer.borderColor = UIColor.gray.cgColor
         

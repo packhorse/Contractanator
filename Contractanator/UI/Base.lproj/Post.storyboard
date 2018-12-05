@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -179,7 +178,7 @@
                                                                     <action selector="criteriaButtonTapped:" destination="JVn-m1-nVN" eventType="touchUpInside" id="Tws-rE-bfC"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJR-t3-1Nc">
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="quality" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJR-t3-1Nc">
                                                                 <rect key="frame" x="120" y="0.0" width="105" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="w9Z-Af-6AC"/>
@@ -192,7 +191,7 @@
                                                                     <action selector="criteriaButtonTapped:" destination="JVn-m1-nVN" eventType="touchUpInside" id="2pb-ZG-nLL"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lW0-Su-wNl">
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="specalized" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lW0-Su-wNl">
                                                                 <rect key="frame" x="240" y="0.0" width="105" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="pBh-Oc-TVB"/>
@@ -209,7 +208,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="eJG-sg-8fA">
                                                         <rect key="frame" x="0.0" y="66" width="345" height="36"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWn-Tj-KfY">
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="fast" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWn-Tj-KfY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="Qe0-cJ-1q1"/>
@@ -221,7 +220,7 @@
                                                                     <action selector="criteriaButtonTapped:" destination="JVn-m1-nVN" eventType="touchUpInside" id="ngk-sX-sqt"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNe-uq-7Lr">
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="experienced" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNe-uq-7Lr">
                                                                 <rect key="frame" x="120" y="0.0" width="105" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="FX7-vM-nzr"/>
@@ -233,7 +232,7 @@
                                                                     <action selector="criteriaButtonTapped:" destination="JVn-m1-nVN" eventType="touchUpInside" id="z21-Rl-z9i"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Td5-eu-A1X">
+                                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="affordable" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Td5-eu-A1X">
                                                                 <rect key="frame" x="240" y="0.0" width="105" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="Nqy-Wj-Z0o"/>
@@ -250,19 +249,20 @@
                                                 </subviews>
                                             </stackView>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-rj-HLg">
-                                                <rect key="frame" x="19" y="869" width="335" height="31"/>
-                                                <color key="tintColor" name="CoolBlue"/>
+                                                <rect key="frame" x="18" y="869" width="339" height="31"/>
                                                 <connections>
-                                                    <action selector="SliderValueChange:" destination="JVn-m1-nVN" eventType="valueChanged" id="OdT-ql-Ps9"/>
+                                                    <action selector="sliderValueChange:" destination="JVn-m1-nVN" eventType="valueChanged" id="OdT-ql-Ps9"/>
                                                 </connections>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFy-GX-0sR">
-                                                <rect key="frame" x="77.5" y="990" width="220" height="42"/>
+                                                <rect key="frame" x="20" y="988" width="335" height="51"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="220" id="O1E-yq-1x5"/>
-                                                    <constraint firstAttribute="height" constant="42" id="x0l-tD-QfP"/>
+                                                    <constraint firstAttribute="height" constant="51" id="x0l-tD-QfP"/>
                                                 </constraints>
-                                                <state key="normal" title="Post"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                <state key="normal" title="Post">
+                                                    <color key="titleColor" red="0.3110801393" green="0.31416014060000003" blue="0.31416014060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="postButtonTapped:" destination="JVn-m1-nVN" eventType="touchUpInside" id="MMx-ZW-YDf"/>
                                                 </connections>
@@ -272,22 +272,23 @@
                                         <constraints>
                                             <constraint firstItem="GMs-hD-7Uw" firstAttribute="top" secondItem="ibh-hZ-7fc" secondAttribute="bottom" constant="32.5" id="0kf-f4-ThQ"/>
                                             <constraint firstItem="eCU-TY-jzD" firstAttribute="leading" secondItem="UO6-63-USa" secondAttribute="leading" constant="6" id="3dY-8r-PZz"/>
-                                            <constraint firstItem="Sqj-rj-HLg" firstAttribute="leading" secondItem="na8-As-VLf" secondAttribute="leading" constant="21" id="3lP-xm-Qgi"/>
+                                            <constraint firstItem="Sqj-rj-HLg" firstAttribute="leading" secondItem="na8-As-VLf" secondAttribute="leading" constant="20" id="3lP-xm-Qgi"/>
                                             <constraint firstAttribute="trailing" secondItem="UO6-63-USa" secondAttribute="trailing" constant="15" id="8T0-gS-J5F"/>
                                             <constraint firstItem="eCU-TY-jzD" firstAttribute="bottom" secondItem="UO6-63-USa" secondAttribute="top" id="CP4-7c-8L6"/>
-                                            <constraint firstItem="TFy-GX-0sR" firstAttribute="centerX" secondItem="na8-As-VLf" secondAttribute="centerX" id="FqC-Qg-Ced"/>
-                                            <constraint firstAttribute="trailing" secondItem="Sqj-rj-HLg" secondAttribute="trailing" constant="23" id="GPD-m4-IXB"/>
+                                            <constraint firstAttribute="trailing" secondItem="Sqj-rj-HLg" secondAttribute="trailing" constant="20" id="GPD-m4-IXB"/>
                                             <constraint firstItem="GMs-hD-7Uw" firstAttribute="leading" secondItem="na8-As-VLf" secondAttribute="leading" constant="15" id="H8T-6U-t41"/>
+                                            <constraint firstItem="TFy-GX-0sR" firstAttribute="leading" secondItem="na8-As-VLf" secondAttribute="leading" constant="20" id="ITu-cG-I6y"/>
                                             <constraint firstAttribute="trailing" secondItem="GMs-hD-7Uw" secondAttribute="trailing" constant="15" id="JK7-77-QOI"/>
                                             <constraint firstItem="VBw-f1-SAU" firstAttribute="leading" secondItem="XA5-8V-Ild" secondAttribute="leading" id="Kze-LW-Gcb"/>
                                             <constraint firstItem="ibh-hZ-7fc" firstAttribute="leading" secondItem="GMs-hD-7Uw" secondAttribute="leading" constant="6" id="OB7-4H-cz9"/>
+                                            <constraint firstAttribute="trailing" secondItem="TFy-GX-0sR" secondAttribute="trailing" constant="20" id="OzX-GS-x5K"/>
                                             <constraint firstItem="kex-r2-30q" firstAttribute="top" secondItem="XA5-8V-Ild" secondAttribute="bottom" constant="34.5" id="W4W-BH-MVH"/>
                                             <constraint firstItem="XA5-8V-Ild" firstAttribute="leading" secondItem="kex-r2-30q" secondAttribute="leading" constant="6" id="Yci-Hb-CKp"/>
                                             <constraint firstItem="kex-r2-30q" firstAttribute="leading" secondItem="na8-As-VLf" secondAttribute="leading" constant="15" id="ZTi-Ep-g5S"/>
                                             <constraint firstItem="UO6-63-USa" firstAttribute="leading" secondItem="na8-As-VLf" secondAttribute="leading" constant="15" id="bbm-Ti-rQN"/>
                                             <constraint firstItem="XA5-8V-Ild" firstAttribute="top" secondItem="GMs-hD-7Uw" secondAttribute="bottom" constant="39" id="drW-4K-TPe"/>
                                             <constraint firstAttribute="trailing" secondItem="kex-r2-30q" secondAttribute="trailing" constant="15" id="f05-OO-suC"/>
-                                            <constraint firstItem="TFy-GX-0sR" firstAttribute="top" secondItem="Sqj-rj-HLg" secondAttribute="bottom" constant="91" id="gev-79-fmV"/>
+                                            <constraint firstItem="TFy-GX-0sR" firstAttribute="top" secondItem="Sqj-rj-HLg" secondAttribute="bottom" constant="89" id="gev-79-fmV"/>
                                             <constraint firstItem="VBw-f1-SAU" firstAttribute="top" secondItem="kex-r2-30q" secondAttribute="bottom" constant="40" id="nHW-b4-Bhu"/>
                                             <constraint firstItem="UO6-63-USa" firstAttribute="top" secondItem="na8-As-VLf" secondAttribute="top" constant="90" id="vzt-ei-cPJ"/>
                                         </constraints>
@@ -356,6 +357,7 @@
                         <outlet property="button9" destination="lW0-Su-wNl" id="dwq-jl-hJS"/>
                         <outlet property="jobDescriptionTextView" destination="oyS-2f-Ovg" id="hd2-Be-VeI"/>
                         <outlet property="nameTextField" destination="UO6-63-USa" id="sCY-HC-SyK"/>
+                        <outlet property="paySlider" destination="Sqj-rj-HLg" id="BhJ-d7-a0g"/>
                         <outlet property="postButton" destination="TFy-GX-0sR" id="8yh-ox-xQ0"/>
                         <outlet property="sliderValueLabel" destination="Qje-zL-g15" id="lO6-N4-hQA"/>
                     </connections>
@@ -392,8 +394,5 @@
     </scenes>
     <resources>
         <image name="AddButtonExport" width="22" height="22"/>
-        <namedColor name="CoolBlue">
-            <color red="0.094117647058823528" green="0.6705882352941176" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
