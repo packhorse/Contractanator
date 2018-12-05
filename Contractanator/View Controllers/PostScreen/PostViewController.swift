@@ -33,10 +33,16 @@ class PostViewController: UIViewController {
     
     var selectedCriterias: [JobCriteria] = []
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        button4.titleLabel?.adjustsFontSizeToFitWidth = true
         UIChanges()
+        
+        self.hideKeyboardWhenTappedAround()
+        
+        
     }
     
     
@@ -81,7 +87,7 @@ class PostViewController: UIViewController {
             
             // Restores the view for the previously selected job type button to its default
             selectedJobTypeButton?.backgroundColor = UIColor.white
-            selectedJobTypeButton?.setTitleColor(UIColor.black, for: .normal)
+            selectedJobTypeButton?.setTitleColor(UIColor.darkGray, for: .normal)
             selectedJobTypeButton?.layer.borderColor
             selectedJobTypeButton?.layer.shadowColor = UIColor.white.cgColor
             
@@ -160,27 +166,28 @@ class PostViewController: UIViewController {
         
         button1.layer.cornerRadius = 18.0
         button1.layer.borderWidth = 1.0
-        button1.layer.borderColor = UIColor.lightGray.cgColor
+        button1.layer.borderColor = UIColor(named: "CoolOrange")?.cgColor
+        
         
         button2.layer.cornerRadius = 18.0
         button2.layer.borderWidth = 1.0
-        button2.layer.borderColor = UIColor.lightGray.cgColor
+        button2.layer.borderColor = UIColor(named: "CoolBlue")?.cgColor
         
         button3.layer.cornerRadius = 18.0
         button3.layer.borderWidth = 1.0
-        button3.layer.borderColor = UIColor.lightGray.cgColor
+        button3.layer.borderColor = UIColor(named: "UrineYellow")?.cgColor
         
         button4.layer.cornerRadius = 18.0
         button4.layer.borderWidth = 1.0
-        button4.layer.borderColor = UIColor.lightGray.cgColor
+        button4.layer.borderColor = UIColor(named: "RudeRed")?.cgColor
         
         button5.layer.cornerRadius = 18.0
         button5.layer.borderWidth = 1.0
-        button5.layer.borderColor = UIColor.lightGray.cgColor
+        button5.layer.borderColor = UIColor(named: "PopsiclePurple")?.cgColor
         
         button6.layer.cornerRadius = 18.0
         button6.layer.borderWidth = 1.0
-        button6.layer.borderColor = UIColor.lightGray.cgColor
+        button6.layer.borderColor = UIColor(named: "GrassyGreen")?.cgColor
         
         button7.layer.cornerRadius = 18.0
         button7.layer.borderWidth = 1.0
@@ -212,13 +219,7 @@ class PostViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
+
     
     /*
      // MARK: - Navigation
@@ -229,5 +230,21 @@ class PostViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+}
+
+
+//THis dismisses the keyboard when tapped off the screen. Call function in view controller(viewDidLoad) to add
+extension UIViewController {
+    
+    @objc func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
 }
