@@ -27,13 +27,13 @@ struct Constants {
     static let zipCodeKey = "zipCode"
     static let usernameKey = "username"
     static let timestampKey = "timestamp"
+    static let listingIDKey = "listingID"
     
     // MARK: - User Keys
     
     // Used for the keys in firestore documents
     static let firstNameKey = "firstName"
     static let lastNameKey = "lastName"
-    static let emailKey = "email"
     static let phoneKey = "phone"
-    static let passwordKey = "password"
+    static let userIDKey = "userID"
 }

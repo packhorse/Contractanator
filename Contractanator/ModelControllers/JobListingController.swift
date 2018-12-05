@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 class JobListingController {
     
@@ -29,45 +28,32 @@ class JobListingController {
                         completion: @escaping (Bool) -> Void) {
         
         // Unwrap the current session's loggedInUser and get their username
-//        guard let loggedInUser = UserController.shared.loggedInUser else {
-//            print("Error: no loggedInUser.\n\(#function)")
-//            completion(false)
-//            return
-//        }
+        guard let loggedInUser = UserController.shared.loggedInUser else {
+            print("Error: no loggedInUser. \n\(#function)")
+            completion(false)
+            return
+        }
         
-        let username = "testUsername"//loggedInUser.username
+        let username = loggedInUser.username
         
         // Initialize an instance of jobListing
-        let jobListing = JobListing(title: title,
-                                    description: description,
-                                    jobType: jobType,
-                                    criteria: criteria,
-                                    hourlyPay: hourlyPay,
-                                    zipCode: zipCode,
-                                    username: username,
-                                    timestamp: Date())
+        let jobListing = JobListing(withTitle: title, description: description,
+                                    jobType: jobType, criteria: criteria,
+                                    hourlyPay: hourlyPay, zipCode: zipCode,
+                                    username: username, timestamp: Date())
         
-        //        temporarily add it to the jobListings array
-        jobListings.append(jobListing)
-        completion(true)
-        
-        // Create a firestore document
-        var docRef: DocumentReference? = nil
-            
-        docRef = FirebaseManager.db.collection(Constants.jobListingsTypeKey).addDocument(data: jobListing.getDocData(), completion: { (error) in
-            if let error = error {
-                print("Error: Could not save document to firestore \n\(#function)\n\(error)\n\(error.localizedDescription)")
+        // Post the document to FireStore
+        FirebaseManager.postJobListing(withJobListing: jobListing) { (success) in
+            if !success {
+                print("Error: unable to successfully post jobListing \n\(#function)")
                 completion(false)
                 return
             }
             
-            print("Successfully added to firestore")
-            DispatchQueue.main.async {
-                completion(true)
-            }
-        })
-        
-        // Post the document to FireStore
+            // Add the joblisting to the top of the listings array
+            self.jobListings.insert(jobListing, at: 0)
+            completion(true)
+        }
     }
     
     func fetchJobListings(completion: @escaping (Bool) -> Void) {
@@ -77,7 +63,7 @@ class JobListingController {
         completion(true)
     }
     
-    func fetchJobListings(withCriteria criteria: [JobCriteria], completion: @escaping (Bool) -> Void) {
+    func fetchJobListings(ofJobType jobType: JobType, criteria: [JobCriteria], minHourlyPay: Int, completion: @escaping (Bool) -> Void) {
         
         //
     }
