@@ -67,6 +67,7 @@ class PostViewController: UIViewController {
         button.backgroundColor = UIColor.white
         button.setTitleColor(UIColor.darkGray, for: .normal)
         button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.borderColor = UIColor.gray.cgColor
         
         if button != selectedJobTypeButton {
             
@@ -213,36 +214,38 @@ class PostViewController: UIViewController {
         titleTextField.layer.cornerRadius = 15.0
         titleTextField.layer.borderWidth = 1.0
         titleTextField.layer.borderColor = UIColor.lightGray.cgColor
+        titleTextField.setLeftPaddingPoints(15)
         
         jobDescriptionTextView.layer.cornerRadius = 18.0
         jobDescriptionTextView.layer.borderWidth = 1.0
         jobDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
+        jobDescriptionTextView.textContainerInset = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 5)
         
         
         button1.layer.cornerRadius = 18.0
         button1.layer.borderWidth = 1.0
-        button1.layer.borderColor = UIColor(named: "CoolOrange")?.cgColor
+        button1.layer.borderColor = UIColor.gray.cgColor
         
         
         button2.layer.cornerRadius = 18.0
         button2.layer.borderWidth = 1.0
-        button2.layer.borderColor = UIColor(named: "CoolBlue")?.cgColor
+        button2.layer.borderColor = UIColor.gray.cgColor
         
         button3.layer.cornerRadius = 18.0
         button3.layer.borderWidth = 1.0
-        button3.layer.borderColor = UIColor(named: "UrineYellow")?.cgColor
+        button3.layer.borderColor = UIColor.gray.cgColor
         
         button4.layer.cornerRadius = 18.0
         button4.layer.borderWidth = 1.0
-        button4.layer.borderColor = UIColor(named: "RudeRed")?.cgColor
+        button4.layer.borderColor = UIColor.gray.cgColor
         
         button5.layer.cornerRadius = 18.0
         button5.layer.borderWidth = 1.0
-        button5.layer.borderColor = UIColor(named: "PopsiclePurple")?.cgColor
+        button5.layer.borderColor = UIColor.gray.cgColor
         
         button6.layer.cornerRadius = 18.0
         button6.layer.borderWidth = 1.0
-        button6.layer.borderColor = UIColor(named: "GrassyGreen")?.cgColor
+        button6.layer.borderColor = UIColor.gray.cgColor
         
         button7.layer.cornerRadius = 18.0
         button7.layer.borderWidth = 1.0
@@ -274,6 +277,8 @@ class PostViewController: UIViewController {
         postButton.layer.borderWidth = 1.0
         postButton.layer.borderColor = UIColor.gray.cgColor
         
+        
+        
     }
     
     
@@ -304,4 +309,18 @@ extension UIViewController {
         view.endEditing(true)
     }
     
+}
+
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+        
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
 }
