@@ -47,6 +47,17 @@ extension ListingsViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listingCell", for: indexPath) as? ListingCollectionViewCell else { return UICollectionViewCell() }
         
+//        let listing = JobListingController.shared.jobListings[indexPath.row]
+        
+        let listing1 = JobListing(withTitle: "Test Job", description: "Test Description", jobType: .landscaping, criteria: [.affordable], hourlyPay: 15, zipCode: "82373", username: "travisbchapman", firstName: "Travis", lastName: "Chapman")
+        
+        let listing2 = JobListing(withTitle: "Test Job", description: "Test Description", jobType: .handyman, criteria: [.affordable], hourlyPay: 15, zipCode: "82373", username: "travisbchapman", firstName: "Porter", lastName: "Frazier")
+        
+        if indexPath.row < 5 {
+            cell.listing = listing1
+        } else {
+            cell.listing = listing2
+        }
         
         return cell
     }
