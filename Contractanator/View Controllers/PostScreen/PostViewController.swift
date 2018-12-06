@@ -39,12 +39,13 @@ class PostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        button4.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        // Delegates
+        titleTextField.delegate = self
+        jobDescriptionTextView.delegate = self
+        
         UIChanges()
-        
         self.hideKeyboardWhenTappedAround()
-        
-        
     }
     
     
@@ -225,51 +226,62 @@ class PostViewController: UIViewController {
         button1.layer.cornerRadius = 18.0
         button1.layer.borderWidth = 1.0
         button1.layer.borderColor = UIColor.gray.cgColor
-        
+        button1.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button2.layer.cornerRadius = 18.0
         button2.layer.borderWidth = 1.0
         button2.layer.borderColor = UIColor.gray.cgColor
+        button2.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button3.layer.cornerRadius = 18.0
         button3.layer.borderWidth = 1.0
         button3.layer.borderColor = UIColor.gray.cgColor
+        button3.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button4.layer.cornerRadius = 18.0
         button4.layer.borderWidth = 1.0
         button4.layer.borderColor = UIColor.gray.cgColor
+        button4.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button5.layer.cornerRadius = 18.0
         button5.layer.borderWidth = 1.0
         button5.layer.borderColor = UIColor.gray.cgColor
+        button5.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button6.layer.cornerRadius = 18.0
         button6.layer.borderWidth = 1.0
         button6.layer.borderColor = UIColor.gray.cgColor
+        button6.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button7.layer.cornerRadius = 18.0
         button7.layer.borderWidth = 1.0
         button7.layer.borderColor = UIColor.lightGray.cgColor
+        button7.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button8.layer.cornerRadius = 18.0
         button8.layer.borderWidth = 1.0
         button8.layer.borderColor = UIColor.lightGray.cgColor
+        button8.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button9.layer.cornerRadius = 18.0
         button9.layer.borderWidth = 1.0
         button9.layer.borderColor = UIColor.lightGray.cgColor
+        button9.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button10.layer.cornerRadius = 18.0
         button10.layer.borderWidth = 1.0
         button10.layer.borderColor = UIColor.lightGray.cgColor
+        button10.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button11.layer.cornerRadius = 18.0
         button11.layer.borderWidth = 1.0
         button11.layer.borderColor = UIColor.lightGray.cgColor
+        button11.titleLabel?.adjustsFontSizeToFitWidth = true
         
         button12.layer.cornerRadius = 18.0
         button12.layer.borderWidth = 1.0
         button12.layer.borderColor = UIColor.lightGray.cgColor
+        button12.titleLabel?.adjustsFontSizeToFitWidth = true
         
         paySlider.tintColor = UIColor.gray
         
@@ -281,18 +293,49 @@ class PostViewController: UIViewController {
         
     }
     
+}
+
+extension PostViewController: UITextFieldDelegate, UITextViewDelegate {
     
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        addHeightForKeyboardToScrollView()
+        return true
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+        removeHeightForKeyboardToScrollView()
+        return true
+    }
     
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        self.jobDescriptionTextView.becomeFirstResponder()
+        
+        return true
+    }
+    
+    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        
+        addHeightForKeyboardToScrollView()
+        return true
+    }
+    
+    public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        
+        removeHeightForKeyboardToScrollView()
+        return true
+    }
+    
+    func addHeightForKeyboardToScrollView() {
+        
+        
+    }
+    
+    func removeHeightForKeyboardToScrollView() {
+        
+    }
 }
 
 
