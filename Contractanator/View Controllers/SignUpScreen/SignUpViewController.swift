@@ -9,16 +9,21 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
     
-    @IBOutlet var signUpButton: UIButton!
+    // MARK: - Properties
+    
+    var themeColor = UIColor(named: "CoolBlue")
+
+    // MARK: - Outlets
+    
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var confirmPasswordTextfield: UITextField!
-    
-    
-    
+    @IBOutlet var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,49 +32,40 @@ class SignUpViewController: UIViewController {
         
     }
     
+    // MARK: - Functions
+    
+    func setupViewFor(_ textField: UITextField) {
+        
+        textField.layer.cornerRadius = 21
+        textField.layer.borderWidth = 1.0
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.borderStyle = .none
+        textField.layer.masksToBounds = true
+        textField.setLeftPaddingPoints(15)
+        textField.setLeftPaddingPoints(15)
+    }
     
     func UIChanges() {
         
+        // textFields
+        setupViewFor(firstNameTextField)
+        setupViewFor(lastNameTextField)
+        setupViewFor(usernameTextField)
+        setupViewFor(phoneTextField)
+        setupViewFor(emailTextField)
+        setupViewFor(passwordTextField)
+        setupViewFor(confirmPasswordTextfield)
+        
         //SignUpButton
         signUpButton.layer.cornerRadius = 18.0
+        signUpButton.layer.shadowColor = themeColor?.cgColor
+        signUpButton.layer.shadowRadius = 4
+        signUpButton.layer.shadowOpacity = 1
+        signUpButton.layer.shadowOffset = CGSize(width: 0, height: 0)
         signUpButton.layer.borderWidth = 1.0
-        signUpButton.layer.borderColor = UIColor.lightGray.cgColor
-        
-        
-        //usernameTextField
-        usernameTextField.layer.cornerRadius = 21
-        usernameTextField.layer.borderWidth = 1.0
-        usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
-        usernameTextField.borderStyle = .none
-        usernameTextField.layer.masksToBounds = true
-        
-        
-        //EmailTextField
-        emailTextField.layer.cornerRadius = 21
-        emailTextField.layer.borderWidth = 1.0
-        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
-        emailTextField.borderStyle = .none
-        emailTextField.layer.masksToBounds = true
-        
-        
-        
-        //PasswordTextField
-        passwordTextField.layer.cornerRadius = 21
-        passwordTextField.layer.borderWidth = 1.0
-        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
-        passwordTextField.borderStyle = .none
-        passwordTextField.layer.masksToBounds = true
-        
-        
-        //ConfirmPasswordTextField
-        confirmPasswordTextfield.layer.cornerRadius = 21
-        confirmPasswordTextfield.layer.borderWidth = 1.0
-        confirmPasswordTextfield.layer.borderColor = UIColor.lightGray.cgColor
-        confirmPasswordTextfield = .none
-        
-        
-        
-        
+        signUpButton.setTitleColor(UIColor.white, for: .normal)
+        signUpButton.layer.borderColor = themeColor?.cgColor
+        signUpButton.layer.backgroundColor = themeColor?.cgColor
     }
     
     

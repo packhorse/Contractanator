@@ -10,31 +10,42 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    var themeColor = UIColor(named: "CoolBlue")
+    
+    // MARK: - Outlets
     
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      UIChanges()
-     
-//        let paddingView = UITextView(frame: CGRect(0, 0, 15, self.emailTextField.frame.height))
-//        emailTextField.leftView = paddingView
-//        emailTextField.leftViewMode = UITextViewMode.always
-//        
+        // Delegates
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        UIChanges()
+        self.hideKeyboardWhenTappedAround()
     }
     
-    func UIChanges() {
+    // MARK: - Actions
+    
+    @IBAction func dismissButtonTapped(_ sender: UIButton) {
         
-        //SignInButton
-        signInButton.layer.cornerRadius = 18.0
-        signInButton.layer.borderWidth = 1.0
-        signInButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.view.endEditing(true)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func signInButtonTapped(_ sender: UIButton) {
+        
+        attemptSignIn()
+    }
+    
+    
+    func UIChanges() {
         
         //EmailTextField
         emailTextField.layer.cornerRadius = 21
@@ -42,9 +53,8 @@ class LogInViewController: UIViewController {
         emailTextField.borderStyle = .none
         emailTextField.layer.borderColor = UIColor.lightGray.cgColor
         emailTextField.layer.masksToBounds = true
-//        emailTextField.position(from: emailTextField.beginningOfDocument, in: .right, offset: 15)
-        
-        
+        emailTextField.setLeftPaddingPoints(15)
+        emailTextField.setRightPaddingPoints(15)
         
         //PasswordTextField
         passwordTextField.layer.cornerRadius = 21
@@ -52,18 +62,54 @@ class LogInViewController: UIViewController {
         passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.borderStyle = .none
         passwordTextField.layer.masksToBounds = true
+        passwordTextField.setLeftPaddingPoints(15)
+        passwordTextField.setRightPaddingPoints(15)
         
-
+        //SignInButton
+        signInButton.layer.cornerRadius = 18.0
+        signInButton.layer.shadowColor = themeColor?.cgColor
+        signInButton.layer.shadowRadius = 4
+        signInButton.layer.shadowOpacity = 1
+        signInButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        signInButton.layer.borderWidth = 1.0
+        signInButton.setTitleColor(UIColor.white, for: .normal)
+        signInButton.layer.borderColor = themeColor?.cgColor
+        signInButton.layer.backgroundColor = themeColor?.cgColor
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Functions
     
+    func attemptSignIn() {
+        
+        guard let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty
+            else { return }
+        
+        UserController.shared.signInUser(withEmail: email, password: password) { (success) in
+            if success {
+                self.presentingViewController?.dismiss(animated: true, completion: nil)
+            } else {
+                fatalError()
+            }
+        }
+    }
+}
+
+extension LogInViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == emailTextField {
+            
+            passwordTextField.becomeFirstResponder()
+        }
+        
+        if textField == passwordTextField {
+            
+            passwordTextField.resignFirstResponder()
+            attemptSignIn()
+        }
+        
+        return true
+    }
 }

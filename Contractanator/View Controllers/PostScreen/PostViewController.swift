@@ -10,22 +10,7 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    
-    @IBOutlet var titleTextField: UITextField!
-    @IBOutlet var jobDescriptionTextView: UITextView!
-    @IBOutlet var button1: UIButton!
-    @IBOutlet var button2: UIButton!
-    @IBOutlet var button3: UIButton!
-    @IBOutlet var button4: UIButton!
-    @IBOutlet var button5: UIButton!
-    @IBOutlet var button6: UIButton!
-    @IBOutlet var button7: UIButton!
-    @IBOutlet var button8: UIButton!
-    @IBOutlet var button9: UIButton!
-    @IBOutlet var button10: UIButton!
-    @IBOutlet var button11: UIButton!
-    @IBOutlet var button12: UIButton!
-    @IBOutlet var postButton: UIButton!
+    // MARK: - Properties
     
     // These variables change based on the selection by the user
     var selectedJobType: JobType?
@@ -35,19 +20,46 @@ class PostViewController: UIViewController {
     var selectedCriterias: [JobCriteria] = []
     var selectedCriteriaButtons: [UIButton] = []
     
+    // MARK: - Outlets
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var jobTypeButton1: UIButton!
+    @IBOutlet var jobTypeButton2: UIButton!
+    @IBOutlet var jobTypeButton3: UIButton!
+    @IBOutlet var jobTypeButton4: UIButton!
+    @IBOutlet var jobTypeButton5: UIButton!
+    @IBOutlet var jobTypeButton6: UIButton!
+    @IBOutlet var criteriaButton1: UIButton!
+    @IBOutlet var criteriaButton2: UIButton!
+    @IBOutlet var criteriaButton3: UIButton!
+    @IBOutlet var criteriaButton4: UIButton!
+    @IBOutlet var criteriaButton5: UIButton!
+    @IBOutlet var criteriaButton6: UIButton!
+    @IBOutlet var postButton: UIButton!
+    @IBOutlet weak var paySliderLabel: UILabel!
+    @IBOutlet var paySlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Delegates
-        titleTextField.delegate = self
-        jobDescriptionTextView.delegate = self
-        
         UIChanges()
         self.hideKeyboardWhenTappedAround()
+        
+        // Delegates
+        titleTextField.delegate = self
+        descriptionTextView.delegate = self
+        
+        // Keyboard show and hide notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIWindow.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
+    
+    
+    
+    // MARK: - Functions
     
     fileprivate func turnOnButtonColor(_ sender: UIButton) {
         
@@ -88,6 +100,92 @@ class PostViewController: UIViewController {
         postButton.setTitleColor(UIColor.white, for: .normal)
     }
     
+    fileprivate func UIChanges() {
+        
+        // Title Text Field
+        titleTextField.layer.cornerRadius = 21.0
+        titleTextField.layer.borderWidth = 1.0
+        titleTextField.layer.borderColor = UIColor.lightGray.cgColor
+        titleTextField.setLeftPaddingPoints(15)
+        
+        // Description Text View
+        descriptionTextView.layer.cornerRadius = 18.0
+        descriptionTextView.layer.borderWidth = 1.0
+        descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
+        descriptionTextView.textContainerInset = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 5)
+        
+        // Buttons
+        jobTypeButton1.layer.cornerRadius = 18.0
+        jobTypeButton1.layer.borderWidth = 1.0
+        jobTypeButton1.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton1.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        jobTypeButton2.layer.cornerRadius = 18.0
+        jobTypeButton2.layer.borderWidth = 1.0
+        jobTypeButton2.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton2.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        jobTypeButton3.layer.cornerRadius = 18.0
+        jobTypeButton3.layer.borderWidth = 1.0
+        jobTypeButton3.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton3.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        jobTypeButton4.layer.cornerRadius = 18.0
+        jobTypeButton4.layer.borderWidth = 1.0
+        jobTypeButton4.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton4.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        jobTypeButton5.layer.cornerRadius = 18.0
+        jobTypeButton5.layer.borderWidth = 1.0
+        jobTypeButton5.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton5.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        jobTypeButton6.layer.cornerRadius = 18.0
+        jobTypeButton6.layer.borderWidth = 1.0
+        jobTypeButton6.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton6.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        criteriaButton1.layer.cornerRadius = 18.0
+        criteriaButton1.layer.borderWidth = 1.0
+        criteriaButton1.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton1.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        criteriaButton2.layer.cornerRadius = 18.0
+        criteriaButton2.layer.borderWidth = 1.0
+        criteriaButton2.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton2.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        criteriaButton3.layer.cornerRadius = 18.0
+        criteriaButton3.layer.borderWidth = 1.0
+        criteriaButton3.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton3.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        criteriaButton4.layer.cornerRadius = 18.0
+        criteriaButton4.layer.borderWidth = 1.0
+        criteriaButton4.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton4.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        criteriaButton5.layer.cornerRadius = 18.0
+        criteriaButton5.layer.borderWidth = 1.0
+        criteriaButton5.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton5.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        criteriaButton6.layer.cornerRadius = 18.0
+        criteriaButton6.layer.borderWidth = 1.0
+        criteriaButton6.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton6.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        // Pay Slider
+        paySlider.tintColor = UIColor.gray
+        
+        // Post Button
+        postButton.layer.cornerRadius = 24.0
+        postButton.layer.borderWidth = 1.0
+        postButton.layer.borderColor = UIColor.gray.cgColor
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func jobTypeButtonTapped(_ sender: UIButton) {
         
         var jobType: JobType?
@@ -114,7 +212,10 @@ class PostViewController: UIViewController {
         default:
             print("Something went wrong!")
         }
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let signUpVC = storyboard.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
+        signUpVC.themeColor = vcThemeColor
+        self.present(signUpVC, animated: true, completion: nil)
         if jobType != selectedJobType {
             
             // Updates the theme accross the entire view
@@ -129,7 +230,6 @@ class PostViewController: UIViewController {
             selectedJobType = jobType
         }
     }
-    
     
     @IBAction func criteriaButtonTapped(_ sender: UIButton) {
         
@@ -169,7 +269,7 @@ class PostViewController: UIViewController {
     @IBAction func postButtonTapped(_ sender: UIButton) {
         
         guard let title = titleTextField.text, !title.isEmpty,
-            let description = jobDescriptionTextView.text, !description.isEmpty,
+            let description = descriptionTextView.text, !description.isEmpty,
             let jobType = selectedJobType,
             selectedCriterias.count == 3
             else { print("Missing info") ; return  }
@@ -188,158 +288,67 @@ class PostViewController: UIViewController {
                 }
             }
         } else {
-            print("Need to sign up")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signUpVC = storyboard.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
+            signUpVC.themeColor = vcThemeColor
+            self.present(signUpVC, animated: true, completion: nil)
         }
     }
-    
-    //Slider Code
-    
-    
-    @IBOutlet weak var sliderValueLabel: UILabel!
-    
-    @IBOutlet var paySlider: UISlider!
     
     @IBAction func sliderValueChange(_ sender: UISlider) {
         
         let currentValue = Int(sender.value)
         
-        sliderValueLabel.text = "$\(currentValue)/hr"
-        
-        
+        paySliderLabel.text = "$\(currentValue)/hr"
     }
-    
-    
-    func UIChanges() {
-        
-        
-        titleTextField.layer.cornerRadius = 15.0
-        titleTextField.layer.borderWidth = 1.0
-        titleTextField.layer.borderColor = UIColor.lightGray.cgColor
-        titleTextField.setLeftPaddingPoints(15)
-        
-        jobDescriptionTextView.layer.cornerRadius = 18.0
-        jobDescriptionTextView.layer.borderWidth = 1.0
-        jobDescriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
-        jobDescriptionTextView.textContainerInset = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 5)
-        
-        
-        button1.layer.cornerRadius = 18.0
-        button1.layer.borderWidth = 1.0
-        button1.layer.borderColor = UIColor.gray.cgColor
-        button1.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button2.layer.cornerRadius = 18.0
-        button2.layer.borderWidth = 1.0
-        button2.layer.borderColor = UIColor.gray.cgColor
-        button2.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button3.layer.cornerRadius = 18.0
-        button3.layer.borderWidth = 1.0
-        button3.layer.borderColor = UIColor.gray.cgColor
-        button3.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button4.layer.cornerRadius = 18.0
-        button4.layer.borderWidth = 1.0
-        button4.layer.borderColor = UIColor.gray.cgColor
-        button4.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button5.layer.cornerRadius = 18.0
-        button5.layer.borderWidth = 1.0
-        button5.layer.borderColor = UIColor.gray.cgColor
-        button5.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button6.layer.cornerRadius = 18.0
-        button6.layer.borderWidth = 1.0
-        button6.layer.borderColor = UIColor.gray.cgColor
-        button6.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button7.layer.cornerRadius = 18.0
-        button7.layer.borderWidth = 1.0
-        button7.layer.borderColor = UIColor.lightGray.cgColor
-        button7.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button8.layer.cornerRadius = 18.0
-        button8.layer.borderWidth = 1.0
-        button8.layer.borderColor = UIColor.lightGray.cgColor
-        button8.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button9.layer.cornerRadius = 18.0
-        button9.layer.borderWidth = 1.0
-        button9.layer.borderColor = UIColor.lightGray.cgColor
-        button9.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button10.layer.cornerRadius = 18.0
-        button10.layer.borderWidth = 1.0
-        button10.layer.borderColor = UIColor.lightGray.cgColor
-        button10.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button11.layer.cornerRadius = 18.0
-        button11.layer.borderWidth = 1.0
-        button11.layer.borderColor = UIColor.lightGray.cgColor
-        button11.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        button12.layer.cornerRadius = 18.0
-        button12.layer.borderWidth = 1.0
-        button12.layer.borderColor = UIColor.lightGray.cgColor
-        button12.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        paySlider.tintColor = UIColor.gray
-        
-        postButton.layer.cornerRadius = 24.0
-        postButton.layer.borderWidth = 1.0
-        postButton.layer.borderColor = UIColor.gray.cgColor
-        
-        
-        
-    }
-    
 }
+
+// MARK: - Extensions
 
 extension PostViewController: UITextFieldDelegate, UITextViewDelegate {
     
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
-        addHeightForKeyboardToScrollView()
-        return true
-    }
-    
-    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        
-        removeHeightForKeyboardToScrollView()
-        return true
-    }
-    
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        self.jobDescriptionTextView.becomeFirstResponder()
+        self.descriptionTextView.becomeFirstResponder()
         
         return true
     }
     
-    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         
-        addHeightForKeyboardToScrollView()
+//        let rect = CGRect(x: 0, y: 130, width: view.frame.width, height: view.frame.height)
+//        scrollView.scrollRectToVisible(rect, animated: true)
+        
         return true
     }
     
-    public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        removeHeightForKeyboardToScrollView()
+        if text == "\n" {
+            descriptionTextView.resignFirstResponder()
+            return false
+        }
+        
         return true
     }
     
-    func addHeightForKeyboardToScrollView() {
+    @objc func keyboardDidShow(notification: NSNotification) {
         
-        
+        var info = notification.userInfo!
+        let keyBoardSize = info[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        scrollView.contentInset.bottom = keyBoardSize.height
+        scrollView.scrollIndicatorInsets.bottom = keyBoardSize.height
     }
     
-    func removeHeightForKeyboardToScrollView() {
+    @objc func keyboardWillHide(notification: NSNotification) {
         
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.contentInset.bottom = 0
+            self.scrollView.scrollIndicatorInsets.bottom = 0
+        }
     }
 }
 
-
-//THis dismisses the keyboard when tapped off the screen. Call function in view controller(viewDidLoad) to add
 extension UIViewController {
     
     @objc func hideKeyboardWhenTappedAround() {

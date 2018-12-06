@@ -22,64 +22,64 @@
                                 <rect key="frame" x="0.0" y="116" width="376" height="935"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="na8-As-VLf" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="376" height="935"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="376" height="942"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCU-TY-jzD">
-                                                <rect key="frame" x="21" y="45" width="79.5" height="23.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCU-TY-jzD">
+                                                <rect key="frame" x="21" y="45" width="67" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UO6-63-USa">
-                                                <rect key="frame" x="15" y="68.5" width="346" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a descriptive job title here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UO6-63-USa">
+                                                <rect key="frame" x="15" y="68.5" width="346" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="bK0-t7-BLW"/>
+                                                    <constraint firstAttribute="height" constant="40" id="bK0-t7-BLW"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exH-5z-buO">
-                                                <rect key="frame" x="21" y="128.5" width="120.5" height="23.5"/>
+                                                <rect key="frame" x="21" y="138.5" width="120.5" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oyS-2f-Ovg">
-                                                <rect key="frame" x="15" y="152" width="346" height="128"/>
+                                                <rect key="frame" x="15" y="162" width="346" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="75A-Sl-SFn"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What kind of job is it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibh-hZ-7fc">
-                                                <rect key="frame" x="21" y="310" width="163" height="23.5"/>
+                                                <rect key="frame" x="21" y="320" width="163" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What 3 things best describe your job?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA5-8V-Ild">
-                                                <rect key="frame" x="21" y="495.5" width="285" height="23.5"/>
+                                                <rect key="frame" x="21" y="505.5" width="285" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is the pay for your job? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBw-f1-SAU">
-                                                <rect key="frame" x="21" y="681" width="220.5" height="23.5"/>
+                                                <rect key="frame" x="21" y="691" width="220.5" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining characters: 300" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Q6a-ou-tOF">
-                                                <rect key="frame" x="215.5" y="128.5" width="139.5" height="23.5"/>
+                                                <rect key="frame" x="215.5" y="138.5" width="139.5" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                 <color key="textColor" red="0.33687958499999998" green="0.34021502640000001" blue="0.34021502640000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="GMs-hD-7Uw">
-                                                <rect key="frame" x="15" y="363.5" width="346" height="102"/>
+                                                <rect key="frame" x="15" y="373.5" width="346" height="102"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4jw-d7-Xng">
                                                         <rect key="frame" x="0.0" y="0.0" width="346" height="36"/>
@@ -173,7 +173,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="kex-r2-30q">
-                                                <rect key="frame" x="15" y="549" width="346" height="102"/>
+                                                <rect key="frame" x="15" y="559" width="346" height="102"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="f70-Nq-sC4">
                                                         <rect key="frame" x="0.0" y="0.0" width="346" height="36"/>
@@ -266,15 +266,15 @@
                                                 </subviews>
                                             </stackView>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-rj-HLg">
-                                                <rect key="frame" x="18" y="789" width="340" height="31"/>
+                                                <rect key="frame" x="18" y="799" width="340" height="31"/>
                                                 <connections>
                                                     <action selector="sliderValueChange:" destination="JVn-m1-nVN" eventType="valueChanged" id="OdT-ql-Ps9"/>
                                                 </connections>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFy-GX-0sR">
-                                                <rect key="frame" x="20" y="849" width="336" height="51"/>
+                                                <rect key="frame" x="20" y="859" width="336" height="48"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="51" id="x0l-tD-QfP"/>
+                                                    <constraint firstAttribute="height" constant="48" id="x0l-tD-QfP"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                 <state key="normal" title="Post">
@@ -285,7 +285,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30/hr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qje-zL-g15">
-                                                <rect key="frame" x="153" y="734.5" width="70.5" height="34.5"/>
+                                                <rect key="frame" x="153" y="744.5" width="70.5" height="34.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -352,22 +352,23 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="376" height="1100"/>
                     <connections>
-                        <outlet property="button1" destination="aiD-VG-RLp" id="nuz-gX-h1p"/>
-                        <outlet property="button10" destination="DWn-Tj-KfY" id="6FD-5e-MNU"/>
-                        <outlet property="button11" destination="dNe-uq-7Lr" id="Aby-g7-Gtb"/>
-                        <outlet property="button12" destination="Td5-eu-A1X" id="y0J-Gu-MDK"/>
-                        <outlet property="button2" destination="Eha-4c-7MY" id="Gxl-Tl-C6p"/>
-                        <outlet property="button3" destination="HAw-rn-5Ew" id="Z4i-LA-0wo"/>
-                        <outlet property="button4" destination="dHx-N3-7bp" id="yhR-or-ZMD"/>
-                        <outlet property="button5" destination="IpC-oL-cuR" id="Qa8-zy-pa7"/>
-                        <outlet property="button6" destination="a5t-Mx-bfb" id="IIM-yn-NNi"/>
-                        <outlet property="button7" destination="uYW-jX-IzJ" id="MMh-cS-hDg"/>
-                        <outlet property="button8" destination="HJR-t3-1Nc" id="baJ-qG-JSu"/>
-                        <outlet property="button9" destination="lW0-Su-wNl" id="dwq-jl-hJS"/>
-                        <outlet property="jobDescriptionTextView" destination="oyS-2f-Ovg" id="hd2-Be-VeI"/>
+                        <outlet property="criteriaButton1" destination="uYW-jX-IzJ" id="MMh-cS-hDg"/>
+                        <outlet property="criteriaButton2" destination="HJR-t3-1Nc" id="baJ-qG-JSu"/>
+                        <outlet property="criteriaButton3" destination="lW0-Su-wNl" id="dwq-jl-hJS"/>
+                        <outlet property="criteriaButton4" destination="DWn-Tj-KfY" id="6FD-5e-MNU"/>
+                        <outlet property="criteriaButton5" destination="dNe-uq-7Lr" id="Aby-g7-Gtb"/>
+                        <outlet property="criteriaButton6" destination="Td5-eu-A1X" id="y0J-Gu-MDK"/>
+                        <outlet property="descriptionTextView" destination="oyS-2f-Ovg" id="hd2-Be-VeI"/>
+                        <outlet property="jobTypeButton1" destination="aiD-VG-RLp" id="nuz-gX-h1p"/>
+                        <outlet property="jobTypeButton2" destination="Eha-4c-7MY" id="Gxl-Tl-C6p"/>
+                        <outlet property="jobTypeButton3" destination="HAw-rn-5Ew" id="Z4i-LA-0wo"/>
+                        <outlet property="jobTypeButton4" destination="dHx-N3-7bp" id="yhR-or-ZMD"/>
+                        <outlet property="jobTypeButton5" destination="IpC-oL-cuR" id="Qa8-zy-pa7"/>
+                        <outlet property="jobTypeButton6" destination="a5t-Mx-bfb" id="IIM-yn-NNi"/>
                         <outlet property="paySlider" destination="Sqj-rj-HLg" id="BhJ-d7-a0g"/>
+                        <outlet property="paySliderLabel" destination="Qje-zL-g15" id="lO6-N4-hQA"/>
                         <outlet property="postButton" destination="TFy-GX-0sR" id="8yh-ox-xQ0"/>
-                        <outlet property="sliderValueLabel" destination="Qje-zL-g15" id="lO6-N4-hQA"/>
+                        <outlet property="scrollView" destination="s5J-Xe-PCv" id="Uhr-qf-cNI"/>
                         <outlet property="titleTextField" destination="UO6-63-USa" id="sCY-HC-SyK"/>
                     </connections>
                 </viewController>
