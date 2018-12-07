@@ -8,20 +8,49 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    
+    
     
     @IBOutlet var bioTextView: UITextView!
     
     
+    @IBOutlet weak var collectionView: UICollectionView!
     
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    UIChanges()
         
+        UIChanges()
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        // Will need this in your profile view controller
+        // Create a reference to our nib
+        let collectionViewNib = UINib(nibName: "ListingCollectionViewCell", bundle: nil)
+        
+        // Register the nib as the cell on our collection view
+        collectionView.register(collectionViewNib, forCellWithReuseIdentifier: "listingCell")
+        
+    }
+    
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return JobListingController.shared.jobListings.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listingCell", for: indexPath) as? ListingCollectionViewCell else { return UICollectionViewCell() }
+        
+        let listing = JobListingController.shared.jobListings[indexPath.row]
+        
+        cell.listing = listing
+        
+        return cell
     }
     
     
@@ -34,15 +63,17 @@ class ProfileViewController: UIViewController {
         
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let widthOfScreen = view.frame.width
+        return CGSize(width: (widthOfScreen - 3 * 16) / 2 + 10, height: ((widthOfScreen - 3 * 16) / 2) + 50)
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 10, bottom: 50, right: 10)
+    }
 }
+
+
+
+
+
