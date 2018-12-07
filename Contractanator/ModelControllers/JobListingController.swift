@@ -31,7 +31,7 @@ class JobListingController {
     
     var myListings = [JobListing]() {
         didSet {
-            NotificationCenter.default.post(name: Constants.jobListingsDidUpdateNotification, object: nil)
+            NotificationCenter.default.post(name: Constants.myListingsDidUpdateNotification, object: nil)
         }
     }
     
@@ -117,5 +117,12 @@ class JobListingController {
         
         guard let jobTypeFilter = jobTypeFilter else { return }
         sortedListings = jobListings.filter({$0.jobType == jobTypeFilter}).filter({$0.hourlyPay <= minimumPayFilter})
+    }
+    
+    func getMyListings() {
+        
+        guard let currentUsername = UserController.shared.loggedInUser?.username else { return }
+        
+        myListings = jobListings.filter { $0.username == currentUsername }
     }
 }

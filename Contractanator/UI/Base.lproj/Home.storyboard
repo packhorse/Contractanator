@@ -20,7 +20,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="uJz-UG-nzo">
-                        <rect key="frame" x="0.0" y="20" width="320" height="96"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="largeTitleTextAttributes">
@@ -36,7 +36,7 @@
             </objects>
             <point key="canvasLocation" x="2860" y="1059"/>
         </scene>
-        <!--Contractanator-->
+        <!--Find A Contractor-->
         <scene sceneID="wWd-qv-6TT">
             <objects>
                 <viewController id="As9-iX-63t" customClass="ListingsViewController" customModule="Contractanator" customModuleProvider="target" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Anq-6S-Dw0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Contractanator" id="2r7-cZ-glb">
+                    <navigationItem key="navigationItem" title="Find A Contractor" id="2r7-cZ-glb">
                         <barButtonItem key="backBarButtonItem" title="Home" id="RcN-fa-Tqe"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="FilterLines" id="K2x-K4-zFI">
                             <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="3646" y="1058"/>
         </scene>
-        <!--Search-->
+        <!--Filters-->
         <scene sceneID="7uM-D8-9iC">
             <objects>
                 <viewController id="w2l-IR-IbC" customClass="SearchScreenViewController" customModule="Contractanator" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,7 +369,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FSm-FO-fiL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="fof-S2-9Zw"/>
+                    <navigationItem key="navigationItem" title="Filters" id="fof-S2-9Zw"/>
                     <connections>
                         <outlet property="criteriaButton1" destination="4s3-Uw-Sas" id="rjk-bf-bJY"/>
                         <outlet property="criteriaButton2" destination="kaZ-i8-04r" id="qdr-G4-Hxe"/>

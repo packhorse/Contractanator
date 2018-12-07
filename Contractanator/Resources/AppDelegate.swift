@@ -23,11 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         // [END default_firestore]
         
-        // Fetch all listings
-        JobListingController.shared.fetchAllJobListings { (_) in }
-
         // Fetch the logged in user
-        UserController.shared.fetchLoggedInUserProfile { (_) in }
+        UserController.shared.fetchLoggedInUserProfile { (_) in
+            
+            // Fetch all listings
+            JobListingController.shared.fetchAllJobListings { (success) in
+                if success {
+                    JobListingController.shared.getMyListings()
+                }
+            }
+        }
+        
+
         
         return true
     }

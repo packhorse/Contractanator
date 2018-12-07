@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.myListingsDidUpdateNotification, object: nil)
+        
         UIChanges()
         
         collectionView.dataSource = self
@@ -36,30 +38,38 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateViews()
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return JobListingController.shared.jobListings.count
+        return JobListingController.shared.myListings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listingCell", for: indexPath) as? ListingCollectionViewCell else { return UICollectionViewCell() }
         
-        let listing = JobListingController.shared.jobListings[indexPath.row]
+        let listing = JobListingController.shared.myListings[indexPath.row]
         
         cell.listing = listing
         
         return cell
     }
     
+    @objc func updateViews() {
+        
+        collectionView.reloadData()
+    }
     
     func UIChanges() {
         
-        bioTextView.clipsToBounds = true
-        bioTextView.layer.cornerRadius = 10.0
-        bioTextView.layer.borderWidth = 1.0
-        bioTextView.layer.borderColor = UIColor.lightGray.cgColor
+//        bioTextView.clipsToBounds = true
+//        bioTextView.layer.cornerRadius = 10.0
+//        bioTextView.layer.borderWidth = 1.0
+//        bioTextView.layer.borderColor = UIColor.lightGray.cgColor
         
     }
     
