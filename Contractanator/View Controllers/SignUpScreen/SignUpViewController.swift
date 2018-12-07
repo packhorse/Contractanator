@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
 
     // MARK: - Outlets
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet var usernameTextField: UITextField!
@@ -27,16 +28,48 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Delegates
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        usernameTextField.delegate = self
+        emailTextField.delegate = self
+        phoneTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextfield.delegate = self
 
         UIChanges()
         
+        // Keyboard show and hide notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIWindow.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
-    // MARK: - Functions
+    // MARK: - Actions
+    
+    @IBAction func dismissButtonTapped(_ sender: UIButton) {
+        
+        view.endEditing(true)
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        
+        attemptSignUp()
+    }
+    
+    @IBAction func goToLoginButtonTapped(_ sender: UIButton) {
+        
+        view.endEditing(true)
+        self.presentingViewController?.dismiss(animated: false, completion: nil)
+    }
+    
+    // MARK: - View Update Functions
     
     func setupViewFor(_ textField: UITextField) {
         
-        textField.layer.cornerRadius = 21
+        textField.layer.cornerRadius = textField.frame.height / 2
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.borderStyle = .none
@@ -57,7 +90,7 @@ class SignUpViewController: UIViewController {
         setupViewFor(confirmPasswordTextfield)
         
         //SignUpButton
-        signUpButton.layer.cornerRadius = 18.0
+        signUpButton.layer.cornerRadius = signUpButton.frame.height / 2
         signUpButton.layer.shadowColor = themeColor?.cgColor
         signUpButton.layer.shadowRadius = 4
         signUpButton.layer.shadowOpacity = 1
@@ -68,16 +101,69 @@ class SignUpViewController: UIViewController {
         signUpButton.layer.backgroundColor = themeColor?.cgColor
     }
     
+    // MARK: - Functions
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func attemptSignUp() {
+        
+        guard let firstName = firstNameTextField.text, !firstName.isEmpty,
+            let lastName = lastNameTextField.text, !lastName.isEmpty,
+            let username = usernameTextField.text, !username.isEmpty,
+            let phone = phoneTextField.text, !phone.isEmpty,
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty,
+            let confirmPassword = confirmPasswordTextfield.text, !confirmPassword.isEmpty,
+            password == confirmPassword
+            else { view.endEditing(true) ; return }
+        
+        UserController.shared.createNewUser(withFirstName: firstName, lastName: lastName, username: username, phone: phone, email: email, password: password) { (success) in
+            if success {
+                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
-    */
+    
+    // MARK: - Keyboard Handlers
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        
+        var info = notification.userInfo!
+        let keyBoardSize = info[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        scrollView.contentInset.bottom = keyBoardSize.height
+        scrollView.scrollIndicatorInsets.bottom = keyBoardSize.height
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.contentInset.bottom = 0
+            self.scrollView.scrollIndicatorInsets.bottom = 0
+        }
+    }
+}
 
+extension SignUpViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        switch textField {
+        case firstNameTextField:
+            lastNameTextField.becomeFirstResponder()
+        case lastNameTextField:
+            usernameTextField.becomeFirstResponder()
+        case usernameTextField:
+            phoneTextField.becomeFirstResponder()
+        case phoneTextField:
+            emailTextField.becomeFirstResponder()
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            confirmPasswordTextfield.becomeFirstResponder()
+        case confirmPasswordTextfield:
+            attemptSignUp()
+        default:
+            view.endEditing(true)
+        }
+        
+        return true
+    }
 }

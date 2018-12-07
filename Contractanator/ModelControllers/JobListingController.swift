@@ -11,14 +11,18 @@ import Foundation
 class JobListingController {
     
     // MARK: - Properties
-    //comment
     
     // Singleton
     static let shared = JobListingController()
     private init() {}
     
     // Source of truth
-    var jobListings = [JobListing]()
+    var jobListings = [JobListing]() {
+        didSet {
+            sortListings()
+            NotificationCenter.default.post(name: Constants.jobListingsDidUpdate, object: nil)
+        }
+    }
     
     // MARK: - Functions
     
@@ -58,7 +62,7 @@ class JobListingController {
         }
     }
     
-    func fetchJobListings(completion: @escaping (Bool) -> Void) {
+    func fetchAllJobListings(completion: @escaping (Bool) -> Void) {
         
         // Fetch all listings from FireStore within 25 miles
         
@@ -81,5 +85,9 @@ class JobListingController {
     func fetchJobListings(ofJobType jobType: JobType, criteria: [JobCriteria], minHourlyPay: Int, completion: @escaping (Bool) -> Void) {
         
         //
+    }
+    
+    func sortListings() {
+        
     }
 }

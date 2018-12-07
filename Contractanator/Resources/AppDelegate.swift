@@ -23,13 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         // [END default_firestore]
         
-        UserController.shared.fetchLoggedInUserProfile { (success) in
-            if success {
-                print("Yes! Signed in already. Here is the user: \(UserController.shared.loggedInUser)")
-            } else {
-                print("No! couldn't find a user signed in")
-            }
-        }
+        // Fetch all listings
+        JobListingController.shared.fetchAllJobListings { (_) in }
+
+        // Fetch the logged in user
+        UserController.shared.fetchLoggedInUserProfile { (_) in }
         
         return true
     }

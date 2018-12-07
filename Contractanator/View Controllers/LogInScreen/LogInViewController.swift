@@ -48,7 +48,7 @@ class LogInViewController: UIViewController {
     func UIChanges() {
         
         //EmailTextField
-        emailTextField.layer.cornerRadius = 21
+        emailTextField.layer.cornerRadius = emailTextField.frame.height / 2
         emailTextField.layer.borderWidth = 1.0
         emailTextField.borderStyle = .none
         emailTextField.layer.borderColor = UIColor.lightGray.cgColor
@@ -57,7 +57,7 @@ class LogInViewController: UIViewController {
         emailTextField.setRightPaddingPoints(15)
         
         //PasswordTextField
-        passwordTextField.layer.cornerRadius = 21
+        passwordTextField.layer.cornerRadius = passwordTextField.frame.height / 2
         passwordTextField.layer.borderWidth = 1.0
         passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.borderStyle = .none
@@ -66,7 +66,7 @@ class LogInViewController: UIViewController {
         passwordTextField.setRightPaddingPoints(15)
         
         //SignInButton
-        signInButton.layer.cornerRadius = 18.0
+        signInButton.layer.cornerRadius = signInButton.frame.height / 2
         signInButton.layer.shadowColor = themeColor?.cgColor
         signInButton.layer.shadowRadius = 4
         signInButton.layer.shadowOpacity = 1
@@ -91,6 +91,14 @@ class LogInViewController: UIViewController {
             } else {
                 fatalError()
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSignUpVC" {
+            let destinationVC = segue.destination as! SignUpViewController
+            
+            destinationVC.themeColor = themeColor
         }
     }
 }

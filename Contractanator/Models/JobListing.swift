@@ -76,6 +76,7 @@ struct JobListing {
             Constants.descriptionKey : description,
             Constants.jobTypeKey : jobType.rawValue,
             Constants.criteriaKey : criteriaAsStringArray,
+            Constants.hourlyPayKey : hourlyPay,
             Constants.zipCodeKey : zipCode,
             Constants.usernameKey : username,
             Constants.firstNameKey : firstName,

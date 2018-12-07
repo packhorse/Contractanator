@@ -15,6 +15,9 @@ class ListingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.jobListingsDidUpdate, object: nil)
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -27,37 +30,23 @@ class ListingsViewController: UIViewController {
         
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    @objc func updateViews() {
+        
+        self.collectionView.reloadData()
+    }
 }
 
 extension ListingsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return JobListingController.shared.jobListings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listingCell", for: indexPath) as? ListingCollectionViewCell else { return UICollectionViewCell() }
         
-//        let listing = JobListingController.shared.jobListings[indexPath.row]
-        
-        let listing1 = JobListing(withTitle: "Test Job", description: "Test Description", jobType: .landscaping, criteria: [.affordable], hourlyPay: 15, zipCode: "82373", username: "travisbchapman", firstName: "Travis", lastName: "Chapman")
-        
-        let listing2 = JobListing(withTitle: "Test Job", description: "Test Description", jobType: .handyman, criteria: [.affordable], hourlyPay: 15, zipCode: "82373", username: "travisbchapman", firstName: "Porter", lastName: "Frazier")
-        
-        if indexPath.row < 5 {
-            cell.listing = listing1
-        } else {
-            cell.listing = listing2
-        }
+        let listing = JobListingController.shared.jobListings[indexPath.row]
+
+        cell.listing = listing
         
         return cell
     }

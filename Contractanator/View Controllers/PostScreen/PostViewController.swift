@@ -56,8 +56,128 @@ class PostViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
+    // MARK: - Actions
     
+    @IBAction func jobTypeButtonTapped(_ sender: UIButton) {
+        
+        var jobType: JobType?
+        
+        switch sender.restorationIdentifier {
+        case "contracting":
+            jobType = JobType.generalContracting
+            vcThemeColor = UIColor(named: "CoolOrange")
+        case "electrical":
+            jobType = JobType.electrical
+            vcThemeColor = UIColor(named: "CoolBlue")
+        case "handyman":
+            jobType = JobType.handyman
+            vcThemeColor = UIColor(named: "UrineYellow")
+        case "interiorDesign":
+            jobType = JobType.interiorDesign
+            vcThemeColor = UIColor(named: "RudeRed")
+        case "homeRenno":
+            jobType = JobType.homeRenovation
+            vcThemeColor = UIColor(named: "PopsiclePurple")
+        case "landscaping":
+            jobType = JobType.landscaping
+            vcThemeColor = UIColor(named: "GrassyGreen")
+        default:
+            print("Something went wrong!")
+        }
+
+        if jobType != selectedJobType {
+            
+            // Updates the theme accross the entire view
+            turnOnButtonColor(sender)
+            updateVCThemeColor()
+            
+            // Turn off the color on the previously selected button
+            turnOffButtonColor(selectedJobTypeButton)
+            
+            // Make the sender/tapped button the new selected button
+            selectedJobTypeButton = sender
+            selectedJobType = jobType
+        }
+    }
     
+    @IBAction func criteriaButtonTapped(_ sender: UIButton) {
+        
+        var criteria: JobCriteria?
+        
+        switch sender.restorationIdentifier {
+        case "team":
+            criteria = JobCriteria.fullTeam
+        case "quality":
+            criteria = JobCriteria.highQuality
+        case "specalized":
+            criteria = JobCriteria.specialized
+        case "fast":
+            criteria = JobCriteria.fast
+        case "experienced":
+            criteria = JobCriteria.experienced
+        case "affordable":
+            criteria = JobCriteria.affordable
+            
+        default:
+            print("something went wrong")
+        }
+        
+        guard let unwrappedCriteria = criteria else { return }
+        if selectedCriterias.contains(unwrappedCriteria) {
+            let index = selectedCriterias.firstIndex(of: unwrappedCriteria)
+            selectedCriterias.remove(at: index!)
+            selectedCriteriaButtons.remove(at: index!)
+            turnOffButtonColor(sender)
+        } else {
+            // If three types are selected, remove the last one and replace it with the new selection
+            if selectedCriterias.count == 3 {
+                turnOffButtonColor(selectedCriteriaButtons[2])
+                selectedCriterias.remove(at: 2)
+                selectedCriteriaButtons.remove(at: 2)
+            }
+            selectedCriterias.append(unwrappedCriteria)
+            selectedCriteriaButtons.append(sender)
+            turnOnButtonColor(sender)
+        }
+    }
+    
+    @IBAction func postButtonTapped(_ sender: UIButton) {
+        
+        guard let title = titleTextField.text, !title.isEmpty,
+            let description = descriptionTextView.text, !description.isEmpty,
+            let jobType = selectedJobType,
+            selectedCriterias.count == 3
+            else { print("Missing info") ; return  }
+        
+        let hourlyPay = Int(paySlider.value)
+        let zipCode = "84041"
+        
+        if (UserController.shared.loggedInUser != nil) {
+            JobListingController.shared.postJobListing(withTitle: title, description: description, jobType: jobType,
+                                                       criteria: selectedCriterias, hourlyPay: hourlyPay,
+                                                       zipCode: zipCode) { (success) in
+                if success {
+                    
+                    self.tabBarController?.selectedIndex = 0
+                    self.resetVC()
+                } else {
+                    print("WompWompWompppp...")
+                }
+            }
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signUpVC = storyboard.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
+            signUpVC.themeColor = vcThemeColor
+            self.present(signUpVC, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func sliderValueChange(_ sender: UISlider) {
+        
+        let currentValue = Int(sender.value)
+        
+        paySliderLabel.text = "$\(currentValue)/hr"
+    }
     
     // MARK: - Functions
     
@@ -184,122 +304,25 @@ class PostViewController: UIViewController {
         postButton.layer.borderColor = UIColor.gray.cgColor
     }
     
-    // MARK: - Actions
-    
-    @IBAction func jobTypeButtonTapped(_ sender: UIButton) {
+    fileprivate func resetVC() {
         
-        var jobType: JobType?
+        vcThemeColor = UIColor.lightGray
+        turnOffButtonColor(selectedJobTypeButton)
+        updateVCThemeColor()
+        let _ = selectedCriteriaButtons.map({ turnOffButtonColor($0) })
         
-        switch sender.restorationIdentifier {
-        case "contracting":
-            jobType = JobType.generalContracting
-            vcThemeColor = UIColor(named: "CoolOrange")
-        case "electrical":
-            jobType = JobType.electrical
-            vcThemeColor = UIColor(named: "CoolBlue")
-        case "handyman":
-            jobType = JobType.handyman
-            vcThemeColor = UIColor(named: "UrineYellow")
-        case "interiorDesign":
-            jobType = JobType.interiorDesign
-            vcThemeColor = UIColor(named: "RudeRed")
-        case "homeRenno":
-            jobType = JobType.homeRenovation
-            vcThemeColor = UIColor(named: "PopsiclePurple")
-        case "landscaping":
-            jobType = JobType.landscaping
-            vcThemeColor = UIColor(named: "GrassyGreen")
-        default:
-            print("Something went wrong!")
-        }
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signUpVC = storyboard.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
-        signUpVC.themeColor = vcThemeColor
-        self.present(signUpVC, animated: true, completion: nil)
-        if jobType != selectedJobType {
-            
-            // Updates the theme accross the entire view
-            turnOnButtonColor(sender)
-            updateVCThemeColor()
-            
-            // Turn off the color on the previously selected button
-            turnOffButtonColor(selectedJobTypeButton)
-            
-            // Make the sender/tapped button the new selected button
-            selectedJobTypeButton = sender
-            selectedJobType = jobType
-        }
-    }
-    
-    @IBAction func criteriaButtonTapped(_ sender: UIButton) {
+        selectedJobType = nil
+        selectedJobTypeButton = nil
         
-        var criteria: JobCriteria?
+        selectedCriterias = []
+        selectedCriteriaButtons = []
         
-        switch sender.restorationIdentifier {
-        case "team":
-            criteria = JobCriteria.fullTeam
-        case "quality":
-            criteria = JobCriteria.highQuality
-        case "specalized":
-            criteria = JobCriteria.specialized
-        case "fast":
-            criteria = JobCriteria.fast
-        case "experienced":
-            criteria = JobCriteria.experienced
-        case "affordable":
-            criteria = JobCriteria.affordable
-            
-        default:
-            print("something went wrong")
-        }
+        titleTextField.text = ""
+        descriptionTextView.text = ""
         
-        guard let unwrappedCriteria = criteria else { return }
-        if selectedCriterias.contains(unwrappedCriteria) {
-            let index = selectedCriterias.firstIndex(of: unwrappedCriteria)
-            selectedCriterias.remove(at: index!)
-            selectedCriteriaButtons.remove(at: index!)
-            turnOffButtonColor(sender)
-        } else {
-            selectedCriterias.append(unwrappedCriteria)
-            selectedCriteriaButtons.append(sender)
-            turnOnButtonColor(sender)
-        }
-    }
-    
-    @IBAction func postButtonTapped(_ sender: UIButton) {
+        paySlider.value = 30
         
-        guard let title = titleTextField.text, !title.isEmpty,
-            let description = descriptionTextView.text, !description.isEmpty,
-            let jobType = selectedJobType,
-            selectedCriterias.count == 3
-            else { print("Missing info") ; return  }
-        
-        let hourlyPay = Int(paySlider.value)
-        let zipCode = "84041"
-        
-        if (UserController.shared.loggedInUser != nil) {
-            JobListingController.shared.postJobListing(withTitle: title, description: description, jobType: jobType,
-                                                       criteria: selectedCriterias, hourlyPay: hourlyPay,
-                                                       zipCode: zipCode) { (success) in
-                if success {
-                    print("Posted:):)")
-                } else {
-                    print("WompWompWompppp...")
-                }
-            }
-        } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let signUpVC = storyboard.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
-            signUpVC.themeColor = vcThemeColor
-            self.present(signUpVC, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func sliderValueChange(_ sender: UISlider) {
-        
-        let currentValue = Int(sender.value)
-        
-        paySliderLabel.text = "$\(currentValue)/hr"
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
 }
 
@@ -316,8 +339,12 @@ extension PostViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         
-//        let rect = CGRect(x: 0, y: 130, width: view.frame.width, height: view.frame.height)
-//        scrollView.scrollRectToVisible(rect, animated: true)
+        let scrollToPoint = Int(descriptionTextView.frame.minY) - 50
+        
+        UIView.animate(withDuration: 0.1) {
+            
+            self.scrollView.contentOffset = CGPoint(x: 0, y: scrollToPoint)
+        }
         
         return true
     }

@@ -36,4 +36,8 @@ struct Constants {
     static let lastNameKey = "lastName"
     static let phoneKey = "phone"
     static let userIDKey = "userID"
+    
+    // MARK: - Notification Names
+    
+    static let jobListingsDidUpdate = NSNotification.Name("jobListingsDidUpdateNotification")
 }
