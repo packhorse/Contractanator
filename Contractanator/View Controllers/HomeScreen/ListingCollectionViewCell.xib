@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,7 +89,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="PopsiclePurple"/>
+                        <color key="backgroundColor" red="0.25431743179999999" green="0.25683542619999999" blue="0.25683542619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gKL-nL-Lt2" secondAttribute="trailing" id="3EV-cJ-uGr"/>
                             <constraint firstItem="gKL-nL-Lt2" firstAttribute="top" secondItem="B1H-g3-cRu" secondAttribute="bottom" constant="43" id="3Yf-bq-wHQ"/>
@@ -120,7 +119,7 @@
             <size key="customSize" width="231" height="281"/>
             <connections>
                 <outlet property="MiddleWhiteViewSquared" destination="j12-H2-kl0" id="FhI-33-fo9"/>
-                <outlet property="customCellUIView" destination="6mX-9C-95C" id="b7U-WA-KA5"/>
+                <outlet property="customCellView" destination="6mX-9C-95C" id="b7U-WA-KA5"/>
                 <outlet property="jobTitleLabel" destination="JK7-hp-nUy" id="3Iv-ZP-zuN"/>
                 <outlet property="posterNameLabel" destination="B1H-g3-cRu" id="BWe-mL-MdZ"/>
                 <outlet property="roundedWhiteViewBottom" destination="gKL-nL-Lt2" id="URs-ri-ya0"/>
@@ -130,8 +129,5 @@
     </objects>
     <resources>
         <image name="Oval" width="12" height="12"/>
-        <namedColor name="PopsiclePurple">
-            <color red="0.57599997520446777" green="0.29899999499320984" blue="0.56099998950958252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

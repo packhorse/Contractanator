@@ -14,7 +14,9 @@ class ListingCollectionViewCell: UICollectionViewCell {
     
     var listing: JobListing? {
         didSet {
-            
+            setCellColor()
+            customUI()
+            setLabels()
         }
     }
     
@@ -23,35 +25,62 @@ class ListingCollectionViewCell: UICollectionViewCell {
     @IBOutlet var posterNameLabel: UILabel!
     @IBOutlet var jobTitleLabel: UILabel!
     
-    
+    func setLabels() {
+        
+        guard let listing = listing else { return }
+        
+        posterNameLabel.text = "\(listing.firstName) \(listing.lastName)"
+        jobTitleLabel.text = listing.title
+    }
     
     // MARK - View Outlets
     
-    @IBOutlet var customCellUIView: UIView!
+    @IBOutlet var customCellView: UIView!
     @IBOutlet var roundedWhiteViewBottom: UIView!
     @IBOutlet var MiddleWhiteViewSquared: UIView!
     
-    
+    // Cell Color
+    var cellColor: UIColor? = nil
     
     override func awakeFromNib() {
         
-        customUI()
-        
     }
+    
+    func setCellColor() {
+        
+        switch listing!.jobType {
+        case .electrical :
+            cellColor = UIColor(named: "CoolBlue")
+        case .generalContracting :
+            cellColor = UIColor(named: "CoolOrange")
+        case .handyman :
+            cellColor = UIColor(named: "UrineYellow")
+        case .interiorDesign :
+            cellColor = UIColor(named: "RudeRed")
+        case .homeRenovation :
+            cellColor = UIColor(named: "PopsiclePurple")
+        case .landscaping :
+            cellColor = UIColor(named: "GrassyGreen")
+        default:
+            
+            print("Something is wrong in the \(#function)")
+        }
+    }
+    
     
     func customUI() {
         
-        
-        customCellUIView.layer.cornerRadius = 22.0
-        customCellUIView.layer.cornerRadius = 22.0
+        customCellView.layer.backgroundColor = cellColor?.cgColor
+        customCellView.layer.cornerRadius = 22.0
+        customCellView.layer.cornerRadius = 22.0
         
         roundedWhiteViewBottom.layer.cornerRadius = 22.0
         
         
-        customCellUIView.layer.shadowColor = UIColor.init(named: "PopsiclePurple")?.cgColor
-        customCellUIView.layer.shadowRadius = 4
-        customCellUIView.layer.shadowOpacity = 1
-        customCellUIView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        customCellView.layer.shadowColor = cellColor?.cgColor
+        customCellView.layer.shadowRadius = 4
+        customCellView.layer.shadowOpacity = 1
+        customCellView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         
     }
