@@ -120,7 +120,6 @@
             <connections>
                 <outlet property="MiddleWhiteViewSquared" destination="j12-H2-kl0" id="FhI-33-fo9"/>
                 <outlet property="customCellView" destination="6mX-9C-95C" id="b7U-WA-KA5"/>
-                <outlet property="descriptionLabel" destination="ETO-vs-zAD" id="YWZ-7o-eoO"/>
                 <outlet property="jobTitleLabel" destination="JK7-hp-nUy" id="3Iv-ZP-zuN"/>
                 <outlet property="posterNameLabel" destination="B1H-g3-cRu" id="BWe-mL-MdZ"/>
                 <outlet property="roundedWhiteViewBottom" destination="gKL-nL-Lt2" id="URs-ri-ya0"/>
