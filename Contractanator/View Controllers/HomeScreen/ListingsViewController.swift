@@ -16,7 +16,8 @@ class ListingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.jobListingsDidUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.jobListingsDidUpdateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.sortedListingsDidUpdateNotification, object: nil)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -38,14 +39,25 @@ class ListingsViewController: UIViewController {
 
 extension ListingsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return JobListingController.shared.jobListings.count
+        
+        if JobListingController.shared.jobTypeFilter == nil {
+            return JobListingController.shared.jobListings.count
+        } else {
+            return JobListingController.shared.sortedListings.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listingCell", for: indexPath) as? ListingCollectionViewCell else { return UICollectionViewCell() }
         
-        let listing = JobListingController.shared.jobListings[indexPath.row]
-
+        var listing: JobListing? = nil
+        
+        if JobListingController.shared.jobTypeFilter == nil {
+            listing = JobListingController.shared.jobListings[indexPath.row]
+        } else {
+            listing = JobListingController.shared.sortedListings[indexPath.row]
+        }
+        
         cell.listing = listing
         
         return cell

@@ -11,28 +11,26 @@ import UIKit
 class SearchScreenViewController: UIViewController {
     
     
-    @IBOutlet var button1: UIButton!
-    @IBOutlet var button2: UIButton!
-    @IBOutlet var button3: UIButton!
-    @IBOutlet var button4: UIButton!
-    @IBOutlet var button5: UIButton!
-    @IBOutlet var button6: UIButton!
-    @IBOutlet var button7: UIButton!
-    @IBOutlet var button8: UIButton!
-    @IBOutlet var button9: UIButton!
-    @IBOutlet var button10: UIButton!
-    @IBOutlet var button11: UIButton!
-    @IBOutlet var button12: UIButton!
-    @IBOutlet var valueNameLabel: UILabel!
-    @IBOutlet var postButton: UIButton!
+    @IBOutlet var jobTypeButton1: UIButton!
+    @IBOutlet var jobTypeButton2: UIButton!
+    @IBOutlet var jobTypeButton3: UIButton!
+    @IBOutlet var jobTypeButton4: UIButton!
+    @IBOutlet var jobTypeButton5: UIButton!
+    @IBOutlet var jobTypeButton6: UIButton!
+    @IBOutlet var criteriaButton1: UIButton!
+    @IBOutlet var criteriaButton2: UIButton!
+    @IBOutlet var criteriaButton3: UIButton!
+    @IBOutlet var criteriaButton4: UIButton!
+    @IBOutlet var criteriaButton5: UIButton!
+    @IBOutlet var criteriaButton6: UIButton!
+    @IBOutlet var paySliderLabel: UILabel!
     @IBOutlet weak var paySlider: UISlider!
-    
-    
-    var selectedJobType: JobType?
+    @IBOutlet var postButton: UIButton!
+
     var selectedJobTypeButton: UIButton?
     var vcThemeColor: UIColor? = UIColor.lightGray
     
-    var selectedCriterias: [JobCriteria] = []
+    var selectedCriterias = JobListingController.shared.jobCriteriaFilter
     var selectedCriteriaButtons: [UIButton] = []
     
     
@@ -44,9 +42,10 @@ class SearchScreenViewController: UIViewController {
     
     
     @IBAction func SliderBar(_ sender: UISlider) {
-        let currentValue = Int(sender.value)
         
-        valueNameLabel.text = "$\(currentValue)/hr"
+        let currentValue = Int(sender.value)
+        JobListingController.shared.minimumPayFilter = currentValue
+        paySliderLabel.text = "$\(currentValue)/hr"
         
     }
     
@@ -96,6 +95,7 @@ class SearchScreenViewController: UIViewController {
     
     
     @IBAction func jobTypeButtonSelected(_ sender: UIButton) {
+        
         var jobType: JobType?
         
         switch sender.restorationIdentifier {
@@ -118,12 +118,11 @@ class SearchScreenViewController: UIViewController {
         case "landscaping":
             jobType = JobType.landscaping
             vcThemeColor = UIColor(named: "GrassyGreen")
-            
         default:
             print("Something went wrong when searching")
         }
         
-        if jobType != selectedJobType {
+        if jobType != JobListingController.shared.jobTypeFilter {
             
             // Updates the theme accross the entire view
             turnOnButtonColor(sender)
@@ -134,7 +133,7 @@ class SearchScreenViewController: UIViewController {
             
             // Make the sender/tapped button the new selected button
             selectedJobTypeButton = sender
-            selectedJobType = jobType
+            JobListingController.shared.jobTypeFilter = jobType
         }
     }
     
@@ -156,11 +155,12 @@ class SearchScreenViewController: UIViewController {
             criteria = JobCriteria.experienced
         case "affordable":
             criteria = JobCriteria.affordable
-            
         default:
             print("something went wrong")
         }
+        
         guard let unwrappedCriteria = criteria else { return }
+        
         if selectedCriterias.contains(unwrappedCriteria) {
             let index = selectedCriterias.firstIndex(of: unwrappedCriteria)
             selectedCriterias.remove(at: index!)
@@ -171,90 +171,63 @@ class SearchScreenViewController: UIViewController {
             selectedCriteriaButtons.append(sender)
             turnOnButtonColor(sender)
         }
-        
     }
-    
-    
-    
-    
-    
     
     func changedUI() {
         
-        button1.layer.cornerRadius = 18.0
-        button1.layer.borderWidth = 1.0
-        button1.layer.borderColor = UIColor.lightGray.cgColor
+        // Buttons
+        jobTypeButton1.layer.cornerRadius = 18.0
+        jobTypeButton1.layer.borderWidth = 1.0
+        jobTypeButton1.layer.borderColor = UIColor.lightGray.cgColor
         
-        button2.layer.cornerRadius = 18.0
-        button2.layer.borderWidth = 1.0
-        button2.layer.borderColor = UIColor.lightGray.cgColor
+        jobTypeButton2.layer.cornerRadius = 18.0
+        jobTypeButton2.layer.borderWidth = 1.0
+        jobTypeButton2.layer.borderColor = UIColor.lightGray.cgColor
         
-        button3.layer.cornerRadius = 18.0
-        button3.layer.borderWidth = 1.0
-        button3.layer.borderColor = UIColor.lightGray.cgColor
+        jobTypeButton3.layer.cornerRadius = 18.0
+        jobTypeButton3.layer.borderWidth = 1.0
+        jobTypeButton3.layer.borderColor = UIColor.lightGray.cgColor
         
-        button4.layer.cornerRadius = 18.0
-        button4.layer.borderWidth = 1.0
-        button4.layer.borderColor = UIColor.lightGray.cgColor
+        jobTypeButton4.layer.cornerRadius = 18.0
+        jobTypeButton4.layer.borderWidth = 1.0
+        jobTypeButton4.layer.borderColor = UIColor.lightGray.cgColor
         
-        button5.layer.cornerRadius = 18.0
-        button5.layer.borderWidth = 1.0
-        button5.layer.borderColor = UIColor.lightGray.cgColor
+        jobTypeButton5.layer.cornerRadius = 18.0
+        jobTypeButton5.layer.borderWidth = 1.0
+        jobTypeButton5.layer.borderColor = UIColor.lightGray.cgColor
         
-        button6.layer.cornerRadius = 18.0
-        button6.layer.borderWidth = 1.0
-        button6.layer.borderColor = UIColor.lightGray.cgColor
+        jobTypeButton6.layer.cornerRadius = 18.0
+        jobTypeButton6.layer.borderWidth = 1.0
+        jobTypeButton6.layer.borderColor = UIColor.lightGray.cgColor
         
-        button7.layer.cornerRadius = 18.0
-        button7.layer.borderWidth = 1.0
-        button7.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton1.layer.cornerRadius = 18.0
+        criteriaButton1.layer.borderWidth = 1.0
+        criteriaButton1.layer.borderColor = UIColor.lightGray.cgColor
         
-        button8.layer.cornerRadius = 18.0
-        button8.layer.borderWidth = 1.0
-        button8.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton2.layer.cornerRadius = 18.0
+        criteriaButton2.layer.borderWidth = 1.0
+        criteriaButton2.layer.borderColor = UIColor.lightGray.cgColor
         
-        button9.layer.cornerRadius = 18.0
-        button9.layer.borderWidth = 1.0
-        button9.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton3.layer.cornerRadius = 18.0
+        criteriaButton3.layer.borderWidth = 1.0
+        criteriaButton3.layer.borderColor = UIColor.lightGray.cgColor
         
-        button10.layer.cornerRadius = 18.0
-        button10.layer.borderWidth = 1.0
-        button10.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton4.layer.cornerRadius = 18.0
+        criteriaButton4.layer.borderWidth = 1.0
+        criteriaButton4.layer.borderColor = UIColor.lightGray.cgColor
         
-        button11.layer.cornerRadius = 18.0
-        button11.layer.borderWidth = 1.0
-        button11.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton5.layer.cornerRadius = 18.0
+        criteriaButton5.layer.borderWidth = 1.0
+        criteriaButton5.layer.borderColor = UIColor.lightGray.cgColor
         
-        button12.layer.cornerRadius = 18.0
-        button12.layer.borderWidth = 1.0
-        button12.layer.borderColor = UIColor.lightGray.cgColor
+        criteriaButton6.layer.cornerRadius = 18.0
+        criteriaButton6.layer.borderWidth = 1.0
+        criteriaButton6.layer.borderColor = UIColor.lightGray.cgColor
         
         postButton.layer.cornerRadius = 21.0
         postButton.layer.borderWidth = 1.0
         postButton.layer.borderColor = UIColor.gray.cgColor
         
         paySlider.tintColor = UIColor.gray
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

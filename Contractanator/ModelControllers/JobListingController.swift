@@ -19,8 +19,33 @@ class JobListingController {
     // Source of truth
     var jobListings = [JobListing]() {
         didSet {
-            sortListings()
-            NotificationCenter.default.post(name: Constants.jobListingsDidUpdate, object: nil)
+            NotificationCenter.default.post(name: Constants.jobListingsDidUpdateNotification, object: nil)
+        }
+    }
+    
+    var sortedListings = [JobListing]() {
+        didSet {
+            NotificationCenter.default.post(name: Constants.sortedListingsDidUpdateNotification, object: nil)
+        }
+    }
+    
+    var myListings = [JobListing]() {
+        didSet {
+            NotificationCenter.default.post(name: Constants.jobListingsDidUpdateNotification, object: nil)
+        }
+    }
+    
+    var jobTypeFilter: JobType? = nil {
+        didSet {
+            sortJobListings()
+        }
+    }
+    
+    var jobCriteriaFilter = [JobCriteria]()
+    
+    var minimumPayFilter: Int = 0 {
+        didSet {
+            sortJobListings()
         }
     }
     
@@ -58,6 +83,7 @@ class JobListingController {
             
             // Add the joblisting to the top of the listings array
             self.jobListings.insert(jobListing, at: 0)
+            self.myListings.insert(jobListing, at: 0)
             completion(true)
         }
     }
@@ -87,7 +113,9 @@ class JobListingController {
         //
     }
     
-    func sortListings() {
+    func sortJobListings() {
         
+        guard let jobTypeFilter = jobTypeFilter else { return }
+        sortedListings = jobListings.filter({$0.jobType == jobTypeFilter}).filter({$0.hourlyPay <= minimumPayFilter})
     }
 }

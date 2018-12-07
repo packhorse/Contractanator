@@ -39,5 +39,7 @@ struct Constants {
     
     // MARK: - Notification Names
     
-    static let jobListingsDidUpdate = NSNotification.Name("jobListingsDidUpdateNotification")
+    static let jobListingsDidUpdateNotification = NSNotification.Name("jobListingsDidUpdateNotification")
+    static let sortedListingsDidUpdateNotification = NSNotification.Name("sortedListingsDidUpdateNotification")
+    static let myListingsDidUpdateNotification = NSNotification.Name("myListingsDidUpdateNotification")
 }

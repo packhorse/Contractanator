@@ -20,7 +20,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="uJz-UG-nzo">
-                        <rect key="frame" x="0.0" y="20" width="320" height="102"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="largeTitleTextAttributes">
@@ -371,21 +371,21 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="fof-S2-9Zw"/>
                     <connections>
-                        <outlet property="button1" destination="4QZ-xn-y9i" id="i8R-QI-FUR"/>
-                        <outlet property="button10" destination="p5G-eM-FIi" id="uco-Te-d5E"/>
-                        <outlet property="button11" destination="oGr-oT-NEb" id="hht-R7-YiV"/>
-                        <outlet property="button12" destination="kEI-Aq-zeE" id="VFA-0c-Lzr"/>
-                        <outlet property="button2" destination="PaG-Cn-yBD" id="KzH-pC-MXw"/>
-                        <outlet property="button3" destination="E5b-PB-naQ" id="Odh-qv-SRQ"/>
-                        <outlet property="button4" destination="Wgc-mW-ihK" id="EfA-aw-gbf"/>
-                        <outlet property="button5" destination="iKl-pa-Fg8" id="tSi-k8-zuZ"/>
-                        <outlet property="button6" destination="Dwn-h3-Iz3" id="dMA-ou-81r"/>
-                        <outlet property="button7" destination="4s3-Uw-Sas" id="rjk-bf-bJY"/>
-                        <outlet property="button8" destination="kaZ-i8-04r" id="qdr-G4-Hxe"/>
-                        <outlet property="button9" destination="AWv-TT-t7T" id="Iu9-fm-iIi"/>
+                        <outlet property="criteriaButton1" destination="4s3-Uw-Sas" id="rjk-bf-bJY"/>
+                        <outlet property="criteriaButton2" destination="kaZ-i8-04r" id="qdr-G4-Hxe"/>
+                        <outlet property="criteriaButton3" destination="AWv-TT-t7T" id="Iu9-fm-iIi"/>
+                        <outlet property="criteriaButton4" destination="p5G-eM-FIi" id="uco-Te-d5E"/>
+                        <outlet property="criteriaButton5" destination="oGr-oT-NEb" id="hht-R7-YiV"/>
+                        <outlet property="criteriaButton6" destination="kEI-Aq-zeE" id="VFA-0c-Lzr"/>
+                        <outlet property="jobTypeButton1" destination="4QZ-xn-y9i" id="i8R-QI-FUR"/>
+                        <outlet property="jobTypeButton2" destination="PaG-Cn-yBD" id="KzH-pC-MXw"/>
+                        <outlet property="jobTypeButton3" destination="E5b-PB-naQ" id="Odh-qv-SRQ"/>
+                        <outlet property="jobTypeButton4" destination="Wgc-mW-ihK" id="EfA-aw-gbf"/>
+                        <outlet property="jobTypeButton5" destination="iKl-pa-Fg8" id="tSi-k8-zuZ"/>
+                        <outlet property="jobTypeButton6" destination="Dwn-h3-Iz3" id="dMA-ou-81r"/>
                         <outlet property="paySlider" destination="WU2-Qq-YAa" id="PoQ-cD-iRN"/>
+                        <outlet property="paySliderLabel" destination="UKh-OX-amR" id="GQq-FY-OAB"/>
                         <outlet property="postButton" destination="BRt-5a-n29" id="INy-jW-g4g"/>
-                        <outlet property="valueNameLabel" destination="UKh-OX-amR" id="GQq-FY-OAB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfX-Ah-pmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
