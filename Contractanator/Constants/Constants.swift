@@ -35,6 +35,7 @@ struct Constants {
     static let firstNameKey = "firstName"
     static let lastNameKey = "lastName"
     static let phoneKey = "phone"
+    static let bioKey = "bio"
     static let userIDKey = "userID"
     
     // MARK: - Notification Names

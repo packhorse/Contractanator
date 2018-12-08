@@ -16,6 +16,7 @@ class ListingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = nil
         NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.jobListingsDidUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.sortedListingsDidUpdateNotification, object: nil)
         

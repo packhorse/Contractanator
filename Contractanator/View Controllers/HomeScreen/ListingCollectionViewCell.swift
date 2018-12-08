@@ -24,6 +24,8 @@ class ListingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var posterNameLabel: UILabel!
     @IBOutlet var jobTitleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var hourlyPayLabel: UILabel!
     
     func setLabels() {
         
@@ -31,6 +33,8 @@ class ListingCollectionViewCell: UICollectionViewCell {
         
         posterNameLabel.text = "\(listing.firstName) \(listing.lastName)"
         jobTitleLabel.text = listing.title
+        descriptionLabel.text = listing.description
+        hourlyPayLabel.text = "$\(listing.hourlyPay)/hr"
     }
     
     // MARK - View Outlets

@@ -158,7 +158,7 @@ class PostViewController: UIViewController {
                                                        zipCode: zipCode) { (success) in
                 if success {
                     
-                    self.tabBarController?.selectedIndex = 0
+                    self.tabBarController?.selectedIndex = 2
                     self.resetVC()
                 } else {
                     print("WompWompWompppp...")
@@ -309,6 +309,7 @@ class PostViewController: UIViewController {
         vcThemeColor = UIColor.lightGray
         turnOffButtonColor(selectedJobTypeButton)
         updateVCThemeColor()
+        navigationController?.navigationBar.barTintColor = UIColor.white
         let _ = selectedCriteriaButtons.map({ turnOffButtonColor($0) })
         
         selectedJobType = nil

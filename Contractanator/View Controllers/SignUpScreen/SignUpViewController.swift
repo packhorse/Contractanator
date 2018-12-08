@@ -12,6 +12,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Properties
     
+    var isFromProfileVC = false
     var themeColor = UIColor(named: "CoolBlue")
 
     // MARK: - Outlets
@@ -22,6 +23,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var confirmPasswordTextfield: UITextField!
     @IBOutlet var signUpButton: UIButton!
@@ -43,6 +45,9 @@ class SignUpViewController: UIViewController {
         // Keyboard show and hide notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIWindow.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        
+        // Keyboard hides on tap geasture
+        self.hideKeyboardWhenTappedAround()
     }
     
     // MARK: - Actions
@@ -50,7 +55,22 @@ class SignUpViewController: UIViewController {
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         
         view.endEditing(true)
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        
+        if isFromProfileVC {
+            if let loginVC = self.presentingViewController as? LogInViewController {
+                self.dismiss(animated: false) {
+                    
+                    loginVC.dismissToHomeVC()
+                }
+            }
+        } else {
+            if let loginVC = self.presentingViewController as? LogInViewController {
+                self.dismiss(animated: false) {
+                    
+                    loginVC.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     
@@ -62,7 +82,7 @@ class SignUpViewController: UIViewController {
     @IBAction func goToLoginButtonTapped(_ sender: UIButton) {
         
         view.endEditing(true)
-        self.presentingViewController?.dismiss(animated: false, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - View Update Functions
@@ -85,9 +105,14 @@ class SignUpViewController: UIViewController {
         setupViewFor(lastNameTextField)
         setupViewFor(usernameTextField)
         setupViewFor(phoneTextField)
+        setupViewFor(bioTextField)
         setupViewFor(emailTextField)
         setupViewFor(passwordTextField)
         setupViewFor(confirmPasswordTextfield)
+        
+        // Bio text field
+        bioTextField.adjustsFontSizeToFitWidth = true
+        bioTextField.minimumFontSize = CGFloat(10)
         
         //SignUpButton
         signUpButton.layer.cornerRadius = signUpButton.frame.height / 2
@@ -109,13 +134,14 @@ class SignUpViewController: UIViewController {
             let lastName = lastNameTextField.text, !lastName.isEmpty,
             let username = usernameTextField.text, !username.isEmpty,
             let phone = phoneTextField.text, !phone.isEmpty,
+            let bio = bioTextField.text, !bio.isEmpty,
             let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty,
             let confirmPassword = confirmPasswordTextfield.text, !confirmPassword.isEmpty,
             password == confirmPassword
             else { view.endEditing(true) ; return }
         
-        UserController.shared.createNewUser(withFirstName: firstName, lastName: lastName, username: username, phone: phone, email: email, password: password) { (success) in
+        UserController.shared.createNewUser(withFirstName: firstName, lastName: lastName, username: username, phone: phone, bio: bio, email: email, password: password) { (success) in
             if success {
                 self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             }
@@ -153,6 +179,8 @@ extension SignUpViewController: UITextFieldDelegate {
         case usernameTextField:
             phoneTextField.becomeFirstResponder()
         case phoneTextField:
+            bioTextField.becomeFirstResponder()
+        case bioTextField:
             emailTextField.becomeFirstResponder()
         case emailTextField:
             passwordTextField.becomeFirstResponder()
