@@ -12,6 +12,7 @@ class LogInViewController: UIViewController {
     
     // MARK: - Properties
     
+    var isFromProfileVC = false
     var themeColor = UIColor(named: "CoolBlue")
     
     // MARK: - Outlets
@@ -33,10 +34,22 @@ class LogInViewController: UIViewController {
     
     // MARK: - Actions
     
+    func dismissToHomeVC() {
+        if let tabBarController = self.presentingViewController as? UITabBarController {
+            self.dismiss(animated: true) {
+                tabBarController.selectedIndex = 0
+            }
+        }
+    }
+    
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         
         self.view.endEditing(true)
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        if self.isFromProfileVC {
+            dismissToHomeVC()
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
@@ -99,6 +112,7 @@ class LogInViewController: UIViewController {
             let destinationVC = segue.destination as! SignUpViewController
             
             destinationVC.themeColor = themeColor
+            destinationVC.isFromProfileVC = isFromProfileVC
         }
     }
 }

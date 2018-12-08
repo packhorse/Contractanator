@@ -25,6 +25,7 @@ class UserController {
                        lastName: String,
                        username: String,
                        phone: String,
+                       bio: String,
                        email: String,
                        password: String,
                        completion: @escaping (Bool) -> Void) {
@@ -36,7 +37,7 @@ class UserController {
                 return
             }
             
-            let newUser = User(firstName: firstName, lastName: lastName, username: username, phone: phone, userID: userID)
+            let newUser = User(firstName: firstName, lastName: lastName, username: username, phone: phone, bio: bio, userID: userID)
             
             FirebaseManager.createUserProfile(withUser: newUser, completion: { (success) in
                 if success {

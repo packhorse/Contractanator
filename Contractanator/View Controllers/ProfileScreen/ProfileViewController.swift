@@ -10,14 +10,17 @@ import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // MARK: - Properties
     
+    var hasPresentedSignInAlready = false
     
+    // MARK: - Outlets
     
-    @IBOutlet var bioTextView: UITextView!
-    
-    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userBioLabel: UILabel!
+    @IBOutlet weak var numberOfListingsLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +41,29 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if presentedViewController == nil {
+            
+            hasPresentedSignInAlready = false
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateViews()
+        if UserController.shared.loggedInUser == nil {
+            if !hasPresentedSignInAlready {
+                let loginVC = storyboard?.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
+                loginVC.isFromProfileVC = true
+                
+                present(loginVC, animated: true, completion: nil)
+                hasPresentedSignInAlready = true
+            }
+        } else {
+            UIChanges()
+        }
     }
     
     
@@ -66,6 +88,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func UIChanges() {
         
+        guard let currentUser = UserController.shared.loggedInUser else { return }
+        
+        nameLabel.text = "\(currentUser.firstName) \(currentUser.lastName)"
+        userBioLabel.text = currentUser.bio
+        numberOfListingsLabel.text = String(JobListingController.shared.myListings.count)
+        phoneLabel.text = currentUser.phone
 //        bioTextView.clipsToBounds = true
 //        bioTextView.layer.cornerRadius = 10.0
 //        bioTextView.layer.borderWidth = 1.0

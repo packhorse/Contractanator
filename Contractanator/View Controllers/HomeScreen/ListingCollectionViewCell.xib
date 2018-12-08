@@ -86,7 +86,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scott Mitchell" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B1H-g3-cRu">
                                 <rect key="frame" x="8" y="8" width="175" height="32"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -120,6 +120,8 @@
             <connections>
                 <outlet property="MiddleWhiteViewSquared" destination="j12-H2-kl0" id="FhI-33-fo9"/>
                 <outlet property="customCellView" destination="6mX-9C-95C" id="b7U-WA-KA5"/>
+                <outlet property="descriptionLabel" destination="ETO-vs-zAD" id="Hfe-xN-gcJ"/>
+                <outlet property="hourlyPayLabel" destination="ITO-2E-CG5" id="rhK-Ex-ZQ9"/>
                 <outlet property="jobTitleLabel" destination="JK7-hp-nUy" id="3Iv-ZP-zuN"/>
                 <outlet property="posterNameLabel" destination="B1H-g3-cRu" id="BWe-mL-MdZ"/>
                 <outlet property="roundedWhiteViewBottom" destination="gKL-nL-Lt2" id="URs-ri-ya0"/>
