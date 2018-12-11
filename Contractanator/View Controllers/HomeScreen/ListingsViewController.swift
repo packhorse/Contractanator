@@ -16,7 +16,6 @@ class ListingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = nil
         NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.jobListingsDidUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.sortedListingsDidUpdateNotification, object: nil)
         
@@ -41,7 +40,9 @@ class ListingsViewController: UIViewController {
 extension ListingsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if JobListingController.shared.jobTypeFilter == nil {
+        if JobListingController.shared.jobTypeFilter == nil &&
+            JobListingController.shared.jobCriteriaFilters.count == 0 &&
+            JobListingController.shared.maxBudgetHourlyPayFilter == Constants.maxPaySliderAmount {
             return JobListingController.shared.jobListings.count
         } else {
             return JobListingController.shared.sortedListings.count
@@ -53,7 +54,9 @@ extension ListingsViewController: UICollectionViewDataSource, UICollectionViewDe
         
         var listing: JobListing? = nil
         
-        if JobListingController.shared.jobTypeFilter == nil {
+        if JobListingController.shared.jobTypeFilter == nil &&
+            JobListingController.shared.jobCriteriaFilters.count == 0 &&
+            JobListingController.shared.maxBudgetHourlyPayFilter == Constants.maxPaySliderAmount {
             listing = JobListingController.shared.jobListings[indexPath.row]
         } else {
             listing = JobListingController.shared.sortedListings[indexPath.row]

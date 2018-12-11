@@ -23,28 +23,28 @@ class PostViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet var titleTextField: UITextField!
-    @IBOutlet var descriptionTextView: UITextView!
-    @IBOutlet var jobTypeButton1: UIButton!
-    @IBOutlet var jobTypeButton2: UIButton!
-    @IBOutlet var jobTypeButton3: UIButton!
-    @IBOutlet var jobTypeButton4: UIButton!
-    @IBOutlet var jobTypeButton5: UIButton!
-    @IBOutlet var jobTypeButton6: UIButton!
-    @IBOutlet var criteriaButton1: UIButton!
-    @IBOutlet var criteriaButton2: UIButton!
-    @IBOutlet var criteriaButton3: UIButton!
-    @IBOutlet var criteriaButton4: UIButton!
-    @IBOutlet var criteriaButton5: UIButton!
-    @IBOutlet var criteriaButton6: UIButton!
-    @IBOutlet var postButton: UIButton!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var jobTypeButton1: UIButton!
+    @IBOutlet weak var jobTypeButton2: UIButton!
+    @IBOutlet weak var jobTypeButton3: UIButton!
+    @IBOutlet weak var jobTypeButton4: UIButton!
+    @IBOutlet weak var jobTypeButton5: UIButton!
+    @IBOutlet weak var jobTypeButton6: UIButton!
+    @IBOutlet weak var criteriaButton1: UIButton!
+    @IBOutlet weak var criteriaButton2: UIButton!
+    @IBOutlet weak var criteriaButton3: UIButton!
+    @IBOutlet weak var criteriaButton4: UIButton!
+    @IBOutlet weak var criteriaButton5: UIButton!
+    @IBOutlet weak var criteriaButton6: UIButton!
     @IBOutlet weak var paySliderLabel: UILabel!
-    @IBOutlet var paySlider: UISlider!
+    @IBOutlet weak var paySlider: UISlider!
+    @IBOutlet weak var postButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIChanges()
+        updateUI()
         self.hideKeyboardWhenTappedAround()
         
         // Delegates
@@ -65,22 +65,22 @@ class PostViewController: UIViewController {
         switch sender.restorationIdentifier {
         case "contracting":
             jobType = JobType.generalContracting
-            vcThemeColor = UIColor(named: "CoolOrange")
+            vcThemeColor = UIColor(named: Constants.coolOrange)
         case "electrical":
             jobType = JobType.electrical
-            vcThemeColor = UIColor(named: "CoolBlue")
+            vcThemeColor = UIColor(named: Constants.coolBlue)
         case "handyman":
             jobType = JobType.handyman
-            vcThemeColor = UIColor(named: "UrineYellow")
+            vcThemeColor = UIColor(named: Constants.urineYellow)
         case "interiorDesign":
             jobType = JobType.interiorDesign
-            vcThemeColor = UIColor(named: "RudeRed")
+            vcThemeColor = UIColor(named: Constants.rudeRed)
         case "homeRenno":
             jobType = JobType.homeRenovation
-            vcThemeColor = UIColor(named: "PopsiclePurple")
+            vcThemeColor = UIColor(named: Constants.popsiclePurple)
         case "landscaping":
             jobType = JobType.landscaping
-            vcThemeColor = UIColor(named: "GrassyGreen")
+            vcThemeColor = UIColor(named: Constants.grassyGreen)
         default:
             print("Something went wrong!")
         }
@@ -200,7 +200,7 @@ class PostViewController: UIViewController {
         button.backgroundColor = UIColor.white
         button.setTitleColor(UIColor.darkGray, for: .normal)
         button.layer.shadowColor = UIColor.white.cgColor
-        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.borderColor = UIColor.lightGray.cgColor
         
         if button != selectedJobTypeButton {
             
@@ -220,7 +220,7 @@ class PostViewController: UIViewController {
         postButton.setTitleColor(UIColor.white, for: .normal)
     }
     
-    fileprivate func UIChanges() {
+    fileprivate func updateUI() {
         
         // Title Text Field
         titleTextField.layer.cornerRadius = 21.0
@@ -237,32 +237,32 @@ class PostViewController: UIViewController {
         // Buttons
         jobTypeButton1.layer.cornerRadius = 18.0
         jobTypeButton1.layer.borderWidth = 1.0
-        jobTypeButton1.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton1.layer.borderColor = UIColor.lightGray.cgColor
         jobTypeButton1.titleLabel?.adjustsFontSizeToFitWidth = true
         
         jobTypeButton2.layer.cornerRadius = 18.0
         jobTypeButton2.layer.borderWidth = 1.0
-        jobTypeButton2.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton2.layer.borderColor = UIColor.lightGray.cgColor
         jobTypeButton2.titleLabel?.adjustsFontSizeToFitWidth = true
         
         jobTypeButton3.layer.cornerRadius = 18.0
         jobTypeButton3.layer.borderWidth = 1.0
-        jobTypeButton3.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton3.layer.borderColor = UIColor.lightGray.cgColor
         jobTypeButton3.titleLabel?.adjustsFontSizeToFitWidth = true
         
         jobTypeButton4.layer.cornerRadius = 18.0
         jobTypeButton4.layer.borderWidth = 1.0
-        jobTypeButton4.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton4.layer.borderColor = UIColor.lightGray.cgColor
         jobTypeButton4.titleLabel?.adjustsFontSizeToFitWidth = true
         
         jobTypeButton5.layer.cornerRadius = 18.0
         jobTypeButton5.layer.borderWidth = 1.0
-        jobTypeButton5.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton5.layer.borderColor = UIColor.lightGray.cgColor
         jobTypeButton5.titleLabel?.adjustsFontSizeToFitWidth = true
         
         jobTypeButton6.layer.cornerRadius = 18.0
         jobTypeButton6.layer.borderWidth = 1.0
-        jobTypeButton6.layer.borderColor = UIColor.gray.cgColor
+        jobTypeButton6.layer.borderColor = UIColor.lightGray.cgColor
         jobTypeButton6.titleLabel?.adjustsFontSizeToFitWidth = true
         
         criteriaButton1.layer.cornerRadius = 18.0
@@ -296,12 +296,12 @@ class PostViewController: UIViewController {
         criteriaButton6.titleLabel?.adjustsFontSizeToFitWidth = true
         
         // Pay Slider
-        paySlider.tintColor = UIColor.gray
+        paySlider.tintColor = UIColor.lightGray
         
         // Post Button
         postButton.layer.cornerRadius = 24.0
         postButton.layer.borderWidth = 1.0
-        postButton.layer.borderColor = UIColor.gray.cgColor
+        postButton.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     fileprivate func resetVC() {

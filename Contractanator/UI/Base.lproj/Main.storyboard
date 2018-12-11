@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -366,16 +365,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="PD5-EL-YHR">
-                                <rect key="frame" x="16" y="132" width="382" height="117.66666666666669"/>
+                                <rect key="frame" x="20" y="132" width="374" height="117.66666666666669"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRd-ed-HBa">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRd-ed-HBa">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vga-uY-7tE">
-                                        <rect key="frame" x="0.0" y="50" width="382" height="19.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="19.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nhi-iG-34w">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="19.333333333333332"/>
@@ -384,16 +383,16 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" axis="vertical" distribution="fillEqually" spacing="-16" translatesAutoresizingMaskIntoConstraints="NO" id="FBq-nk-AkR">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="19.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="19.333333333333332"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-b2-KNV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="17.666666666666668"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17.666666666666668"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="27"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="t2p-hy-o3b">
-                                                        <rect key="frame" x="0.0" y="1.6666666666666572" width="382" height="17.666666666666668"/>
+                                                        <rect key="frame" x="0.0" y="1.6666666666666572" width="374" height="17.666666666666668"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -401,6 +400,10 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="FBq-nk-AkR" secondAttribute="bottom" constant="-3.5527136788005009e-15" id="6Ap-fz-8pq"/>
+                                            <constraint firstItem="FBq-nk-AkR" firstAttribute="top" secondItem="vga-uY-7tE" secondAttribute="top" id="7iY-Di-Bqq"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-HC-ZXF">
                                         <rect key="frame" x="0.0" y="69.333333333333343" width="104.66666666666667" height="48.333333333333343"/>
@@ -421,8 +424,12 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="vga-uY-7tE" firstAttribute="top" secondItem="hRd-ed-HBa" secondAttribute="bottom" id="C42-uN-NmN"/>
+                                    <constraint firstAttribute="trailing" secondItem="hRd-ed-HBa" secondAttribute="trailing" id="Cvv-FD-weG"/>
                                     <constraint firstAttribute="trailing" secondItem="vga-uY-7tE" secondAttribute="trailing" id="FPR-Cx-Rjs"/>
+                                    <constraint firstItem="hA2-HC-ZXF" firstAttribute="top" secondItem="vga-uY-7tE" secondAttribute="bottom" id="Ygi-7Z-lyH"/>
                                     <constraint firstItem="vga-uY-7tE" firstAttribute="leading" secondItem="PD5-EL-YHR" secondAttribute="leading" id="c4P-mx-5pz"/>
+                                    <constraint firstItem="hRd-ed-HBa" firstAttribute="leading" secondItem="PD5-EL-YHR" secondAttribute="leading" id="yhu-6P-HJF"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-h1-ulI" userLabel="separatorLine">
@@ -447,7 +454,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PD5-EL-YHR" firstAttribute="top" secondItem="xcF-jI-to1" secondAttribute="top" constant="16" id="5Su-qX-8lF"/>
-                            <constraint firstItem="xcF-jI-to1" firstAttribute="trailing" secondItem="PD5-EL-YHR" secondAttribute="trailing" constant="16" id="RES-wQ-rn7"/>
+                            <constraint firstItem="xcF-jI-to1" firstAttribute="trailing" secondItem="PD5-EL-YHR" secondAttribute="trailing" constant="20" id="RES-wQ-rn7"/>
                             <constraint firstItem="xcF-jI-to1" firstAttribute="top" secondItem="tLf-h1-ulI" secondAttribute="top" multiplier="0.45" id="TZM-c8-Q8Y"/>
                             <constraint firstItem="tLf-h1-ulI" firstAttribute="top" secondItem="PD5-EL-YHR" secondAttribute="bottom" constant="8" id="VJS-lO-rvz"/>
                             <constraint firstItem="xcF-jI-to1" firstAttribute="bottom" secondItem="F9j-kg-U6p" secondAttribute="bottom" id="VN3-bX-JGO"/>
@@ -455,7 +462,7 @@
                             <constraint firstAttribute="trailing" secondItem="tLf-h1-ulI" secondAttribute="trailing" id="ecK-3O-2wt"/>
                             <constraint firstItem="F9j-kg-U6p" firstAttribute="leading" secondItem="xcF-jI-to1" secondAttribute="leading" id="ick-B4-QuU"/>
                             <constraint firstItem="xcF-jI-to1" firstAttribute="trailing" secondItem="F9j-kg-U6p" secondAttribute="trailing" id="o1l-9s-xvx"/>
-                            <constraint firstItem="PD5-EL-YHR" firstAttribute="leading" secondItem="xcF-jI-to1" secondAttribute="leading" constant="16" id="pj3-e0-ccV"/>
+                            <constraint firstItem="PD5-EL-YHR" firstAttribute="leading" secondItem="xcF-jI-to1" secondAttribute="leading" constant="20" id="pj3-e0-ccV"/>
                             <constraint firstItem="tLf-h1-ulI" firstAttribute="leading" secondItem="jqd-zH-5dw" secondAttribute="leading" id="vWN-um-G8b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xcF-jI-to1"/>

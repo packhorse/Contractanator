@@ -10,6 +10,8 @@
 		A604682021B71043007CC24A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A604681F21B71043007CC24A /* GoogleService-Info.plist */; };
 		A604682221B71476007CC24A /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A604682121B71476007CC24A /* FirebaseManager.swift */; };
 		A6070E9821B6EDC800609F63 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6070E9721B6EDC800609F63 /* LocationManager.swift */; };
+		A6FBF1AD21C0349300671E01 /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FBF1AB21C0349300671E01 /* ListingDetailViewController.swift */; };
+		A6FBF1AE21C0349300671E01 /* ListingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FBF1AC21C0349300671E01 /* ListingDetailViewController.xib */; };
 		A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD73E21B5D8BE00E71713 /* Constants.swift */; };
 		A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */; };
 		A6FDD74321B5D8D600E71713 /* JobListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD74221B5D8D600E71713 /* JobListing.swift */; };
@@ -41,6 +43,8 @@
 		A604681F21B71043007CC24A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A604682121B71476007CC24A /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		A6070E9721B6EDC800609F63 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A6FBF1AB21C0349300671E01 /* ListingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
+		A6FBF1AC21C0349300671E01 /* ListingDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListingDetailViewController.xib; sourceTree = "<group>"; };
 		A6FDD73E21B5D8BE00E71713 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6FDD74021B5D8C800E71713 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
 		A6FDD74221B5D8D600E71713 /* JobListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListing.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 				A6070E9721B6EDC800609F63 /* LocationManager.swift */,
 			);
 			path = CoreLocation;
+			sourceTree = "<group>";
+		};
+		A6FBF1AA21C0342300671E01 /* ListingDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A6FBF1AB21C0349300671E01 /* ListingDetailViewController.swift */,
+				A6FBF1AC21C0349300671E01 /* ListingDetailViewController.xib */,
+			);
+			path = ListingDetailScreen;
 			sourceTree = "<group>";
 		};
 		A6FDD73821B5D66B00E71713 /* Models */ = {
@@ -196,6 +209,7 @@
 				B84A27D521B074200008178D /* LogInScreen */,
 				B84A27D621B074280008178D /* SignUpScreen */,
 				B84A27D721B074530008178D /* HomeScreen */,
+				A6FBF1AA21C0342300671E01 /* ListingDetailScreen */,
 				B84A27DA21B0749A0008178D /* SearchScreen */,
 				B80FC51E21B0ADE800DB82AD /* PostScreen */,
 				B84A27DD21B0801F0008178D /* ProfileScreen */,
@@ -323,6 +337,7 @@
 				B8DB34E521ADD2C1008ECADE /* LaunchScreen.storyboard in Resources */,
 				B8DB34E221ADD2C1008ECADE /* Assets.xcassets in Resources */,
 				B8DB34E021ADD2BC008ECADE /* Main.storyboard in Resources */,
+				A6FBF1AE21C0349300671E01 /* ListingDetailViewController.xib in Resources */,
 				B84A27E021B089E50008178D /* Post.storyboard in Resources */,
 				B8A85D7F21AF56B100F03BCE /* ListingCollectionViewCell.xib in Resources */,
 				A604682021B71043007CC24A /* GoogleService-Info.plist in Resources */,
@@ -433,6 +448,7 @@
 				B84A27DC21B080160008178D /* ProfileViewController.swift in Sources */,
 				A6FDD74921B5D92900E71713 /* UserController.swift in Sources */,
 				B84A27D921B074940008178D /* SearchScreenViewController.swift in Sources */,
+				A6FBF1AD21C0349300671E01 /* ListingDetailViewController.swift in Sources */,
 				B8DB34DB21ADD2BC008ECADE /* AppDelegate.swift in Sources */,
 				A604682221B71476007CC24A /* FirebaseManager.swift in Sources */,
 			);

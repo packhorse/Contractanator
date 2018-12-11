@@ -41,9 +41,13 @@ class JobListingController {
         }
     }
     
-    var jobCriteriaFilter = [JobCriteria]()
+    var jobCriteriaFilters = [JobCriteria]() {
+        didSet {
+            sortJobListings()
+        }
+    }
     
-    var minimumPayFilter: Int = 0 {
+    var maxBudgetHourlyPayFilter: Int = Constants.maxPaySliderAmount {
         didSet {
             sortJobListings()
         }
@@ -115,8 +119,34 @@ class JobListingController {
     
     func sortJobListings() {
         
-        guard let jobTypeFilter = jobTypeFilter else { return }
-        sortedListings = jobListings.filter({$0.jobType == jobTypeFilter}).filter({$0.hourlyPay <= minimumPayFilter})
+        var sortedListingsPlaceholder = jobListings.filter({$0.hourlyPay <= maxBudgetHourlyPayFilter})
+        
+        sortedListings = sortedListingsPlaceholder
+        
+        if jobCriteriaFilters.count > 0 {
+            sortedListingsPlaceholder = sortedListingsPlaceholder.sorted(by: { (a, b) -> Bool in
+                
+                var counterA = 0
+                var counterB = 0
+                
+                for criteriaFilter in jobCriteriaFilters {
+                    if a.criteria.contains(criteriaFilter) {
+                        counterA += 1
+                    }
+                    if b.criteria.contains(criteriaFilter) {
+                        counterB += 1
+                    }
+                }
+                
+                return counterA >= counterB
+            })
+        }
+        
+        if let jobTypeFilter = jobTypeFilter {
+            sortedListings = sortedListingsPlaceholder.filter({$0.jobType == jobTypeFilter})
+        } else {
+            sortedListings = sortedListingsPlaceholder
+        }
     }
     
     func getMyListings() {

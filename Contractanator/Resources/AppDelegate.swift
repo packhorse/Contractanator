@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [START default_firestore]
         FirebaseApp.configure()
         
-        let db = Firestore.firestore()
+        let _ = Firestore.firestore()
         // [END default_firestore]
         
         // Fetch the logged in user

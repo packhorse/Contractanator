@@ -43,4 +43,16 @@ struct Constants {
     static let jobListingsDidUpdateNotification = NSNotification.Name("jobListingsDidUpdateNotification")
     static let sortedListingsDidUpdateNotification = NSNotification.Name("sortedListingsDidUpdateNotification")
     static let myListingsDidUpdateNotification = NSNotification.Name("myListingsDidUpdateNotification")
+    
+    // MARK: - UIColor Asset Names
+    
+    static let coolBlue = "CoolBlue"
+    static let coolOrange = "CoolOrange"
+    static let grassyGreen = "GrassyGreen"
+    static let popsiclePurple = "PopsiclePurple"
+    static let rudeRed = "RudeRed"
+    static let urineYellow = "UrineYellow"
+
+    // MARK: - Maximum Slider Amount
+    static let maxPaySliderAmount = 200
 }

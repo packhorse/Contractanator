@@ -42,9 +42,6 @@ class FirebaseManager {
                 return
             }
             
-            // Unwrap the authResult and get the userID off of it
-            guard let firebaseUser = authResult?.user else { completion(nil) ; return }
-            
             // Fetch the user profile and pass in the completion
             fetchCurrentUserProfile(completion: completion)
         }

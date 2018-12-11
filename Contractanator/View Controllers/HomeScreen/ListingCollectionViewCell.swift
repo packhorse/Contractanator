@@ -53,21 +53,18 @@ class ListingCollectionViewCell: UICollectionViewCell {
     func setCellColor() {
         
         switch listing!.jobType {
-        case .electrical :
-            cellColor = UIColor(named: "CoolBlue")
         case .generalContracting :
-            cellColor = UIColor(named: "CoolOrange")
+            cellColor = UIColor(named: Constants.coolOrange)
+        case .electrical :
+            cellColor = UIColor(named: Constants.coolBlue)
         case .handyman :
-            cellColor = UIColor(named: "UrineYellow")
+            cellColor = UIColor(named: Constants.urineYellow)
         case .interiorDesign :
-            cellColor = UIColor(named: "RudeRed")
+            cellColor = UIColor(named: Constants.rudeRed)
         case .homeRenovation :
-            cellColor = UIColor(named: "PopsiclePurple")
+            cellColor = UIColor(named: Constants.popsiclePurple)
         case .landscaping :
-            cellColor = UIColor(named: "GrassyGreen")
-        default:
-            
-            print("Something is wrong in the \(#function)")
+            cellColor = UIColor(named: Constants.grassyGreen)
         }
     }
     
