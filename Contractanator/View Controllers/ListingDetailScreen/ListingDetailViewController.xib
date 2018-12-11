@@ -91,11 +91,19 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSn-a4-lcK">
+                    <rect key="frame" x="16" y="621" width="96" height="30"/>
+                    <state key="normal" title="Report Listing">
+                        <color key="titleColor" name="RudeRed"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="poF-lO-eab" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AEa-8P-pgx"/>
                 <constraint firstItem="HW1-lG-VaU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="COK-xf-6pZ"/>
+                <constraint firstItem="NSn-a4-lcK" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-16" id="N1e-fW-j7U"/>
+                <constraint firstItem="NSn-a4-lcK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="PgJ-Lx-nEk"/>
                 <constraint firstItem="HW1-lG-VaU" firstAttribute="top" secondItem="poF-lO-eab" secondAttribute="bottom" constant="20" id="V8A-cn-2Fb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="cOx-7R-n41" secondAttribute="top" constant="16" id="YSH-lw-8FS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HW1-lG-VaU" secondAttribute="trailing" constant="20" id="ars-rd-KuT"/>
@@ -107,10 +115,18 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OKW-xE-iJT">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Button"/>
+        </button>
     </objects>
     <resources>
         <namedColor name="CoolBlue">
             <color red="0.094117647058823528" green="0.6705882352941176" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RudeRed">
+            <color red="0.99599999189376831" green="0.31700000166893005" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
