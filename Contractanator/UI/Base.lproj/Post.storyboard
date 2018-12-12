@@ -23,8 +23,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="na8-As-VLf" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="376" height="932"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell the community about your skills. When people search for your speciality, we will show them your information." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nOT-fx-eCD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nOT-fx-eCD">
                                                 <rect key="frame" x="32.5" y="24" width="311" height="60"/>
+                                                <string key="text">Tell the community about your skills. When people search for your speciality, we will show them your information, including a way to contact you using the phone number on your profile.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

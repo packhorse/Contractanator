@@ -12,7 +12,6 @@ class ListingsViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +29,10 @@ class ListingsViewController: UIViewController {
         // Register the nib as the cell on our collection view
         collectionView.register(collectionViewNib, forCellWithReuseIdentifier: "listingCell")
         
+    }
+    @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
+        
+        JobListingController.shared.fetchAllJobListings { (_) in }
     }
     
     @objc func updateViews() {

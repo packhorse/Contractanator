@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -96,7 +95,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfc-nb-HhS">
                                         <rect key="frame" x="0.0" y="56" width="331.33333333333331" height="40"/>
@@ -438,7 +437,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNP-Pc-R5Y">
                                                 <rect key="frame" x="54.666666666666671" y="0.0" width="50" height="48.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                <color key="textColor" name="CoolBlue"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -489,7 +488,7 @@
                         <viewLayoutGuide key="safeArea" id="xcF-jI-to1"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="rCe-xY-fC9">
-                        <barButtonItem key="rightBarButtonItem" image="SettingsIcon" id="GlR-CA-meO">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="GlR-CA-meO">
                             <color key="tintColor" red="0.60783725980000003" green="0.60783916709999997" blue="0.60784339899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="settingsButtonTapped:" destination="QqP-V7-Ib5" id="m8i-QG-du2"/>
@@ -576,10 +575,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SettingsIcon" width="72" height="72"/>
         <image name="UserForContractorApp" width="20" height="22"/>
-        <namedColor name="CoolBlue">
-            <color red="0.094117647058823528" green="0.6705882352941176" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

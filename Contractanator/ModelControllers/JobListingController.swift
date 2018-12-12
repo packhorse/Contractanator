@@ -107,7 +107,7 @@ class JobListingController {
             
             let listings = listingDocs.compactMap({ JobListing(withDict: $0.data()) })
             
-            self.jobListings = listings.sorted(by: { $0.jobType.rawValue < $1.jobType.rawValue })
+            self.jobListings = listings.sorted(by: { $0.timestamp > $1.timestamp })
             completion(true)
         }
     }
