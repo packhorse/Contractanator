@@ -33,12 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        
-
-        
         return true
     }
-
-
 }
 
+extension AppDelegate: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        if viewController == tabBarController.viewControllers?[2] {
+            if UserController.shared.loggedInUser == nil {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
+                tabBarController.present(loginVC, animated: true, completion: nil)
+                return false
+            }
+        }
+        return true
+    }
+}

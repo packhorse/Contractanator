@@ -12,7 +12,6 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Properties
     
-    var isFromProfileVC = false
     var themeColor = UIColor(named: "CoolBlue")
 
     // MARK: - Outlets
@@ -20,27 +19,37 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet var usernameTextField: UITextField!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var phone1TextField: UITextField!
+    @IBOutlet weak var phone2TextField: UITextField!
+    @IBOutlet weak var phone3TextField: UITextField!
     @IBOutlet weak var bioTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var confirmPasswordTextfield: UITextField!
-    @IBOutlet var signUpButton: UIButton!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextfield: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIChanges()
         
         // Delegates
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         usernameTextField.delegate = self
         emailTextField.delegate = self
-        phoneTextField.delegate = self
+        phone1TextField.delegate = self
+        phone2TextField.delegate = self
+        phone3TextField.delegate = self
+        bioTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextfield.delegate = self
 
-        UIChanges()
+        // Listen to certain TextFields
+        phone1TextField.addTarget(self, action: #selector(advanceFirstResponder(_:)), for: .editingChanged)
+        phone2TextField.addTarget(self, action: #selector(advanceFirstResponder(_:)), for: .editingChanged)
+        phone3TextField.addTarget(self, action: #selector(advanceFirstResponder(_:)), for: .editingChanged)
         
         // Keyboard show and hide notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIWindow.keyboardDidShowNotification, object: nil)
@@ -56,21 +65,8 @@ class SignUpViewController: UIViewController {
         
         view.endEditing(true)
         
-        if isFromProfileVC {
-            if let loginVC = self.presentingViewController as? LogInViewController {
-                self.dismiss(animated: false) {
-                    
-                    loginVC.dismissToHomeVC()
-                }
-            }
-        } else {
-            if let loginVC = self.presentingViewController as? LogInViewController {
-                self.dismiss(animated: false) {
-                    
-                    loginVC.dismiss(animated: true, completion: nil)
-                }
-            }
-        }
+        presentingViewController?.dismiss(animated: false, completion: nil)
+        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     
@@ -104,7 +100,9 @@ class SignUpViewController: UIViewController {
         setupViewFor(firstNameTextField)
         setupViewFor(lastNameTextField)
         setupViewFor(usernameTextField)
-        setupViewFor(phoneTextField)
+        setupViewFor(phone1TextField)
+        setupViewFor(phone2TextField)
+        setupViewFor(phone3TextField)
         setupViewFor(bioTextField)
         setupViewFor(emailTextField)
         setupViewFor(passwordTextField)
@@ -133,7 +131,9 @@ class SignUpViewController: UIViewController {
         guard let firstName = firstNameTextField.text, !firstName.isEmpty,
             let lastName = lastNameTextField.text, !lastName.isEmpty,
             let username = usernameTextField.text, !username.isEmpty,
-            let phone = phoneTextField.text, !phone.isEmpty,
+            let phone1 = phone1TextField.text, !phone1.isEmpty,
+            let phone2 = phone2TextField.text, !phone2.isEmpty,
+            let phone3 = phone3TextField.text, !phone3.isEmpty,
             let bio = bioTextField.text, !bio.isEmpty,
             let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty,
@@ -141,10 +141,53 @@ class SignUpViewController: UIViewController {
             password == confirmPassword
             else { view.endEditing(true) ; return }
         
+        let phone = phone1 + phone2 + phone3
+        
         UserController.shared.createNewUser(withFirstName: firstName, lastName: lastName, username: username, phone: phone, bio: bio, email: email, password: password) { (success) in
             if success {
-                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                
+                self.view.endEditing(true)
+                
+                let tabBarVC = self.presentingViewController?.presentingViewController as! UITabBarController
+                let navCont = tabBarVC.selectedViewController as! UINavigationController
+                
+                if !(navCont.viewControllers[0] is PostViewController) {
+                    tabBarVC.selectedIndex = 2
+                } else {
+                    let postVC = navCont.viewControllers[0] as? PostViewController
+                    if postVC?.attemptedPost == false {
+                        tabBarVC.selectedIndex = 2
+                    }
+                }
+                self.dismiss(animated: false, completion: nil)
+                
+                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
             }
+        }
+    }
+    
+    // MARK: - PhoneTextField Auto Advance
+    
+    @objc func advanceFirstResponder(_ textField: UITextField) {
+        
+        guard let text = textField.text else { return }
+        let count = text.count
+        
+        switch textField {
+        case phone1TextField:
+            if count == 3 {
+                phone2TextField.becomeFirstResponder()
+            }
+        case phone2TextField:
+            if count == 3 {
+                phone3TextField.becomeFirstResponder()
+            }
+        case phone3TextField:
+            if count == 4 {
+                bioTextField.becomeFirstResponder()
+            }
+        default:
+            break
         }
     }
     
@@ -177,8 +220,12 @@ extension SignUpViewController: UITextFieldDelegate {
         case lastNameTextField:
             usernameTextField.becomeFirstResponder()
         case usernameTextField:
-            phoneTextField.becomeFirstResponder()
-        case phoneTextField:
+            phone1TextField.becomeFirstResponder()
+        case phone1TextField:
+            phone2TextField.becomeFirstResponder()
+        case phone2TextField:
+            phone3TextField.becomeFirstResponder()
+        case phone3TextField:
             bioTextField.becomeFirstResponder()
         case bioTextField:
             emailTextField.becomeFirstResponder()
@@ -190,6 +237,59 @@ extension SignUpViewController: UITextFieldDelegate {
             attemptSignUp()
         default:
             view.endEditing(true)
+        }
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        switch textField {
+        case firstNameTextField:
+            firstNameTextField.text = firstNameTextField.text?.trimmingCharacters(in: .whitespaces)
+        case lastNameTextField:
+            lastNameTextField.text = lastNameTextField.text?.trimmingCharacters(in: .whitespaces)
+        case usernameTextField:
+            usernameTextField.text = usernameTextField.text?.trimmingCharacters(in: .whitespaces)
+        case phone1TextField:
+            phone1TextField.text = phone1TextField.text?.trimmingCharacters(in: .whitespaces)
+        case phone2TextField:
+            phone2TextField.text = phone2TextField.text?.trimmingCharacters(in: .whitespaces)
+        case phone3TextField:
+            phone3TextField.text = phone3TextField.text?.trimmingCharacters(in: .whitespaces)
+        case bioTextField:
+            bioTextField.text = bioTextField.text?.trimmingCharacters(in: .whitespaces)
+        case emailTextField:
+            emailTextField.text = emailTextField.text?.trimmingCharacters(in: .whitespaces)
+        default:
+            break
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let text = textField.text else { return true }
+        let count = text.count + string.count - range.length
+        
+        switch textField {
+        case firstNameTextField:
+            break
+        case lastNameTextField:
+            break
+        case usernameTextField:
+            break
+        case phone1TextField:
+            return count <= 3
+        case phone2TextField:
+            return count <= 3
+        case phone3TextField:
+            return count <= 4
+        case bioTextField:
+            break
+        case emailTextField:
+            break
+        default:
+            break
         }
         
         return true

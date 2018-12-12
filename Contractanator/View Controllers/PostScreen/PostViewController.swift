@@ -12,6 +12,8 @@ class PostViewController: UIViewController {
     
     // MARK: - Properties
     
+    var attemptedPost = false
+    
     // These variables change based on the selection by the user
     var selectedJobType: JobType?
     var selectedJobTypeButton: UIButton?
@@ -169,6 +171,7 @@ class PostViewController: UIViewController {
             let signUpVC = storyboard.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
             signUpVC.themeColor = vcThemeColor
             self.present(signUpVC, animated: true, completion: nil)
+            attemptedPost = true
         }
     }
     
@@ -322,6 +325,7 @@ class PostViewController: UIViewController {
         descriptionTextView.text = ""
         
         paySlider.value = 30
+        paySliderLabel.text = "$\(Int(paySlider.value))/hr"
         
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
@@ -398,6 +402,7 @@ extension UITextField {
         self.leftViewMode = .always
         
     }
+    
     func setRightPaddingPoints(_ amount:CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.rightView = paddingView

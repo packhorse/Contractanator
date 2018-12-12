@@ -112,11 +112,6 @@ class JobListingController {
         }
     }
     
-    func fetchJobListings(ofJobType jobType: JobType, criteria: [JobCriteria], minHourlyPay: Int, completion: @escaping (Bool) -> Void) {
-        
-        //
-    }
-    
     func sortJobListings() {
         
         var sortedListingsPlaceholder = jobListings.filter({$0.hourlyPay <= maxBudgetHourlyPayFilter})
@@ -151,8 +146,24 @@ class JobListingController {
     
     func getMyListings() {
         
-        guard let currentUsername = UserController.shared.loggedInUser?.username else { return }
+        guard let currentUsername = UserController.shared.loggedInUser?.username else {
+            myListings = []
+            return
+        }
         
         myListings = jobListings.filter { $0.username == currentUsername }
+    }
+    
+    func reportJobListing(withListingID listingID: String, completion: @escaping (Bool) -> Void) {
+        
+        FirebaseManager.db.collection(Constants.reportedListingsTypeKey).document(listingID).setData([:]) { (error) in
+            if let error = error {
+                print("Error: could not report the listing \n\(#function)\n\(error)\n\(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            completion(true)
+        }
     }
 }

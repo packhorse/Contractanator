@@ -10,10 +10,6 @@ import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    // MARK: - Properties
-    
-    var hasPresentedSignInAlready = false
-    
     // MARK: - Outlets
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,8 +23,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: Constants.myListingsDidUpdateNotification, object: nil)
         
-        UIChanges()
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -41,31 +35,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if presentedViewController == nil {
-            
-            hasPresentedSignInAlready = false
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if UserController.shared.loggedInUser == nil {
-            if !hasPresentedSignInAlready {
-                let loginVC = storyboard?.instantiateViewController(withIdentifier: "signInVC") as! LogInViewController
-                loginVC.isFromProfileVC = true
-                
-                present(loginVC, animated: true, completion: nil)
-                hasPresentedSignInAlready = true
-            }
-        } else {
-            UIChanges()
-        }
+        UIChanges()
     }
     
+    @IBAction func settingsButtonTapped(_ sender: UIBarButtonItem) {
+        
+        presentActionSheet()
+    }
+    
+    // MARK: - Collection View Functions
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return JobListingController.shared.myListings.count
@@ -81,6 +62,29 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let widthOfScreen = view.frame.width
+        return CGSize(width: (widthOfScreen - 3 * 16) / 2 + 10, height: ((widthOfScreen - 3 * 16) / 2) + 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 10, bottom: 50, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        var listing: JobListing? = nil
+        
+        listing = JobListingController.shared.myListings[indexPath.row]
+        
+        let detailVC = ListingDetailViewController()
+        
+        detailVC.jobListing = listing
+        present(detailVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - UI Functions
+    
     @objc func updateViews() {
         
         collectionView.reloadData()
@@ -94,23 +98,34 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         userBioLabel.text = currentUser.bio
         numberOfListingsLabel.text = String(JobListingController.shared.myListings.count)
         phoneLabel.text = currentUser.phone
-//        bioTextView.clipsToBounds = true
-//        bioTextView.layer.cornerRadius = 10.0
-//        bioTextView.layer.borderWidth = 1.0
-//        bioTextView.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    // MARK: - Other Functions
+    
+    fileprivate func logoutUser() {
         
+        UserController.shared.logoutUser { (successfulLogout) in
+            if successfulLogout {
+                self.tabBarController?.selectedIndex = 0
+            }
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let widthOfScreen = view.frame.width
-        return CGSize(width: (widthOfScreen - 3 * 16) / 2 + 10, height: ((widthOfScreen - 3 * 16) / 2) + 50)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 10, bottom: 50, right: 10)
+    func presentActionSheet() {
+        
+        let actionSheetVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let logout = UIAlertAction(title: "Logout", style: .destructive) { (_) in
+            self.logoutUser()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        actionSheetVC.addAction(logout)
+        actionSheetVC.addAction(cancel)
+        
+        present(actionSheetVC, animated: true, completion: nil)
     }
 }
-
 
 
 

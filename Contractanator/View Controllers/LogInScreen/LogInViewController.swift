@@ -12,7 +12,6 @@ class LogInViewController: UIViewController {
     
     // MARK: - Properties
     
-    var isFromProfileVC = false
     var themeColor = UIColor(named: "CoolBlue")
     
     // MARK: - Outlets
@@ -34,22 +33,11 @@ class LogInViewController: UIViewController {
     
     // MARK: - Actions
     
-    func dismissToHomeVC() {
-        if let tabBarController = self.presentingViewController as? UITabBarController {
-            self.dismiss(animated: true) {
-                tabBarController.selectedIndex = 0
-            }
-        }
-    }
-    
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         
         self.view.endEditing(true)
-        if self.isFromProfileVC {
-            dismissToHomeVC()
-        } else {
-            self.dismiss(animated: true, completion: nil)
-        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
@@ -100,9 +88,21 @@ class LogInViewController: UIViewController {
         
         UserController.shared.signInUser(withEmail: email, password: password) { (success) in
             if success {
-                self.presentingViewController?.dismiss(animated: true, completion: nil)
+                
+                let tabBarVC = self.presentingViewController as! UITabBarController
+                let navCont = tabBarVC.selectedViewController as! UINavigationController
+                
+                if !(navCont.viewControllers[0] is PostViewController) {
+                    tabBarVC.selectedIndex = 2
+                } else {
+                    let postVC = navCont.viewControllers[0] as? PostViewController
+                    if postVC?.attemptedPost == false {
+                        tabBarVC.selectedIndex = 2
+                    }
+                }
+                self.dismiss(animated: true, completion: nil)
             } else {
-                fatalError()
+                print("error signing in")
             }
         }
     }
@@ -112,7 +112,6 @@ class LogInViewController: UIViewController {
             let destinationVC = segue.destination as! SignUpViewController
             
             destinationVC.themeColor = themeColor
-            destinationVC.isFromProfileVC = isFromProfileVC
         }
     }
 }

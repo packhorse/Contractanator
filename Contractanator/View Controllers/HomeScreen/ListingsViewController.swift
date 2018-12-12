@@ -9,7 +9,7 @@
 import UIKit
 
 class ListingsViewController: UIViewController {
-
+    
     @IBOutlet var collectionView: UICollectionView!
     
     
@@ -21,6 +21,7 @@ class ListingsViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
         
         // Will need this in your profile view controller
         // Create a reference to our nib
@@ -73,8 +74,26 @@ extension ListingsViewController : UICollectionViewDelegate {
         let widthOfScreen = view.frame.width
         return CGSize(width: (widthOfScreen - 3 * 16) / 2 + 10, height: ((widthOfScreen - 3 * 16) / 2) + 50)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 10, bottom: 50, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        var listing: JobListing? = nil
+        
+        if JobListingController.shared.jobTypeFilter == nil &&
+            JobListingController.shared.jobCriteriaFilters.count == 0 &&
+            JobListingController.shared.maxBudgetHourlyPayFilter == Constants.maxPaySliderAmount {
+            listing = JobListingController.shared.jobListings[indexPath.row]
+        } else {
+            listing = JobListingController.shared.sortedListings[indexPath.row]
+        }
+        
+        let detailVC = ListingDetailViewController()
+        
+        detailVC.jobListing = listing
+        present(detailVC, animated: true, completion: nil)
     }
 }

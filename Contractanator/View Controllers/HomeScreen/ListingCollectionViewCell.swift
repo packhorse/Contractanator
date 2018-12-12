@@ -77,7 +77,6 @@ class ListingCollectionViewCell: UICollectionViewCell {
         
         roundedWhiteViewBottom.layer.cornerRadius = 22.0
         
-        
         customCellView.layer.shadowColor = cellColor?.cgColor
         customCellView.layer.shadowRadius = 4
         customCellView.layer.shadowOpacity = 1

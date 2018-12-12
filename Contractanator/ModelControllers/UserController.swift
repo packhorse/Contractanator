@@ -17,7 +17,11 @@ class UserController {
     private init() {}
     
     // Source of Truth
-    var loggedInUser: User?
+    var loggedInUser: User? {
+        didSet {
+            JobListingController.shared.getMyListings()
+        }
+    }
     
     // MARK: - Functions
     
@@ -91,6 +95,18 @@ class UserController {
             }
             
             completion(user)
+        }
+    }
+    
+    func logoutUser(completion: @escaping (Bool) -> Void) {
+        
+        do {
+            try FirebaseManager.auth.signOut()
+            loggedInUser = nil
+            completion(true)
+        } catch let error {
+            print("Error: Could not sign out \n\(#function)\n\(error)\n\(error.localizedDescription)")
+            completion(false)
         }
     }
 }

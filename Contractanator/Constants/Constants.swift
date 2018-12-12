@@ -15,6 +15,7 @@ struct Constants {
     // Used for the names of the firestore collections
     static let usersTypeKey = "users"
     static let jobListingsTypeKey = "jobListings"
+    static let reportedListingsTypeKey = "reportedListings"
     
     // MARK: - JobListing Keys
     
