@@ -71,6 +71,31 @@ class UserController {
         }
     }
     
+    func isUsernameAvailable(withUsername username: String, completion: @escaping (Bool) -> Void) {
+        
+        // Create a reference to the users collection
+        let usersRef = FirebaseManager.db.collection(Constants.usersTypeKey)
+        
+        // Create a query against the collection
+        let query = usersRef.whereField(Constants.usernameKey, isEqualTo: username)
+        
+        query.getDocuments { (results, error) in
+            if let error = error {
+                print("Error: Could not check username status \n\(#function)\n\(error)\n\(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            guard let userDoc = results?.documents.first, userDoc.exists else {
+                print("No document exists")
+                completion(true)
+                return
+            }
+            
+            completion(false)
+        }
+    }
+    
     func fetchLoggedInUserProfile(completion: @escaping (Bool) -> Void) {
         
         FirebaseManager.fetchCurrentUserProfile { (user) in

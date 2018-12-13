@@ -20,6 +20,10 @@ class LogInViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
+    // Error labels
+    @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +33,12 @@ class LogInViewController: UIViewController {
         
         UIChanges()
         self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        emailTextField.becomeFirstResponder()
     }
     
     // MARK: - Actions
@@ -102,7 +112,10 @@ class LogInViewController: UIViewController {
                 }
                 self.dismiss(animated: true, completion: nil)
             } else {
-                print("error signing in")
+                self.emailErrorLabel.isHidden = false
+                self.passwordErrorLabel.isHidden = false
+                self.emailErrorLabel.text = SignUpErrors.tooShort.rawValue
+                self.passwordErrorLabel.text = "Are you sure that was the right password? Double check"
             }
         }
     }
@@ -132,5 +145,19 @@ extension LogInViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        guard let text = textField.text else { return }
+        
+        if textField == emailTextField {
+            
+            if text.isValidEmail() || text.isEmpty {
+                emailTextField.layer.borderColor = UIColor.lightGray.cgColor
+            } else {
+                emailTextField.layer.borderColor = UIColor.red.cgColor
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Properties
     
-    var themeColor = UIColor(named: "CoolBlue")
+    var themeColor = UIColor(named: Constants.coolBlue)
 
     // MARK: - Outlets
     
@@ -28,6 +28,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextfield: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
+    
+    // Error Labels
+    @IBOutlet weak var usernameErrorLabel: UILabel!
+    @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
+    @IBOutlet weak var confirmPasswordErrorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +52,14 @@ class SignUpViewController: UIViewController {
         passwordTextField.delegate = self
         confirmPasswordTextfield.delegate = self
 
-        // Listen to certain TextFields
-        phone1TextField.addTarget(self, action: #selector(advanceFirstResponder(_:)), for: .editingChanged)
-        phone2TextField.addTarget(self, action: #selector(advanceFirstResponder(_:)), for: .editingChanged)
-        phone3TextField.addTarget(self, action: #selector(advanceFirstResponder(_:)), for: .editingChanged)
+        // Listen to username, passwords and phone TextField edits
+        usernameTextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
+        confirmPasswordTextfield.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
+        phone1TextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
+        phone2TextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
+        phone3TextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
+        
         
         // Keyboard show and hide notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIWindow.keyboardDidShowNotification, object: nil)
@@ -91,7 +101,7 @@ class SignUpViewController: UIViewController {
         textField.borderStyle = .none
         textField.layer.masksToBounds = true
         textField.setLeftPaddingPoints(15)
-        textField.setLeftPaddingPoints(15)
+        textField.setRightPaddingPoints(15)
     }
     
     func UIChanges() {
@@ -107,10 +117,6 @@ class SignUpViewController: UIViewController {
         setupViewFor(emailTextField)
         setupViewFor(passwordTextField)
         setupViewFor(confirmPasswordTextfield)
-        
-        // Bio text field
-        bioTextField.adjustsFontSizeToFitWidth = true
-        bioTextField.minimumFontSize = CGFloat(10)
         
         //SignUpButton
         signUpButton.layer.cornerRadius = signUpButton.frame.height / 2
@@ -131,22 +137,19 @@ class SignUpViewController: UIViewController {
         guard let firstName = firstNameTextField.text, !firstName.isEmpty,
             let lastName = lastNameTextField.text, !lastName.isEmpty,
             let username = usernameTextField.text, !username.isEmpty,
+            let bio = bioTextField.text, !bio.isEmpty,
             let phone1 = phone1TextField.text, !phone1.isEmpty,
             let phone2 = phone2TextField.text, !phone2.isEmpty,
             let phone3 = phone3TextField.text, !phone3.isEmpty,
-            let bio = bioTextField.text, !bio.isEmpty,
-            let email = emailTextField.text, !email.isEmpty,
-            let password = passwordTextField.text, !password.isEmpty,
-            let confirmPassword = confirmPasswordTextfield.text, !confirmPassword.isEmpty,
-            password == confirmPassword
-            else { view.endEditing(true) ; return }
+            let email = emailTextField.text, !email.isEmpty, email.isValidEmail(),
+            let password = passwordTextField.text, !password.isEmpty, password.count >= 6,
+            let confirmPassword = confirmPasswordTextfield.text, !confirmPassword.isEmpty, password == confirmPassword
+            else { return }
         
         let phone = phone1 + phone2 + phone3
         
         UserController.shared.createNewUser(withFirstName: firstName, lastName: lastName, username: username, phone: phone, bio: bio, email: email, password: password) { (success) in
             if success {
-                
-                self.view.endEditing(true)
                 
                 let tabBarVC = self.presentingViewController?.presentingViewController as! UITabBarController
                 let navCont = tabBarVC.selectedViewController as! UINavigationController
@@ -166,14 +169,32 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    // MARK: - PhoneTextField Auto Advance
+    // MARK: - Listeners for editing changes
     
-    @objc func advanceFirstResponder(_ textField: UITextField) {
+    @objc func editingDidChange(_ textField: UITextField) {
         
         guard let text = textField.text else { return }
         let count = text.count
         
         switch textField {
+        case usernameTextField:
+            if count >= 4 {
+                UserController.shared.isUsernameAvailable(withUsername: text) { (isAvailable) in
+                    if isAvailable {
+                        self.usernameErrorLabel.text = SignUpErrors.usernameAvailable.rawValue
+                        self.usernameErrorLabel.textColor = self.themeColor
+                        textField.layer.borderColor = self.themeColor?.cgColor
+                    } else {
+                        self.usernameErrorLabel.text = SignUpErrors.usernameTaken.rawValue
+                        self.usernameErrorLabel.textColor = UIColor.red
+                        textField.redBorders()
+                    }
+                    self.usernameErrorLabel.isHidden = false
+                }
+            } else {
+                usernameErrorLabel.isHidden = true
+                textField.layer.borderColor = UIColor.lightGray.cgColor
+            }
         case phone1TextField:
             if count == 3 {
                 phone2TextField.becomeFirstResponder()
@@ -184,7 +205,17 @@ class SignUpViewController: UIViewController {
             }
         case phone3TextField:
             if count == 4 {
-                bioTextField.becomeFirstResponder()
+                emailTextField.becomeFirstResponder()
+            }
+        case passwordTextField:
+            if count >= 6 {
+                passwordErrorLabel.isHidden = true
+                textField.layer.borderColor = UIColor.lightGray.cgColor
+            }
+        case confirmPasswordTextfield:
+            if passwordTextField.text == text && !text.isEmpty {
+                passwordErrorLabel.isHidden = true
+                confirmPasswordErrorLabel.isHidden = true
             }
         default:
             break
@@ -220,20 +251,17 @@ extension SignUpViewController: UITextFieldDelegate {
         case lastNameTextField:
             usernameTextField.becomeFirstResponder()
         case usernameTextField:
-            phone1TextField.becomeFirstResponder()
-        case phone1TextField:
-            phone2TextField.becomeFirstResponder()
-        case phone2TextField:
-            phone3TextField.becomeFirstResponder()
-        case phone3TextField:
             bioTextField.becomeFirstResponder()
         case bioTextField:
-            emailTextField.becomeFirstResponder()
+            phone1TextField.becomeFirstResponder()
+            
+        // The phone text fields use a listener to tab through the text fields
         case emailTextField:
             passwordTextField.becomeFirstResponder()
         case passwordTextField:
             confirmPasswordTextfield.becomeFirstResponder()
         case confirmPasswordTextfield:
+            confirmPasswordTextfield.resignFirstResponder()
             attemptSignUp()
         default:
             view.endEditing(true)
@@ -244,23 +272,84 @@ extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        guard let text = textField.text else { return }
+        let count = text.count
+        
+        if text.isEmpty {
+            textField.redBorders()
+        } else {
+            textField.lightGrayBorders()
+        }
+        
         switch textField {
         case firstNameTextField:
             firstNameTextField.text = firstNameTextField.text?.trimmingCharacters(in: .whitespaces)
         case lastNameTextField:
             lastNameTextField.text = lastNameTextField.text?.trimmingCharacters(in: .whitespaces)
         case usernameTextField:
-            usernameTextField.text = usernameTextField.text?.trimmingCharacters(in: .whitespaces)
+            if count >= 4 {
+                UserController.shared.isUsernameAvailable(withUsername: text) { (isAvailable) in
+                    if isAvailable {
+                        self.usernameErrorLabel.text = SignUpErrors.usernameAvailable.rawValue
+                        self.usernameErrorLabel.textColor = self.themeColor
+                        textField.layer.borderColor = self.themeColor?.cgColor
+                    } else {
+                        self.usernameErrorLabel.text = SignUpErrors.usernameTaken.rawValue
+                        self.usernameErrorLabel.textColor = UIColor.red
+                        textField.redBorders()
+                    }
+                    self.usernameErrorLabel.isHidden = false
+                }
+            } else {
+                usernameErrorLabel.textColor = UIColor.red
+                usernameErrorLabel.text = SignUpErrors.tooShort.rawValue
+                usernameErrorLabel.isHidden = false
+                textField.redBorders()
+            }
         case phone1TextField:
-            phone1TextField.text = phone1TextField.text?.trimmingCharacters(in: .whitespaces)
+            if count < 3 {
+                textField.redBorders()
+            }
         case phone2TextField:
-            phone2TextField.text = phone2TextField.text?.trimmingCharacters(in: .whitespaces)
+            if count < 3 {
+                textField.redBorders()
+            }
         case phone3TextField:
-            phone3TextField.text = phone3TextField.text?.trimmingCharacters(in: .whitespaces)
+            if count < 4 {
+                textField.redBorders()
+            }
         case bioTextField:
             bioTextField.text = bioTextField.text?.trimmingCharacters(in: .whitespaces)
         case emailTextField:
             emailTextField.text = emailTextField.text?.trimmingCharacters(in: .whitespaces)
+            if text.isValidEmail() {
+                emailTextField.layer.borderColor = UIColor.lightGray.cgColor
+                emailErrorLabel.isHidden = true
+            } else {
+                emailTextField.redBorders()
+                emailErrorLabel.text = SignUpErrors.invalidEmail.rawValue
+                emailErrorLabel.isHidden = false
+            }
+        case passwordTextField:
+            if count < 6 {
+                passwordErrorLabel.text = SignUpErrors.tooShort.rawValue
+                passwordErrorLabel.isHidden = false
+            } else {
+                passwordErrorLabel.isHidden = true
+            }
+        case confirmPasswordTextfield:
+            if passwordTextField.text != confirmPasswordTextfield.text {
+                passwordErrorLabel.text = SignUpErrors.passwordMismatch.rawValue
+                confirmPasswordErrorLabel.text = SignUpErrors.passwordMismatch.rawValue
+                
+                passwordErrorLabel.isHidden = false
+                confirmPasswordErrorLabel.isHidden = false
+            } else {
+                if !text.isEmpty{
+                    passwordErrorLabel.isHidden = true
+                    confirmPasswordErrorLabel.isHidden = true
+                }
+            }
         default:
             break
         }
@@ -277,7 +366,10 @@ extension SignUpViewController: UITextFieldDelegate {
         case lastNameTextField:
             break
         case usernameTextField:
-            break
+            if string == " " {
+                return false
+            }
+            return count <= 15
         case phone1TextField:
             return count <= 3
         case phone2TextField:
@@ -293,5 +385,18 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+extension UITextField {
+    
+    func redBorders() {
+        
+        self.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func lightGrayBorders() {
+        
+        self.layer.borderColor = UIColor.lightGray.cgColor
     }
 }

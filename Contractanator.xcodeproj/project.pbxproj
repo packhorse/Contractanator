@@ -10,6 +10,7 @@
 		A604682021B71043007CC24A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A604681F21B71043007CC24A /* GoogleService-Info.plist */; };
 		A604682221B71476007CC24A /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A604682121B71476007CC24A /* FirebaseManager.swift */; };
 		A6070E9821B6EDC800609F63 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6070E9721B6EDC800609F63 /* LocationManager.swift */; };
+		A6CEA1ED21C2CC0E00C3D252 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA1EC21C2CC0E00C3D252 /* Extensions.swift */; };
 		A6FBF1AD21C0349300671E01 /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FBF1AB21C0349300671E01 /* ListingDetailViewController.swift */; };
 		A6FBF1AE21C0349300671E01 /* ListingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FBF1AC21C0349300671E01 /* ListingDetailViewController.xib */; };
 		A6FDD73F21B5D8BE00E71713 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FDD73E21B5D8BE00E71713 /* Constants.swift */; };
@@ -43,6 +44,7 @@
 		A604681F21B71043007CC24A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A604682121B71476007CC24A /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		A6070E9721B6EDC800609F63 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A6CEA1EC21C2CC0E00C3D252 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A6FBF1AB21C0349300671E01 /* ListingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
 		A6FBF1AC21C0349300671E01 /* ListingDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListingDetailViewController.xib; sourceTree = "<group>"; };
 		A6FDD73E21B5D8BE00E71713 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				B8DB34E321ADD2C1008ECADE /* LaunchScreen.storyboard */,
 				B8DB34E621ADD2C1008ECADE /* Info.plist */,
 				A604681F21B71043007CC24A /* GoogleService-Info.plist */,
+				A6CEA1EC21C2CC0E00C3D252 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -356,13 +359,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Contractanator/Pods-Contractanator-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -435,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6FDD74521B5D8DE00E71713 /* User.swift in Sources */,
+				A6CEA1ED21C2CC0E00C3D252 /* Extensions.swift in Sources */,
 				B80FC51D21B0AAE100DB82AD /* PostViewController.swift in Sources */,
 				B8A85D7B21AF3C7100F03BCE /* ListingsViewController.swift in Sources */,
 				A6FDD74121B5D8C800E71713 /* NetworkingErrors.swift in Sources */,

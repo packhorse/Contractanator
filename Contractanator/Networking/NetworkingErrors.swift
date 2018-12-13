@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+enum SignUpErrors: String {
+    case usernameTaken = "Taken"
+    case usernameAvailable = "Available"
+    case invalidEmail = "Invalid email"
+    case tooShort = "Too short"
+    case passwordMismatch = "Mismatch"
+}
+
+//enum SignInErrors: String {
+//    
+//    
+//}
