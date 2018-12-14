@@ -12,7 +12,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - Outlets
     
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userBioLabel: UILabel!
     @IBOutlet weak var numberOfListingsLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
@@ -94,7 +93,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         guard let currentUser = UserController.shared.loggedInUser else { return }
         
-        nameLabel.text = "\(currentUser.firstName) \(currentUser.lastName)"
+        navigationItem.title = "\(currentUser.firstName) \(currentUser.lastName)"
         userBioLabel.text = currentUser.bio
         numberOfListingsLabel.text = String(JobListingController.shared.myListings.count)
         phoneLabel.text = currentUser.phone
