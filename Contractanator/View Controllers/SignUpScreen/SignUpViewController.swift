@@ -13,18 +13,18 @@ class SignUpViewController: UIViewController {
     // MARK: - Properties
     
     var themeColor = UIColor(named: Constants.coolBlue)
-
+    
     // MARK: - Outlets
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var phone1TextField: UITextField!
     @IBOutlet weak var phone2TextField: UITextField!
     @IBOutlet weak var phone3TextField: UITextField!
-    @IBOutlet weak var bioTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextfield: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
@@ -35,6 +35,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordErrorLabel: UILabel!
     @IBOutlet weak var confirmPasswordErrorLabel: UILabel!
     
+    // MARK: - Life Cycle Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,22 +46,21 @@ class SignUpViewController: UIViewController {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         usernameTextField.delegate = self
-        emailTextField.delegate = self
+        bioTextField.delegate = self
         phone1TextField.delegate = self
         phone2TextField.delegate = self
         phone3TextField.delegate = self
-        bioTextField.delegate = self
+        emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextfield.delegate = self
-
+        
         // Listen to username, passwords and phone TextField edits
         usernameTextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
-        confirmPasswordTextfield.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
         phone1TextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
         phone2TextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
         phone3TextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
-        
+        passwordTextField.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
+        confirmPasswordTextfield.addTarget(self, action: #selector(editingDidChange(_:)), for: .editingChanged)
         
         // Keyboard show and hide notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIWindow.keyboardDidShowNotification, object: nil)
@@ -82,7 +83,12 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         
-        attemptSignUp()
+        validateTextFields()
+        validateUsername { (isAvailable) in
+            if isAvailable {
+                self.attemptSignUp()
+            }
+        }
     }
     
     @IBAction func goToLoginButtonTapped(_ sender: UIButton) {
@@ -104,6 +110,20 @@ class SignUpViewController: UIViewController {
         textField.setRightPaddingPoints(15)
     }
     
+    fileprivate func setupSignupButton() {
+        
+        signUpButton.layer.cornerRadius = signUpButton.frame.height / 2
+        signUpButton.layer.shadowColor = themeColor?.cgColor
+        signUpButton.layer.shadowRadius = 4
+        signUpButton.layer.shadowOpacity = 1
+        signUpButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        signUpButton.layer.borderWidth = 1.0
+        signUpButton.setTitleColor(UIColor.white, for: .normal)
+        signUpButton.layer.borderColor = themeColor?.cgColor
+        signUpButton.layer.backgroundColor = themeColor?.cgColor
+        signUpButton.isEnabled = true
+    }
+    
     func UIChanges() {
         
         // textFields
@@ -119,18 +139,102 @@ class SignUpViewController: UIViewController {
         setupViewFor(confirmPasswordTextfield)
         
         //SignUpButton
-        signUpButton.layer.cornerRadius = signUpButton.frame.height / 2
-        signUpButton.layer.shadowColor = themeColor?.cgColor
-        signUpButton.layer.shadowRadius = 4
-        signUpButton.layer.shadowOpacity = 1
-        signUpButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-        signUpButton.layer.borderWidth = 1.0
-        signUpButton.setTitleColor(UIColor.white, for: .normal)
-        signUpButton.layer.borderColor = themeColor?.cgColor
-        signUpButton.layer.backgroundColor = themeColor?.cgColor
+        setupSignupButton()
     }
     
     // MARK: - Functions
+    
+    fileprivate func validateUsername(completion: @escaping (Bool) -> Void) {
+        
+        if let username = usernameTextField.text, !username.isEmpty {
+            UserController.shared.isUsernameAvailable(withUsername: username) { (isAvailable) in
+                if isAvailable {
+                    self.usernameErrorLabel.text = SignUpErrors.usernameAvailable.rawValue
+                    self.usernameErrorLabel.textColor = self.themeColor
+                    self.usernameTextField.layer.borderColor = self.themeColor?.cgColor
+                    completion(true)
+                } else {
+                    self.usernameErrorLabel.text = SignUpErrors.usernameTaken.rawValue
+                    self.usernameErrorLabel.textColor = UIColor.red
+                    self.usernameTextField.redBorders()
+                    completion(false)
+                }
+            }
+        } else {
+            usernameErrorLabel.text = SignUpErrors.tooShort.rawValue
+            usernameErrorLabel.textColor = UIColor.red
+            usernameTextField.redBorders()
+        }
+        usernameErrorLabel.isHidden = false
+    }
+    
+    fileprivate func validateTextFields() -> Bool {
+        
+        var isAllValid = true
+        
+        if let firstName = firstNameTextField.text, firstName.isEmpty {
+            isAllValid = false
+            firstNameTextField.redBorders()
+        }
+        
+        if let lastName = lastNameTextField.text, lastName.isEmpty {
+            isAllValid = false
+            lastNameTextField.redBorders()
+        }
+        
+        if let bio = bioTextField.text, bio.isEmpty {
+            isAllValid = false
+            bioTextField.redBorders()
+        }
+        
+        if let phone1 = phone1TextField.text, phone1.isEmpty {
+            isAllValid = false
+            phone1TextField.redBorders()
+        }
+        
+        if let phone2 = phone2TextField.text, phone2.isEmpty {
+            isAllValid = false
+            phone2TextField.redBorders()
+        }
+        
+        if let phone3 = phone3TextField.text, phone3.isEmpty {
+            isAllValid = false
+            phone3TextField.redBorders()
+        }
+        
+        if let email = emailTextField.text, email.isEmpty || !email.isValidEmail() {
+            isAllValid = false
+            emailTextField.redBorders()
+            emailErrorLabel.text = SignUpErrors.invalidEmail.rawValue
+            emailErrorLabel.isHidden = false
+        }
+        
+        if let password = passwordTextField.text, password.isEmpty || password.count < 6 {
+            isAllValid = false
+            passwordTextField.redBorders()
+            confirmPasswordTextfield.redBorders()
+            passwordErrorLabel.text = SignUpErrors.tooShort.rawValue
+            passwordErrorLabel.isHidden = false
+            
+            return isAllValid
+        }
+        
+        if let password = passwordTextField.text, let confirmPassword = confirmPasswordTextfield.text,
+            confirmPassword.isEmpty || password != confirmPassword {
+            
+            isAllValid = false
+            
+            passwordTextField.redBorders()
+            confirmPasswordTextfield.redBorders()
+            
+            passwordErrorLabel.text = SignUpErrors.passwordMismatch.rawValue
+            confirmPasswordErrorLabel.text = SignUpErrors.passwordMismatch.rawValue
+            passwordErrorLabel.isHidden = false
+            confirmPasswordErrorLabel.isHidden = false
+        }
+        
+        return isAllValid
+    }
     
     func attemptSignUp() {
         
@@ -209,13 +313,18 @@ class SignUpViewController: UIViewController {
             }
         case passwordTextField:
             if count >= 6 {
-                passwordErrorLabel.isHidden = true
-                textField.layer.borderColor = UIColor.lightGray.cgColor
+                if passwordErrorLabel.text != SignUpErrors.passwordMismatch.rawValue {
+                    passwordErrorLabel.isHidden = true
+                    textField.layer.borderColor = UIColor.lightGray.cgColor
+                }
             }
         case confirmPasswordTextfield:
             if passwordTextField.text == text && !text.isEmpty {
                 passwordErrorLabel.isHidden = true
                 confirmPasswordErrorLabel.isHidden = true
+                
+                passwordTextField.lightGrayBorders()
+                confirmPasswordTextfield.lightGrayBorders()
             }
         default:
             break
@@ -335,7 +444,9 @@ extension SignUpViewController: UITextFieldDelegate {
                 passwordErrorLabel.text = SignUpErrors.tooShort.rawValue
                 passwordErrorLabel.isHidden = false
             } else {
-                passwordErrorLabel.isHidden = true
+                if passwordErrorLabel.text != SignUpErrors.passwordMismatch.rawValue {
+                    passwordErrorLabel.isHidden = true
+                }
             }
         case confirmPasswordTextfield:
             if passwordTextField.text != confirmPasswordTextfield.text {
@@ -344,10 +455,15 @@ extension SignUpViewController: UITextFieldDelegate {
                 
                 passwordErrorLabel.isHidden = false
                 confirmPasswordErrorLabel.isHidden = false
+                
+                passwordTextField.redBorders()
+                confirmPasswordTextfield.redBorders()
             } else {
                 if !text.isEmpty{
                     passwordErrorLabel.isHidden = true
                     confirmPasswordErrorLabel.isHidden = true
+                    passwordTextField.lightGrayBorders()
+                    confirmPasswordTextfield.lightGrayBorders()
                 }
             }
         default:
@@ -379,7 +495,9 @@ extension SignUpViewController: UITextFieldDelegate {
         case bioTextField:
             break
         case emailTextField:
-            break
+            if string == " " {
+                return false
+            }
         default:
             break
         }
