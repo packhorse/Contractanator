@@ -94,13 +94,13 @@
                                             <constraint firstAttribute="height" constant="40" id="fnn-8C-CoT"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfc-nb-HhS">
                                         <rect key="frame" x="0.0" y="56" width="256" height="40"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
@@ -108,8 +108,8 @@
                                     <constraint firstItem="Cfc-nb-HhS" firstAttribute="height" secondItem="jvz-Nh-jIk" secondAttribute="height" id="Cge-5W-ZGy"/>
                                 </constraints>
                             </stackView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your password must be at least 6 characters long" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hbe-jW-K46">
-                                <rect key="frame" x="32" y="177" width="256" height="16"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FSP-B7-SSd">
+                                <rect key="frame" x="120.5" y="121" width="79" height="16"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                 <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
@@ -130,24 +130,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your password must be at least 6 characters long" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FSP-B7-SSd">
-                                <rect key="frame" x="32" y="117.5" width="256" height="19.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ContractanatorIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eVk-Vk-889">
+                                <rect key="frame" x="135" y="20" width="50" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eVk-Vk-889" secondAttribute="height" multiplier="157:199" id="z44-1w-d7o"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FSP-B7-SSd" firstAttribute="trailing" secondItem="KDx-vZ-Ni9" secondAttribute="trailing" id="3NQ-5P-ph6"/>
-                            <constraint firstItem="hbe-jW-K46" firstAttribute="top" secondItem="jvz-Nh-jIk" secondAttribute="bottom" id="3ej-V9-ouI"/>
-                            <constraint firstItem="FSP-B7-SSd" firstAttribute="leading" secondItem="KDx-vZ-Ni9" secondAttribute="leading" id="5Ww-QG-3pr"/>
-                            <constraint firstItem="hbe-jW-K46" firstAttribute="bottom" secondItem="Cfc-nb-HhS" secondAttribute="top" id="91A-zQ-pZl"/>
                             <constraint firstItem="zCi-Ed-tl4" firstAttribute="bottom" secondItem="jvz-Nh-jIk" secondAttribute="bottom" id="9Of-dC-feJ"/>
+                            <constraint firstItem="eVk-Vk-889" firstAttribute="centerX" secondItem="i2u-iw-d9Z" secondAttribute="centerX" id="9nB-V2-bdY"/>
                             <constraint firstItem="9n9-Hs-tP2" firstAttribute="top" secondItem="KDx-vZ-Ni9" secondAttribute="bottom" constant="30" id="Dzv-74-1Uc"/>
+                            <constraint firstItem="eVk-Vk-889" firstAttribute="height" secondItem="CNc-2X-8e1" secondAttribute="height" multiplier="1.75" id="I4J-Ck-srl"/>
+                            <constraint firstItem="FSP-B7-SSd" firstAttribute="bottom" secondItem="jvz-Nh-jIk" secondAttribute="top" id="II0-Wx-2uz"/>
                             <constraint firstItem="KDx-vZ-Ni9" firstAttribute="centerX" secondItem="i2u-iw-d9Z" secondAttribute="centerX" id="LK0-y0-5fw"/>
                             <constraint firstItem="sa7-YD-ce8" firstAttribute="top" secondItem="9n9-Hs-tP2" secondAttribute="bottom" constant="16" id="NHq-SQ-vqx"/>
-                            <constraint firstItem="FSP-B7-SSd" firstAttribute="bottom" secondItem="jvz-Nh-jIk" secondAttribute="top" id="Ncp-kT-UIS"/>
                             <constraint firstItem="CNc-2X-8e1" firstAttribute="top" secondItem="oEE-Gi-6Gw" secondAttribute="bottom" constant="8" id="OAU-lA-8D5"/>
                             <constraint firstItem="CNc-2X-8e1" firstAttribute="width" secondItem="jvz-Nh-jIk" secondAttribute="width" constant="-40" id="P0g-98-DaM"/>
                             <constraint firstItem="c7X-uE-AK0" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sa7-YD-ce8" secondAttribute="bottom" constant="30" id="PJ1-dt-hv0"/>
@@ -155,22 +153,23 @@
                             <constraint firstItem="zCi-Ed-tl4" firstAttribute="centerX" secondItem="jvz-Nh-jIk" secondAttribute="centerX" id="Uas-Ag-f7a"/>
                             <constraint firstItem="9n9-Hs-tP2" firstAttribute="width" secondItem="Cfc-nb-HhS" secondAttribute="width" constant="-40" id="V6F-ET-kxv"/>
                             <constraint firstItem="zCi-Ed-tl4" firstAttribute="top" secondItem="jvz-Nh-jIk" secondAttribute="bottom" id="Woi-rq-xes"/>
+                            <constraint firstItem="c7X-uE-AK0" firstAttribute="top" secondItem="eVk-Vk-889" secondAttribute="top" id="aAr-il-k9F"/>
                             <constraint firstItem="sa7-YD-ce8" firstAttribute="centerX" secondItem="i2u-iw-d9Z" secondAttribute="centerX" id="cYI-fB-NRf"/>
+                            <constraint firstItem="FSP-B7-SSd" firstAttribute="centerX" secondItem="jvz-Nh-jIk" secondAttribute="centerX" id="cgu-uc-WGs"/>
                             <constraint firstItem="CNc-2X-8e1" firstAttribute="centerX" secondItem="i2u-iw-d9Z" secondAttribute="centerX" id="cqw-qV-RUd"/>
                             <constraint firstItem="KDx-vZ-Ni9" firstAttribute="top" secondItem="CNc-2X-8e1" secondAttribute="bottom" constant="16" id="e1O-a8-3bu"/>
                             <constraint firstItem="9n9-Hs-tP2" firstAttribute="centerX" secondItem="c7X-uE-AK0" secondAttribute="centerX" id="enw-W3-O6s"/>
                             <constraint firstItem="c7X-uE-AK0" firstAttribute="trailing" secondItem="oEE-Gi-6Gw" secondAttribute="trailing" constant="16" id="izN-3O-4HZ"/>
-                            <constraint firstItem="hbe-jW-K46" firstAttribute="trailing" secondItem="KDx-vZ-Ni9" secondAttribute="trailing" id="neA-At-k7E"/>
                             <constraint firstItem="oEE-Gi-6Gw" firstAttribute="top" secondItem="c7X-uE-AK0" secondAttribute="top" constant="16" id="pvN-gI-hDM"/>
+                            <constraint firstItem="FSP-B7-SSd" firstAttribute="top" secondItem="CNc-2X-8e1" secondAttribute="bottom" id="q9x-QN-S5y"/>
                             <constraint firstItem="KDx-vZ-Ni9" firstAttribute="width" secondItem="i2u-iw-d9Z" secondAttribute="width" multiplier="0.8" id="zrz-S7-lIx"/>
-                            <constraint firstItem="hbe-jW-K46" firstAttribute="leading" secondItem="KDx-vZ-Ni9" secondAttribute="leading" id="zzd-bX-d7d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c7X-uE-AK0"/>
                     </view>
                     <connections>
-                        <outlet property="emailErrorLabel" destination="FSP-B7-SSd" id="aiQ-k5-HZl"/>
                         <outlet property="emailTextField" destination="jvz-Nh-jIk" id="qDg-7e-55Y"/>
-                        <outlet property="passwordErrorLabel" destination="hbe-jW-K46" id="wpL-vt-eCb"/>
+                        <outlet property="errorLabel" destination="FSP-B7-SSd" id="aiQ-k5-HZl"/>
+                        <outlet property="iconImageView" destination="eVk-Vk-889" id="c9n-6P-Tx5"/>
                         <outlet property="passwordTextField" destination="Cfc-nb-HhS" id="I9n-qr-fbz"/>
                         <outlet property="signInButton" destination="9n9-Hs-tP2" id="dXE-eB-pIv"/>
                     </connections>
@@ -193,6 +192,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwL-F2-AAF">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="980"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ContractanatorIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lhC-FC-49s">
+                                                <rect key="frame" x="135" y="0.0" width="50" height="63"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="lhC-FC-49s" secondAttribute="height" multiplier="157:199" id="peO-ts-soC"/>
+                                                </constraints>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igg-lL-LNQ">
                                                 <rect key="frame" x="274" y="16" width="30" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
@@ -329,7 +334,9 @@
                                             <constraint firstItem="tjB-8t-31J" firstAttribute="centerX" secondItem="FwL-F2-AAF" secondAttribute="centerX" id="3TZ-bX-YnX"/>
                                             <constraint firstItem="c9k-CX-lEj" firstAttribute="centerX" secondItem="FwL-F2-AAF" secondAttribute="centerX" id="5OW-6V-JWa"/>
                                             <constraint firstItem="i6P-aR-YMm" firstAttribute="trailing" secondItem="LZX-Dh-lID" secondAttribute="trailing" constant="-15" id="5gH-uE-osn"/>
+                                            <constraint firstItem="lhC-FC-49s" firstAttribute="top" secondItem="FwL-F2-AAF" secondAttribute="top" id="6S8-uf-8zZ"/>
                                             <constraint firstItem="Igg-lL-LNQ" firstAttribute="top" secondItem="FwL-F2-AAF" secondAttribute="top" constant="16" id="71T-RV-8HE"/>
+                                            <constraint firstItem="lhC-FC-49s" firstAttribute="height" secondItem="tjB-8t-31J" secondAttribute="height" multiplier="1.75" id="9FO-zT-6dR"/>
                                             <constraint firstItem="luv-Dd-Prs" firstAttribute="leading" secondItem="vPu-OA-VH3" secondAttribute="centerX" multiplier="1.5" id="9HF-4Q-6in"/>
                                             <constraint firstItem="i6P-aR-YMm" firstAttribute="leading" secondItem="LZX-Dh-lID" secondAttribute="centerX" multiplier="1.5" id="BvF-MV-YcT"/>
                                             <constraint firstItem="i6P-aR-YMm" firstAttribute="bottom" secondItem="LZX-Dh-lID" secondAttribute="bottom" id="OYU-I6-Pet"/>
@@ -346,6 +353,7 @@
                                             <constraint firstItem="7Dd-55-QPK" firstAttribute="top" secondItem="Sns-Ut-K0V" secondAttribute="top" id="kt6-mm-2Pq"/>
                                             <constraint firstItem="c9k-CX-lEj" firstAttribute="width" secondItem="FwL-F2-AAF" secondAttribute="width" multiplier="0.8" id="n2F-tt-gp8"/>
                                             <constraint firstAttribute="trailing" secondItem="Igg-lL-LNQ" secondAttribute="trailing" constant="16" id="nKm-dT-78P"/>
+                                            <constraint firstItem="lhC-FC-49s" firstAttribute="centerX" secondItem="FwL-F2-AAF" secondAttribute="centerX" id="nTX-NV-W0f"/>
                                             <constraint firstItem="tjB-8t-31J" firstAttribute="width" secondItem="K9A-6p-bbC" secondAttribute="width" constant="-40" id="qTN-tp-vuY"/>
                                             <constraint firstItem="c9k-CX-lEj" firstAttribute="top" secondItem="tjB-8t-31J" secondAttribute="bottom" constant="16" id="s0k-1x-TH9"/>
                                             <constraint firstItem="tjB-8t-31J" firstAttribute="top" secondItem="Igg-lL-LNQ" secondAttribute="bottom" constant="8" id="tPd-pA-4mh"/>
@@ -434,6 +442,7 @@
                         <outlet property="emailErrorLabel" destination="luv-Dd-Prs" id="9X7-Qv-OQQ"/>
                         <outlet property="emailTextField" destination="vPu-OA-VH3" id="YVW-55-1MQ"/>
                         <outlet property="firstNameTextField" destination="GOa-5N-XYe" id="j2S-Wa-146"/>
+                        <outlet property="iconImageView" destination="lhC-FC-49s" id="jGm-Qa-jQQ"/>
                         <outlet property="lastNameTextField" destination="kug-gs-9fQ" id="yPI-pG-8H5"/>
                         <outlet property="passwordErrorLabel" destination="7Dd-55-QPK" id="dkq-wz-K0X"/>
                         <outlet property="passwordTextField" destination="Sns-Ut-K0V" id="Tdh-yY-PFG"/>
@@ -471,7 +480,7 @@
                                         <rect key="frame" x="0.0" y="3" width="280" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-HC-ZXF">
-                                                <rect key="frame" x="0.0" y="0.0" width="148" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="236.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="P." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiQ-Yh-0sa">
                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="50"/>
@@ -480,7 +489,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNP-Pc-R5Y">
-                                                        <rect key="frame" x="13" y="0.0" width="135" height="50"/>
+                                                        <rect key="frame" x="13" y="0.0" width="223.5" height="50"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -488,16 +497,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" ambiguous="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="FBq-nk-AkR">
-                                                <rect key="frame" x="148" y="0.0" width="132" height="50"/>
+                                                <rect key="frame" x="236.5" y="0.0" width="43.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-b2-KNV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="t2p-hy-o3b">
-                                                        <rect key="frame" x="91.5" y="0.0" width="40.5" height="50"/>
+                                                        <rect key="frame" x="3" y="0.0" width="40.5" height="50"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -635,6 +644,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ContractanatorIcon" width="157" height="199"/>
         <image name="UserForContractorApp" width="20" height="22"/>
     </resources>
 </document>

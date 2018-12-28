@@ -16,7 +16,8 @@ enum SignUpErrors: String {
     case passwordMismatch = "Mismatch"
 }
 
-//enum SignInErrors: String {
-//    
-//    
-//}
+enum SignInErrors: String {
+    case emailNotFound = "Email not found"
+    case wrongPassword = "Wrong password"
+    case tryAgain = "Try again later"
+}

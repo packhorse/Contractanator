@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -140,6 +141,9 @@ class SignUpViewController: UIViewController {
         
         //SignUpButton
         setupSignupButton()
+        
+        // Icon Color
+        iconImageView.tintColor = themeColor
     }
     
     // MARK: - Functions

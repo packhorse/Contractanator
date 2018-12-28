@@ -16,13 +16,13 @@ class LogInViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
     // Error labels
-    @IBOutlet weak var emailErrorLabel: UILabel!
-    @IBOutlet weak var passwordErrorLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,9 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
+        
+        // Hide error if shown previously
+        self.errorLabel.isHidden = true
         
         attemptSignIn()
     }
@@ -86,6 +89,9 @@ class LogInViewController: UIViewController {
         signInButton.setTitleColor(UIColor.white, for: .normal)
         signInButton.layer.borderColor = themeColor?.cgColor
         signInButton.layer.backgroundColor = themeColor?.cgColor
+        
+        // Icon Color
+        iconImageView.tintColor = themeColor
     }
     
     // MARK: - Functions
@@ -96,7 +102,7 @@ class LogInViewController: UIViewController {
             let password = passwordTextField.text, !password.isEmpty
             else { return }
         
-        UserController.shared.signInUser(withEmail: email, password: password) { (success) in
+        UserController.shared.signInUser(withEmail: email, password: password) { (success, signInError) in
             if success {
                 
                 let tabBarVC = self.presentingViewController as! UITabBarController
@@ -112,10 +118,12 @@ class LogInViewController: UIViewController {
                 }
                 self.dismiss(animated: true, completion: nil)
             } else {
-                self.emailErrorLabel.isHidden = false
-                self.passwordErrorLabel.isHidden = false
-                self.emailErrorLabel.text = SignUpErrors.tooShort.rawValue
-                self.passwordErrorLabel.text = "Are you sure that was the right password? Double check"
+                
+                if let signInError = signInError {
+                    
+                    self.errorLabel.isHidden = false
+                    self.errorLabel.text = signInError.rawValue
+                }
             }
         }
     }

@@ -33,12 +33,23 @@ class FirebaseManager {
         }
     }
     
-    static func signInExistingUser(withEmail email: String, password: String, completion: @escaping (User?) -> Void) {
+    static func signInExistingUser(withEmail email: String, password: String, completion: @escaping (User?, SignInErrors?) -> Void) {
+        
+        var signInError: SignInErrors? = nil
         
         auth.signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
+                if let errorCode = AuthErrorCode(rawValue: error._code) {
+                    switch errorCode {
+                        
+                    case .wrongPassword:
+                        signInError = .wrongPassword
+                    default:
+                        signInError = .emailNotFound
+                    }
+                }
                 print("Error: could not authenticate user credentials \n\(#function)\n\(error)\n\(error.localizedDescription)")
-                completion(nil)
+                completion(nil, signInError)
                 return
             }
             
@@ -61,11 +72,11 @@ class FirebaseManager {
         }
     }
     
-    static func fetchCurrentUserProfile(completion: @escaping (User?) -> Void) {
+    static func fetchCurrentUserProfile(completion: @escaping (User?, SignInErrors?) -> Void) {
         
         guard let userID = FirebaseManager.auth.currentUser?.uid else {
             print("Error: could not find current user \n\(#function)")
-            completion(nil)
+            completion(nil, SignInErrors.emailNotFound)
             return
         }
         
@@ -73,18 +84,18 @@ class FirebaseManager {
         docRef.getDocument { (document, error) in
             if let error = error {
                 print("Error: Something went wrong fetching the user profile \n\(#function)\n\(error)\n\(error.localizedDescription)")
-                completion(nil)
+                completion(nil, SignInErrors.tryAgain)
                 return
             }
             
             guard let document = document, document.exists, let docData = document.data() else {
                 print("No document exists or no document data could be found")
-                completion(nil)
+                completion(nil, SignInErrors.tryAgain)
                 return
             }
             
             let user = User(withDict: docData)
-            completion(user)
+            completion(user, nil)
         }
     }
     
